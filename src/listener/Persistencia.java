@@ -44,11 +44,11 @@ public class Persistencia implements ServletContextListener {
 		System.out.println("Iniciando aplicação...");
 		System.out.println("Gerando persistencia...");
 
-		AdministradorBusiness bancoAdministrador = new AdministradorBusiness();
-		ClienteBusiness bancoCliente = new ClienteBusiness();
-		VeiculoBusiness bancoVeiculo = new VeiculoBusiness();
-		ServicoBusiness bancoServico = new ServicoBusiness();
-		ConsertoBusiness bancoConserto = new ConsertoBusiness();
+		AdministradorBusiness bancoAdministrador	= new AdministradorBusiness();
+		ClienteBusiness bancoCliente				= new ClienteBusiness();
+		VeiculoBusiness bancoVeiculo				= new VeiculoBusiness();
+		ServicoBusiness bancoServico				= new ServicoBusiness();
+		ConsertoBusiness bancoConserto				= new ConsertoBusiness();
 		
 		Data data = new Data();
 
@@ -58,20 +58,24 @@ public class Persistencia implements ServletContextListener {
     	bancoAdministrador.adicionar(new Administrador("Flavio Alves da Costa", "06544337431", "20084750548","Masculino", data.returnDate(25, 03, 1996), new Usuario("flavio", "147258")));
     	bancoAdministrador.adicionar(new Administrador("Marcelo Millhomen", "06544337431", "20004750595","Masculino", data.returnDate(24, 04, 1995), new Usuario("marcelo", "159753")));
     	bancoAdministrador.adicionar(new Administrador("PaulaBras", "06544337431", "20004750595","Feminino", data.returnDate(21, 05, 1990), new Usuario("paulo", "789456")));
-		
+
+    	//Cliente
+    	
+    	//Veiculo
+    	
 		bancoServico.adicionar(new Pintura("Carro", "Tira risco", 300.00, "Vermelho", "Porta lateral direita"));
 		bancoServico.adicionar(new Pintura("Moto", "Pintura completa", 400.00, "Preta", "Tanque"));
 		bancoServico.adicionar(new Funilaria("Carro", "Martelinho de ouro", 600.00, "Porta lateral direita"));
 		bancoServico.adicionar(new Funilaria("Moto", "Desamassamento", 250.00, "Porta lateral direita"));
 		bancoServico.adicionar(new Mecanica("Carro", "Troca de Óleo", 300.00));
 		bancoServico.adicionar(new Mecanica("Moto", "Troca do fuído do freio", 300.00));
+		
+		//Conserto
 
 		contexto.getServletContext().setAttribute("bancoAdministrador", bancoAdministrador);
 		contexto.getServletContext().setAttribute("bancoCliente", bancoCliente);
 		contexto.getServletContext().setAttribute("bancoVeiculo", bancoVeiculo);
 		contexto.getServletContext().setAttribute("bancoServico", bancoServico);
 		contexto.getServletContext().setAttribute("bancoConserto", bancoConserto);
-
 	}
-
 }
