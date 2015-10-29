@@ -33,5 +33,5 @@ public abstract class Servico {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	}
+	} 
 }
