@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.ServicoBusiness;
+import model.Mecanica;
+import model.Pintura;
 import model.Servico;
 
 @WebServlet({ "/ServicoController", "/ServicoController.do" })
@@ -41,14 +43,63 @@ public class ServicoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		System.out.println("Action = " + action);
+
 		switch (action) {
+		case "Cadastrar":
+			this.cadastrar(request, response);
+			break;
 		case "Pesquisar":
-			System.out.println("Entrou no case");
 			this.pesquisar(request, response);
 			break;
 		}
 
+	}
+
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String dispatcher;
+		String tipoServico = request.getParameter("servicoTipo");
+		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
+		Servico novo;
+		switch (tipoServico) {
+		case "Pintura":
+			String TipoVeiculoPintura = request.getParameter("servicoTipoVeiculo");
+			String servicoPintura = request.getParameter("servico");
+			String corPintura = request.getParameter("servicoCor");
+			String pecaPintura = request.getParameter("servicoPeca");
+			String precoPintura = request.getParameter("servicoPreco");
+			String codigo = String.valueOf(bancoServico.getSize() + 1);
+			if (codigo.length() < 4) {
+				for (int i = 0; i < 4 - codigo.length(); i++)
+					codigo = "0" + codigo;
+			}
+			codigo = "SERV" + codigo;
+			novo = new Pintura(codigo, TipoVeiculoPintura, servicoPintura, Double.parseDouble(precoPintura), corPintura,
+					pecaPintura);
+			System.out.println(codigo);
+			break;
+		case "Mecanica":
+			String TipoVeiculoMecanica = request.getParameter("servicoTipoVeiculo");
+			String servicoMecanica = request.getParameter("servico");
+			String pecaMecanica = request.getParameter("servicoPeca");
+			String precoMecanica = request.getParameter("servicoPreco");
+			novo = new Mecanica("SERV" + bancoServico.getSize() + 1, TipoVeiculoMecanica, servicoMecanica,
+					Double.parseDouble(precoMecanica));
+			break;
+		case "Funilaria":
+			String TipoVeiculoFunilaria = request.getParameter("servicoTipoVeiculo");
+			String servicoFunilaria = request.getParameter("servico");
+			String pecaFunilaria = request.getParameter("servicoPeca");
+			String precoFunilaria = request.getParameter("servicoPreco");
+			novo = new Mecanica("SERV" + bancoServico.getSize() + 1, TipoVeiculoFunilaria, servicoFunilaria,
+					Double.parseDouble(precoFunilaria));
+			break;
+		default:
+			break;
+		}
+		request.getServletContext().setAttribute("bancoServico", bancoServico);
+		dispatcher = "Servico.jsp";
+		response.sendRedirect(dispatcher);
 	}
 
 	private void pesquisar(HttpServletRequest request, HttpServletResponse response)
@@ -98,6 +149,6 @@ public class ServicoController extends HttpServlet {
 		request.setAttribute("resultadoPesquisa", resultado);
 		System.out.println("Oi");
 		System.out.println(dispatcher);
-		request.getRequestDispatcher("Servico - Pesquisar.jsp").forward(request, response);
+		request.getRequestDispatcher(dispatcher).forward(request, response);
 	}
 }
