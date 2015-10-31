@@ -26,6 +26,31 @@ public class ServicoBusiness {
 		return this.banco.add(novo);
 	}
 
+	public Servico pesquisarCodigo(String codigo) {
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
+				return this.banco.get(i);
+		}
+		return null;
+	}
+
+	public ArrayList<Servico> pesquisarTipoVeiculo(String tipoVeiculo) {
+		ArrayList<Servico> resultado = new ArrayList<Servico>();
+
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getTipoVeiculo().equalsIgnoreCase(tipoVeiculo)) {
+				resultado.add(this.banco.get(i));
+			}
+		}
+
+		return resultado;
+	}
+
 	public ArrayList<Servico> pesquisarTipoServico(String tipoServico) {
 		ArrayList<Servico> resultado = new ArrayList<Servico>();
 
@@ -55,19 +80,69 @@ public class ServicoBusiness {
 		return resultado;
 	}
 
-	public ArrayList<Servico> pesquisarTipoVeiculo(String tipoVeiculo) {
+	public ArrayList<Servico> pesquisarDescricao(String descricao) {
 		ArrayList<Servico> resultado = new ArrayList<Servico>();
 
 		if (this.banco == null || this.getSize() == 0)
 			return null;
 
 		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getTipoVeiculo().equalsIgnoreCase(tipoVeiculo)) {
+			if (this.banco.get(i).getDescricao().equalsIgnoreCase(descricao)) {
 				resultado.add(this.banco.get(i));
 			}
 		}
-
 		return resultado;
 	}
 
+	public ArrayList<Servico> pesquisarPreco(double min, double max) {
+		ArrayList<Servico> resultado = new ArrayList<Servico>();
+
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getPreco() >= min && this.banco.get(i).getPreco() <= max) {
+				resultado.add(this.banco.get(i));
+			}
+		}
+		return resultado;
+	}
+
+	public ArrayList<Servico> pesquisarCor(String cor) {
+		ArrayList<Servico> resultado = new ArrayList<Servico>();
+
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i) instanceof Pintura) {
+				if (((Pintura) this.banco.get(i)).getCor().equalsIgnoreCase(cor)) {
+					resultado.add(this.banco.get(i));
+				}
+			}
+		}
+		return resultado;
+	}
+
+	public ArrayList<Servico> pesquisarPeca(String peca) {
+		ArrayList<Servico> resultado = new ArrayList<Servico>();
+
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i) instanceof Pintura) {
+				if (((Pintura) this.banco.get(i)).getPeca().equalsIgnoreCase(peca)) {
+					resultado.add(this.banco.get(i));
+				}
+			}
+			else if (this.banco.get(i) instanceof Funilaria) {
+				if (((Funilaria) this.banco.get(i)).getPeca().equalsIgnoreCase(peca)) {
+					resultado.add(this.banco.get(i));
+				}
+			}
+				
+		}
+		return resultado;
+	}
 }
