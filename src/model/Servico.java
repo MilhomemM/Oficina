@@ -1,14 +1,24 @@
 package model;
 
 public abstract class Servico {
+	private String codigo;
 	private String tipoVeiculo;
 	private String descricao;
 	private double preco;
 
-	public Servico(String tipoVeiculo, String descricao, double preco) {
+	public Servico(String codigo, String tipoVeiculo, String descricao, double preco) {
+		this.codigo = codigo;
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getTipoVeiculo() {
@@ -33,5 +43,5 @@ public abstract class Servico {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	} 
+	}
 }

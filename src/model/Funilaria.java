@@ -3,18 +3,21 @@ package model;
 public class Funilaria extends Servico {
 	private String peca;
 
-	public Funilaria(String tipoVeiculo, String descricao, double preco,
-			String peca) {
-		super(tipoVeiculo, descricao, preco);
+	public Funilaria(String codigo, String tipoVeiculo, String descricao, double preco, String peca) {
+		super(codigo, tipoVeiculo, descricao, preco);
 		this.peca = peca;
 	}
 
-	public String getPeca() {
-		return peca;
+	@Override
+	public String getCodigo() {
+		// TODO Auto-generated method stub
+		return super.getCodigo();
 	}
 
-	public void setPeca(String peca) {
-		this.peca = peca;
+	@Override
+	public void setCodigo(String codigo) {
+		// TODO Auto-generated method stub
+		super.setCodigo(codigo);
 	}
 
 	@Override
@@ -51,5 +54,13 @@ public class Funilaria extends Servico {
 	public void setPreco(double preco) {
 		// TODO Auto-generated method stub
 		super.setPreco(preco);
+	}
+
+	public String getPeca() {
+		return peca;
+	}
+
+	public void setPeca(String peca) {
+		this.peca = peca;
 	}
 }

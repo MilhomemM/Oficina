@@ -4,27 +4,22 @@ public class Pintura extends Servico {
 	private String cor;
 	private String peca;
 
-	public Pintura(String tipoVeiculo, String descricao, double preco,
-			String cor, String peca) {
-		super(tipoVeiculo, descricao, preco);
+	public Pintura(String codigo, String tipoVeiculo, String descricao, double preco, String cor, String peca) {
+		super(codigo, tipoVeiculo, descricao, preco);
 		this.cor = cor;
 		this.peca = peca;
 	}
 
-	public String getCor() {
-		return cor;
+	@Override
+	public String getCodigo() {
+		// TODO Auto-generated method stub
+		return super.getCodigo();
 	}
 
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
-	public String getPeca() {
-		return peca;
-	}
-
-	public void setPeca(String peca) {
-		this.peca = peca;
+	@Override
+	public void setCodigo(String codigo) {
+		// TODO Auto-generated method stub
+		super.setCodigo(codigo);
 	}
 
 	@Override
@@ -61,5 +56,21 @@ public class Pintura extends Servico {
 	public void setPreco(double preco) {
 		// TODO Auto-generated method stub
 		super.setPreco(preco);
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public String getPeca() {
+		return peca;
+	}
+
+	public void setPeca(String peca) {
+		this.peca = peca;
 	}
 }
