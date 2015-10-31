@@ -41,18 +41,19 @@ public class ServicoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		String dispatcher = new String();
-
+		System.out.println("Action = " + action);
 		switch (action) {
-		case "pesquisar":
-			this.pesquisar(request, dispatcher);
-			
+		case "Pesquisar":
+			System.out.println("Entrou no case");
+			this.pesquisar(request, response);
 			break;
 		}
 
 	}
 
-	private void pesquisar(HttpServletRequest request, String dispatcher) throws ServletException, IOException {
+	private void pesquisar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String dispatcher;
 		String tipoDePesquisa = request.getParameter("tipoDePesquisa");
 		String campoDePesquisa = request.getParameter("campoDePesquisa");
 
@@ -64,7 +65,7 @@ public class ServicoController extends HttpServlet {
 		switch (tipoDePesquisa) {
 		case "Codigo":
 			resultadoEspecifico = bancoServico.pesquisarCodigo(campoDePesquisa);
-			dispatcher = "Servico - Alterar.jsp";
+			dispatcher = "Servico - Exibir.jsp";
 			break;
 		case "TipoVeiculo":
 			resultado = bancoServico.pesquisarTipoVeiculo(campoDePesquisa);
@@ -90,7 +91,13 @@ public class ServicoController extends HttpServlet {
 			resultado = bancoServico.pesquisarPeca(campoDePesquisa);
 			dispatcher = "Servico - Pesquisar.jsp";
 			break;
-		default: 
+		default:
+			dispatcher = "Home.jsp";
 		}
+		request.setAttribute("listouServico", Boolean.TRUE);
+		request.setAttribute("resultadoPesquisa", resultado);
+		System.out.println("Oi");
+		System.out.println(dispatcher);
+		request.getRequestDispatcher("Servico - Pesquisar.jsp").forward(request, response);
 	}
 }

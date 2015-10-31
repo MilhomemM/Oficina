@@ -38,4 +38,12 @@ public class Data {
 		dt.set(Calendar.YEAR, ano);
 		return dt.getTime();
 	}
+
+	public Date returnDate(String data) {
+		Calendar dt = Calendar.getInstance();
+		dt.set(Calendar.DAY_OF_MONTH, Integer.parseInt(data.split("/")[0]));
+		dt.set(Calendar.MONTH, Integer.parseInt(data.split("/")[1]));
+		dt.set(Calendar.YEAR, Integer.parseInt(data.split("/")[2]));
+		return dt.getTime();
+	}
 }
