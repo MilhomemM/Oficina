@@ -1,9 +1,10 @@
 package model;
 
 public class Carro extends Veiculo {
-	public Carro(Cliente proprietario, Veiculo veiculo, int ano, String marca, String modelo, String cor, String chassi,
+
+	public Carro(Cliente proprietario, String placa, int ano, String marca, String modelo, String cor, String chassi,
 			String cidade, String estado) {
-		super(proprietario, veiculo, ano, marca, modelo, cor, chassi, cidade, estado);
+		super(proprietario, placa, ano, marca, modelo, cor, chassi, cidade, estado);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,15 +21,15 @@ public class Carro extends Veiculo {
 	}
 
 	@Override
-	public Veiculo getVeiculo() {
+	public String getPlaca() {
 		// TODO Auto-generated method stub
-		return super.getVeiculo();
+		return super.getPlaca();
 	}
 
 	@Override
-	public void setVeiculo(Veiculo veiculo) {
+	public void setPlaca(String placa) {
 		// TODO Auto-generated method stub
-		super.setVeiculo(veiculo);
+		super.setPlaca(placa);
 	}
 
 	@Override

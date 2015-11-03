@@ -27,15 +27,28 @@ public class ServicoBusiness {
 	}
 
 	public Servico pesquisarCodigo(String codigo) {
+		System.out.println("Businesses");
+		System.out.println(this.getSize());
 		if (this.banco == null || this.getSize() == 0)
 			return null;
 		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
+			System.out.println(this.banco.get(i).getCodigo() + " <> " + codigo);
+			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo)){
 				return this.banco.get(i);
+			}
 		}
+		System.out.println("End");
 		return null;
 	}
-
+	public int pesquisarCodigoIndex(String codigo){
+		if (this.banco == null || this.getSize() == 0)
+			return -1;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
+				return i;
+		}
+		return -1;
+	}
 	public ArrayList<Servico> pesquisarTipoVeiculo(String tipoVeiculo) {
 		ArrayList<Servico> resultado = new ArrayList<Servico>();
 
@@ -144,5 +157,11 @@ public class ServicoBusiness {
 				
 		}
 		return resultado;
+	}
+	public Servico alterar(int posicao, Servico novo){
+		return this.banco.set(posicao, novo);
+	}
+	public Servico remover(int posicao){
+		return this.banco.remove(posicao);
 	}
 }

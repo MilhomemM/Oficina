@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*-------------------- Cabeçalho -------------------*/
+header {
+	text-align:center;	
+}
+/**-------------------- Logout --------------------**/
+.CabecalhoUsuario {
+	background: black;
+	color: white;
+	text-align: right;
+}
+/**------------------------------------------------**/ 
+/**--------------------- Logo ---------------------**/
+.LogoTopo {
+	cursor:pointer;	
+}
+/**------------------------------------------------**/ 
+/**--------------------- Menu ---------------------**/
+.MenuTopo {
+	padding-left: 40px;
+	padding-right: 40px;
+	list-style: none;
+	border: 0px solid #c0c0c0;
+	float: left;
+	text-align: center;
+	text-transform: none;
+}
+.subMenuTopo {
+	list-style: none;
+	border: 1px solid #c0c0c0;
+	float: center;
+	text-align: center;
+}
+.MenuTopo li {
+	position: relative;
+	float: center;
+	background-color: #fff; /* cor de fundo do botao */
+	border-right: 1px solid #c0c0c0;/*Borda Direita*/
+	border-left: 1px solid #c0c0c0;/*Borda Esquerda*/
+	border-top: 1px solid #c0c0c0;/*Borda Superior*/
+	border-bottom: 1px solid #c0c0c0;/*Borda Infeiror */
+}
+.MenuTopo li a {
+	color: #333;
+	text-decoration: none;
+	padding: 5px 10px;
+	display: block;
+}
+.MenuTopo li a:hover {
+	background: #333;
+	color: #fff;
+	-moz-box-shadow: 0 3px 10px 0 #CCC;
+	-webkit-box-shadow: 0 3px 10px 0 #ccc;
+	text-shadow: 0px 0px 5px #fff;
+}
+.subMenuTopo {
+	position: absolute;
+	top: 28px;
+	padding-left: 0px;
+	left: 0;
+	background-color: #fff;
+	display: none;
+}
+.MenuTopo li:hover ul, .MenuTopo li.over ul {
+	display: block;
+}
+.subMenuTopo li {
+	border: 1px solid #c0c0c0;
+	display: block;
+}
+.subMenuTopoCliente {
+	width: 230px;
+}
+.subMenuTopoVeiculo {
+	width: 243px;
+}
+.subMenuTopoServico {
+	width: 236px;
+}
+.subMenuTopoConserto {
+	width: 268px;
+}
+/**------------------------------------------------**/ 
+/*--------------------------------------------------*/ 
+/*----------------- Corpo --------------------------*/
+body {
+	height:100%;
+	min-height: 100%;
+	position:relative;
+}
+section {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.BotoesCP {
+	width: 350px;
+	height: 100px;
+	cursor:pointer;
+}
+.Disabled {
+	cursor:not-allowed;	
+}
+/*--------------------------------------------------*/ 
+/*---------------- Rodapé --------------------------*/
+.Rodape {
+	background: black;
+	color: white;
+	position: absolute;
+	bottom: 0;
+}
+/*--------------------------------------------------*/

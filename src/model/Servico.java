@@ -12,6 +12,21 @@ public abstract class Servico {
 		this.descricao = descricao;
 		this.preco = preco;
 	}
+	
+	public String gerarCodigo(int numero)
+	{
+		String codigoPrefix = "SERV";
+		String codigoSuffix = "";
+		String codigoNovo;
+		for(int i = 0; i < 4 - String.valueOf(numero).length(); i++)
+		{
+			codigoSuffix = codigoSuffix + "0";
+		}
+		codigoSuffix = codigoSuffix + String.valueOf(numero);
+		codigoNovo = codigoPrefix + codigoSuffix;
+		this.setCodigo(codigoNovo);
+		return codigoNovo;
+	}
 
 	public String getCodigo() {
 		return codigo;

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.ServicoBusiness;
+import model.Funilaria;
 import model.Mecanica;
 import model.Pintura;
 import model.Servico;
@@ -44,12 +45,35 @@ public class ServicoController extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 
-		switch (action) {
-		case "Cadastrar":
+		switch (action.toLowerCase()) {
+		case "cadastrar":
+			System.out.println("ServicoController - Switch - Cadastrar");
 			this.cadastrar(request, response);
 			break;
-		case "Pesquisar":
+		case "pesquisar":
+			System.out.println("ServicoController - Switch - Pesquisar");
 			this.pesquisar(request, response);
+			break;
+		case "alterar":
+			System.out.println("ServicoController - Switch - Alterar");
+			this.alterar(request, response);
+			break;
+		case "excluir":
+			System.out.println("ServicoController - Switch - Excluir");
+			this.excluir(request, response);
+			break;
+		case "cancelar":
+			System.out.println("ServicoController - Switch - cancelar");
+			this.cancelarCadastro(request, response);
+			break;
+		case "voltar":
+			System.out.println("ServicoController - Switch - voltar");
+			this.voltarAoMenu(request, response);
+			request.getRequestDispatcher("servico.jsp").forward(request, response);
+			break;
+		default:
+			System.out.println("ServicoController - Switch - defaullt");
+			request.getRequestDispatcher("servico.jsp").forward(request, response);
 			break;
 		}
 
@@ -61,6 +85,7 @@ public class ServicoController extends HttpServlet {
 		String tipoServico = request.getParameter("servicoTipo");
 		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
 		Servico novo;
+		String codigo = String.valueOf(bancoServico.getSize() + 1);
 		switch (tipoServico) {
 		case "Pintura":
 			String TipoVeiculoPintura = request.getParameter("servicoTipoVeiculo");
@@ -68,38 +93,60 @@ public class ServicoController extends HttpServlet {
 			String corPintura = request.getParameter("servicoCor");
 			String pecaPintura = request.getParameter("servicoPeca");
 			String precoPintura = request.getParameter("servicoPreco");
-			String codigo = String.valueOf(bancoServico.getSize() + 1);
 			if (codigo.length() < 4) {
-				for (int i = 0; i < 4 - codigo.length(); i++)
-					codigo = "0" + codigo;
+				String zeros = "";
+				for (int i = 0; i < 4 - codigo.length(); i++) {
+					zeros = zeros + "0";
+				}
+				codigo = zeros + codigo;
 			}
 			codigo = "SERV" + codigo;
 			novo = new Pintura(codigo, TipoVeiculoPintura, servicoPintura, Double.parseDouble(precoPintura), corPintura,
 					pecaPintura);
-			System.out.println(codigo);
+			bancoServico.adicionar(novo);
 			break;
 		case "Mecanica":
 			String TipoVeiculoMecanica = request.getParameter("servicoTipoVeiculo");
 			String servicoMecanica = request.getParameter("servico");
-			String pecaMecanica = request.getParameter("servicoPeca");
 			String precoMecanica = request.getParameter("servicoPreco");
-			novo = new Mecanica("SERV" + bancoServico.getSize() + 1, TipoVeiculoMecanica, servicoMecanica,
-					Double.parseDouble(precoMecanica));
+			if (codigo.length() < 4) {
+				String zeros = "";
+				for (int i = 0; i < 4 - codigo.length(); i++) {
+					zeros = zeros + "0";
+				}
+				codigo = zeros + codigo;
+			}
+			codigo = "SERV" + codigo;
+			novo = new Mecanica(codigo, TipoVeiculoMecanica, servicoMecanica, Double.parseDouble(precoMecanica));
+			bancoServico.adicionar(novo);
 			break;
 		case "Funilaria":
 			String TipoVeiculoFunilaria = request.getParameter("servicoTipoVeiculo");
 			String servicoFunilaria = request.getParameter("servico");
 			String pecaFunilaria = request.getParameter("servicoPeca");
 			String precoFunilaria = request.getParameter("servicoPreco");
-			novo = new Mecanica("SERV" + bancoServico.getSize() + 1, TipoVeiculoFunilaria, servicoFunilaria,
-					Double.parseDouble(precoFunilaria));
+			if (codigo.length() < 4) {
+				String zeros = "";
+				for (int i = 0; i < 4 - codigo.length(); i++) {
+					zeros = zeros + "0";
+				}
+				codigo = zeros + codigo;
+			}
+			codigo = "SERV" + codigo;
+			novo = new Funilaria(codigo, TipoVeiculoFunilaria, servicoFunilaria, Double.parseDouble(precoFunilaria),
+					pecaFunilaria);
+			bancoServico.adicionar(novo);
 			break;
 		default:
+			novo = null;
 			break;
 		}
 		request.getServletContext().setAttribute("bancoServico", bancoServico);
-		dispatcher = "Servico.jsp";
-		response.sendRedirect(dispatcher);
+		request.setAttribute("servicoSelecionado", novo);
+		request.setAttribute("cadastrado", Boolean.TRUE);
+		dispatcher = "servico-detalhes.jsp";
+		// response.sendRedirect(dispatcher);
+		request.getRequestDispatcher(dispatcher).forward(request, response);
 	}
 
 	private void pesquisar(HttpServletRequest request, HttpServletResponse response)
@@ -111,44 +158,92 @@ public class ServicoController extends HttpServlet {
 		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
 
 		ArrayList<Servico> resultado = new ArrayList<Servico>();
-		Servico resultadoEspecifico;
+		Servico resultadoEspecifico = null;
 
 		switch (tipoDePesquisa) {
 		case "Codigo":
 			resultadoEspecifico = bancoServico.pesquisarCodigo(campoDePesquisa);
-			dispatcher = "Servico - Exibir.jsp";
+			dispatcher = "servico-detalhes.jsp";
 			break;
 		case "TipoVeiculo":
 			resultado = bancoServico.pesquisarTipoVeiculo(campoDePesquisa);
-			dispatcher = "Servico - Pesquisar.jsp";
+			dispatcher = "servico-pesquisar.jsp";
 			break;
 		case "TipoServico":
 			resultado = bancoServico.pesquisarTipoServico(campoDePesquisa);
-			dispatcher = "Servico - Pesquisar.jsp";
+			dispatcher = "servico-pesquisar.jsp";
 			break;
 		case "Servico":
 			resultado = bancoServico.pesquisarDescricao(campoDePesquisa);
-			dispatcher = "Servico - Pesquisar.jsp";
+			dispatcher = "servico-pesquisar.jsp";
 			break;
 		case "Preco":
 			resultado = bancoServico.pesquisarPreco(0, Double.parseDouble(campoDePesquisa));
-			dispatcher = "Servico - Pesquisar.jsp";
+			dispatcher = "servico-pesquisar.jsp";
 			break;
 		case "Cor":
 			resultado = bancoServico.pesquisarCor(campoDePesquisa);
-			dispatcher = "Servico - Pesquisar.jsp";
+			dispatcher = "servico-pesquisar.jsp";
 			break;
 		case "Peca":
 			resultado = bancoServico.pesquisarPeca(campoDePesquisa);
-			dispatcher = "Servico - Pesquisar.jsp";
+			dispatcher = "servico-pesquisar.jsp";
 			break;
 		default:
-			dispatcher = "Home.jsp";
+			dispatcher = "home.jsp";
 		}
-		request.setAttribute("listouServico", Boolean.TRUE);
-		request.setAttribute("resultadoPesquisa", resultado);
-		System.out.println("Oi");
-		System.out.println(dispatcher);
+
+		if (tipoDePesquisa.equalsIgnoreCase("Codigo")) {
+			request.setAttribute("servicoSelecionado", resultadoEspecifico);
+		} else {
+			request.setAttribute("resultadoPesquisa", resultado);
+			request.setAttribute("listouServico", Boolean.TRUE);
+		}
 		request.getRequestDispatcher(dispatcher).forward(request, response);
+	}
+
+	private void alterar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String codigo = request.getParameter("servicoCodigo");
+		String preco = request.getParameter("servicoPreco");
+		String dispatcher = "servico-detalhes.jsp";
+
+		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
+		Servico s = bancoServico.pesquisarCodigo(codigo);
+		s.setPreco(Double.parseDouble(preco));
+		int posicao = bancoServico.pesquisarCodigoIndex(codigo);
+		if (posicao != -1) {
+			bancoServico.alterar(posicao, s);
+		}
+		request.setAttribute("servicoSelecionado", s);
+		request.setAttribute("alterado", Boolean.TRUE);
+		request.getServletContext().setAttribute("bancoServico", bancoServico);
+		request.getRequestDispatcher(dispatcher).forward(request, response);
+	}
+
+	private void excluir(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String codigo = request.getParameter("servicoCodigo");
+		String dispatcher = "servico.jsp";
+
+		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
+
+		int posicao = bancoServico.pesquisarCodigoIndex(codigo);
+		bancoServico.remover(posicao);
+
+		request.setAttribute("excluido", Boolean.TRUE);
+		request.getServletContext().setAttribute("bancoServico", bancoServico);
+		request.getRequestDispatcher(dispatcher).forward(request, response);
+	}
+
+	private void cancelarCadastro(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("cadastroCancelado", Boolean.TRUE);
+		request.getRequestDispatcher("servico.jsp").forward(request, response);
+	}
+
+	private void voltarAoMenu(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("servico.jsp").forward(request, response);
 	}
 }

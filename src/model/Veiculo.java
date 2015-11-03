@@ -2,7 +2,7 @@ package model;
 
 public abstract class Veiculo {
 	private Cliente proprietario;
-	private Veiculo veiculo;
+	private String placa;
 	private int ano;
 	private String marca;
 	private String modelo;
@@ -11,10 +11,11 @@ public abstract class Veiculo {
 	private String cidade;
 	private String estado;
 
-	public Veiculo(Cliente proprietario, Veiculo veiculo, int ano, String marca, String modelo, String cor,
-			String chassi, String cidade, String estado) {
+	public Veiculo(Cliente proprietario, String placa, int ano, String marca, String modelo, String cor, String chassi,
+			String cidade, String estado) {
+		super();
 		this.proprietario = proprietario;
-		this.veiculo = veiculo;
+		this.placa = placa;
 		this.ano = ano;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -32,12 +33,12 @@ public abstract class Veiculo {
 		this.proprietario = proprietario;
 	}
 
-	public Veiculo getVeiculo() {
-		return veiculo;
+	public String getPlaca() {
+		return placa;
 	}
 
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 
 	public int getAno() {
