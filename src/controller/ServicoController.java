@@ -163,7 +163,10 @@ public class ServicoController extends HttpServlet {
 		switch (tipoDePesquisa) {
 		case "Codigo":
 			resultadoEspecifico = bancoServico.pesquisarCodigo(campoDePesquisa);
-			dispatcher = "servico-detalhes.jsp";
+			if (resultadoEspecifico != null)
+				dispatcher = "servico-detalhes.jsp";
+			else
+				dispatcher = "servico-pesquisar.jsp";
 			break;
 		case "TipoVeiculo":
 			resultado = bancoServico.pesquisarTipoVeiculo(campoDePesquisa);
@@ -193,7 +196,7 @@ public class ServicoController extends HttpServlet {
 			dispatcher = "home.jsp";
 		}
 
-		if (tipoDePesquisa.equalsIgnoreCase("Codigo")) {
+		if (tipoDePesquisa.equalsIgnoreCase("Codigo") && resultadoEspecifico != null) {
 			request.setAttribute("servicoSelecionado", resultadoEspecifico);
 		} else {
 			request.setAttribute("resultadoPesquisa", resultado);
