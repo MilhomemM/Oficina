@@ -160,35 +160,35 @@ public class ServicoController extends HttpServlet {
 		ArrayList<Servico> resultado = new ArrayList<Servico>();
 		Servico resultadoEspecifico = null;
 
-		switch (tipoDePesquisa) {
-		case "Codigo":
+		switch (tipoDePesquisa.toLowerCase()) {
+		case "codigo":
 			resultadoEspecifico = bancoServico.pesquisarCodigo(campoDePesquisa);
 			if (resultadoEspecifico != null)
 				dispatcher = "servico-detalhes.jsp";
 			else
 				dispatcher = "servico-pesquisar.jsp";
 			break;
-		case "TipoVeiculo":
+		case "tipoveiculo":
 			resultado = bancoServico.pesquisarTipoVeiculo(campoDePesquisa);
 			dispatcher = "servico-pesquisar.jsp";
 			break;
-		case "TipoServico":
+		case "tiposervico":
 			resultado = bancoServico.pesquisarTipoServico(campoDePesquisa);
 			dispatcher = "servico-pesquisar.jsp";
 			break;
-		case "Servico":
+		case "servico":
 			resultado = bancoServico.pesquisarDescricao(campoDePesquisa);
 			dispatcher = "servico-pesquisar.jsp";
 			break;
-		case "Preco":
+		case "preco":
 			resultado = bancoServico.pesquisarPreco(0, Double.parseDouble(campoDePesquisa));
 			dispatcher = "servico-pesquisar.jsp";
 			break;
-		case "Cor":
+		case "cor":
 			resultado = bancoServico.pesquisarCor(campoDePesquisa);
 			dispatcher = "servico-pesquisar.jsp";
 			break;
-		case "Peca":
+		case "peca":
 			resultado = bancoServico.pesquisarPeca(campoDePesquisa);
 			dispatcher = "servico-pesquisar.jsp";
 			break;
