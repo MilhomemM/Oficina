@@ -53,16 +53,17 @@ public class Persistencia implements ServletContextListener {
 
 		Data data = new Data();
 
-		bancoAdministrador.adicionar(new Administrador("Filipe Facundo Bezerra", "06547236941", "20104750514",
-				"Masculino", data.returnDate(23, 06, 1994), new Usuario("filipe", "123456")));
-		bancoAdministrador.adicionar(new Administrador("Ruan Vitor", "06544336941", "20104750548", "Masculino",
-				data.returnDate(23, 07, 1995), new Usuario("ruan", "654123")));
+		bancoAdministrador.adicionar(new Administrador("Flavio Alves da Costa", "12345678900", "555.333.222-00",
+				"Masculino", data.returnDate(16, 04, 1996), new Usuario("Flavio", "Delicinha")));
+		bancoAdministrador.adicionar(new Administrador("Marcelo Milhomen Lourenço", "06544337431", "20004750595", "Masculino",
+				data.returnDate(24, 04, 1995), new Usuario("Marcelo", "ZeMaria")));
 		bancoAdministrador.adicionar(new Administrador("Vlabson Fernandes", "06544337431", "20014750578", "Masculino",
-				data.returnDate(27, 06, 1985), new Usuario("vlabson", "258456")));
-		bancoAdministrador.adicionar(new Administrador("Flavio Alves da Costa", "06544337431", "20084750548",
-				"Masculino", data.returnDate(25, 03, 1996), new Usuario("flavio", "147258")));
-		bancoAdministrador.adicionar(new Administrador("Marcelo Millhomen", "06544337431", "20004750595", "Masculino",
-				data.returnDate(24, 04, 1995), new Usuario("marcelo", "159753")));
+				data.returnDate(27, 06, 1985), new Usuario("Vlabson", "Dimmy")));
+		bancoAdministrador.adicionar(new Administrador("Ruan Vitor", "06544336941", "20104750548", "Masculino",
+				data.returnDate(23, 07, 1995), new Usuario("Ruan", "Melissao")));
+		bancoAdministrador.adicionar(new Administrador("Filipe Facundo Bezerra", "06547236941", "20104750514",
+				"Masculino", data.returnDate(23, 06, 1994), new Usuario("Filipe", "CSS")));
+		
 		bancoAdministrador.adicionar(new Administrador("PaulaBras", "06544337431", "20004750595", "Feminino",
 				data.returnDate(21, 05, 1990), new Usuario("paulo", "789456")));
 
