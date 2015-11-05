@@ -82,6 +82,11 @@ public class Cliente extends Pessoa {
 		return super.getNascimento();
 	}
 
+	public String getNascimentoString() {
+		Data dt = new Data();
+		return dt.filtroData(super.getNascimento());
+	}
+
 	@Override
 	public void setNascimento(Date nascimento) {
 		// TODO Auto-generated method stub

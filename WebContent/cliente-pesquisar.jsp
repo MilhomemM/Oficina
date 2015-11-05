@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Oficina - Informe o Título da Página</title>
+<title>Oficina - Pesquisa de Cliente</title>
 <!----------------------------- CODIGOS CSS ----------------------------->
 <!-- <link rel="stylesheet" type="text/css" href="./CSS/ARQUIVO.css"/> -->
 <link rel="stylesheet" type="text/css" href="./CSS/Modelo.css" />
@@ -106,7 +106,7 @@
 									<tr>
 										<td>${cliente.getNome()}</td>
 										<td>${cliente.getSexo()}</td>
-										<td>${cliente.getNascimento()}</td>
+										<td>${cliente.getNascimentoString()}</td>
 										<td>${cliente.getRg()}</td>
 										<td>${cliente.getCpf()}</td>
 									</tr>
