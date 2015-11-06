@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,11 +46,40 @@ public class ClienteController extends HttpServlet {
 		String action = request.getParameter("action");
 		System.out.println("Action = " + action);
 		switch (action.toLowerCase()) {
+		case "cadastrar":
+			this.cadastrar(request, response);
+			break;
 		case "pesquisar":
 			System.out.println("Entrou no switch");
 			this.pesquisar(request, response);
 			break;
 		}
+	}
+
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String dispatcher = "cliente-detalhes.jsp";
+
+		String nome = request.getParameter("clienteNome");
+		String sexo = request.getParameter("clienteSexo");
+		String nascimento = request.getParameter("clienteNascimento");
+		String rg = request.getParameter("clienteRG");
+		String cpf = request.getParameter("clienteCPF");
+		String email = request.getParameter("clienteEmail");
+		String telefone = request.getParameter("clienteTelefone");
+		System.out.println(nascimento);
+		Data dt = new Data();
+		
+		Cliente novo = new Cliente(nome, rg, cpf, sexo, dt.returnDateInvertido(nascimento), email, telefone);
+		
+		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
+		
+		bancoCliente.adicionar(novo);
+		
+		request.getServletContext().setAttribute("bancoCliente", bancoCliente);
+		request.setAttribute("clienteSelecionado", novo);
+		
+		request.getRequestDispatcher(dispatcher).forward(request, response);
 	}
 
 	private void pesquisar(HttpServletRequest request, HttpServletResponse response)

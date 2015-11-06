@@ -45,7 +45,6 @@
 			CampoDePesquisa.setAttribute("placeholder", "Somente Números");
 			break;
 		}
-
 	}
 </script>
 
