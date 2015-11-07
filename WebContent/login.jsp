@@ -17,31 +17,47 @@
 
 	<section>
 		<center>
-			<img id="LogoOficina" name="logoOficina" title="Logo Oficina"alt="[Logo Oficina]" src="IMG/Logo Temporario.png" />
+			<img id="LogoOficina" name="logoOficina" title="Logo Oficina"
+				alt="[Logo Oficina]" src="IMG/Logo Temporario.png" />
 
-			<form id="FormLogin" name="formLogin" action="" method="post">
+			<form id="FormLogin" name="formLogin" action="LoginController.do"
+				method="post">
 				<table>
 					<tr>
-						<td><center><label for="UsuarioNome">Nome de Usuario</label></center></td>
+						<td><center>
+								<label for="UsuarioNome">Nome de Usuario</label>
+							</center></td>
 					</tr>
 
 					<tr>
-						<td><input id="UsuarioNome" type="text" name="usuarioNome" placeholder="Seu Usuário" required /></td>
+						<td><input id="UsuarioNome" type="text" name="usuarioNome"
+							placeholder="Seu Usuário" required /></td>
 					</tr>
 
 					<tr>
-						<td><center><label for="UsuarioSenha">Senha</label></center></td>
+						<td><center>
+								<label for="UsuarioSenha">Senha</label>
+							</center></td>
 					</tr>
 
 					<tr>
-						<td><input id="UsuarioSenha" type="password"name="usuarioSenha" placeholder="Sua Senha" required /></td>
+						<td><input id="UsuarioSenha" type="password"
+							name="usuarioSenha" placeholder="Sua Senha" required /></td>
 					</tr>
 				</table>
 
 				<table>
 					<tr>
-						<td><input id="BotaoLogin" type="submit" name="action" value="Entrar" /></td>
-						<td><input id="BotaoRegistrar" type="submit" name="action" value="Registrar" /></td>
+						<td><input id="BotaoLogin" type="submit" name="action"
+							value="Entrar" /></td>
+					</tr>
+				</table>
+			</form>
+			<form id="" action="AdministradorController.do" method="post">
+				<table>
+					<tr>
+						<td><input id="BotaoRegistrar" type="submit" name="action"
+							value="Registrar" /></td>
 					</tr>
 				</table>
 			</form>

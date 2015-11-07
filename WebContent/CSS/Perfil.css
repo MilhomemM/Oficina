@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/*CONTEUDO*/
+
+section{
+	width: 800px;
+	border: 1px solid #000;
+	margin: 0 auto;
+	padding: 20px 10px;
+}
+
+.logo{
+	display: block;
+	width: 200px;
+	margin-bottom: 40px;
+}
+
+.avatar{
+	display: inline-block;
+	width: 200px;
+	border: 1px solid #000;
+	margin-right: 120px;
+	margin-bottom: 50px;
+}
+
+form{
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+form input{
+	margin: 4px 2px;
+}
