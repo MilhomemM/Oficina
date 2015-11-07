@@ -5,28 +5,25 @@ import java.util.Date;
 
 public class Conserto {
 	private String codigo;
-	private Cliente proprietario;
 	private Veiculo veiculo;
 	private Date data;
 	ArrayList<Servico> servicos;
 	private double total;
 
-	public Conserto(String codigo, Cliente proprietario, Veiculo veiculo, Date data, ArrayList<Servico> servicos,
+	public Conserto(String codigo, Veiculo veiculo, Date data, ArrayList<Servico> servicos,
 			double total) {
 		super();
 		this.codigo = codigo;
-		this.proprietario = proprietario;
 		this.veiculo = veiculo;
 		this.data = data;
 		this.servicos = servicos;
 		this.total = total;
 	}
 
-	public Conserto(String codigo, Cliente proprietario, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
+	public Conserto(String codigo, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
 			Funilaria funilaria, double total) {
 		super();
 		this.codigo = codigo;
-		this.proprietario = proprietario;
 		this.veiculo = veiculo;
 		this.data = data;
 		if (pintura != null)
@@ -44,14 +41,6 @@ public class Conserto {
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
-	}
-
-	public Cliente getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(Cliente proprietario) {
-		this.proprietario = proprietario;
 	}
 
 	public Veiculo getVeiculo() {

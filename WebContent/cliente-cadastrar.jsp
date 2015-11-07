@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
@@ -79,9 +80,16 @@
 					<tr>
 						<td><input type="submit" value="Cadastrar" name="action"></td>
 						<td><input type="reset" value="Redefinir"></td>
-						<td><input type="submit" value="Cancelar" name="action"></td>
 					</tr>
 				</table>
+			</center>
+		</form>
+		<form action="ClienteController.do">
+			<table>
+				<tr>
+					<td><input type="submit" value="Cancelar" name="action"></td>
+				</tr>
+			</table>
 			</center>
 		</form>
 		<br />

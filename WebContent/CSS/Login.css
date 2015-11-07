@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/*CABECALHO*/
+
+header{
+	background: #000;
+	color: #FFF;
+	padding: 10px 0;
+	font-size: 1em;
+	font-weight: 800;
+}
+
+/*CONTEUDO*/
+
+section{
+	width: 800px;
+	border: 1px solid #000;
+	margin: 160px auto;
+	padding: 40px;
+}
+
+img{
+	display: inline-block;
+}
+
+form{
+	display: inline-block;
+	margin-left: 20px;
+}
+
+form input{
+	margin: 4px 2px;
+}
+
+/*RODAPE*/
+
+.footer_registrar{
+    width: 100%;
+    background: #000;
+    color: #FFF;
+    padding: 10px 0;
+    font-size: 1em;
+    font-weight: 800;
+}

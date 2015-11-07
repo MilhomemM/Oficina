@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import model.Cliente;
+import model.Data;
 
 public class ClienteBusiness {
 	private ArrayList<Cliente> banco;
@@ -49,10 +50,11 @@ public class ClienteBusiness {
 
 	public ArrayList<Cliente> pesquisarNascimento(Date nascimento) {
 		ArrayList<Cliente> resultado = new ArrayList<Cliente>();
+		Data dt = new Data();
 		if (this.banco == null || this.getSize() == 0)
 			return null;
 		for (int i = 0; i < getSize(); i++) {
-			if (this.banco.get(i).getNascimento().compareTo(nascimento) == 0) {
+			if (dt.filtroData(this.banco.get(i).getNascimento()).equals(dt.filtroData(nascimento))) {
 				resultado.add(this.banco.get(i));
 			}
 		}
@@ -71,6 +73,17 @@ public class ClienteBusiness {
 		return null;
 	}
 
+	public int pesquisarRgIndex(String rg) {
+		if (this.banco == null || this.getSize() == 0)
+			return -1;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getRg().equalsIgnoreCase(rg)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	public Cliente pesquisarCpf(String cpf) {
 		if (this.banco == null || this.getSize() == 0)
 			return null;
@@ -80,6 +93,17 @@ public class ClienteBusiness {
 			}
 		}
 		return null;
+	}
+
+	public int pesquisarCpfIndex(String cpf) {
+		if (this.banco == null || this.getSize() == 0)
+			return -1;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getCpf().equalsIgnoreCase((cpf))) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public ArrayList<Cliente> pesquisarEmail(String email) {
@@ -112,6 +136,6 @@ public class ClienteBusiness {
 	}
 
 	public Cliente remover(int posicao) {
-		return this.remover(posicao);
+		return this.banco.remove(posicao);
 	}
 }

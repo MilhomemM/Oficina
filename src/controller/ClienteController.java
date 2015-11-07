@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,6 +52,18 @@ public class ClienteController extends HttpServlet {
 			System.out.println("Entrou no switch");
 			this.pesquisar(request, response);
 			break;
+		case "alterar":
+			this.alterar(request, response);
+			break;
+		case "excluir":
+			this.excluir(request, response);
+			break;
+		case "voltar":
+			this.voltarAoMenu(request, response);
+			break;
+		case "cancelar":
+			this.cancelarCadastro(request, response);
+			break;
 		}
 	}
 
@@ -69,16 +80,17 @@ public class ClienteController extends HttpServlet {
 		String telefone = request.getParameter("clienteTelefone");
 		System.out.println(nascimento);
 		Data dt = new Data();
-		
+
 		Cliente novo = new Cliente(nome, rg, cpf, sexo, dt.returnDateInvertido(nascimento), email, telefone);
-		
+
 		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
-		
+
 		bancoCliente.adicionar(novo);
-		
+
 		request.getServletContext().setAttribute("bancoCliente", bancoCliente);
 		request.setAttribute("clienteSelecionado", novo);
-		
+		request.setAttribute("cadastrado", Boolean.TRUE);
+
 		request.getRequestDispatcher(dispatcher).forward(request, response);
 	}
 
@@ -124,18 +136,18 @@ public class ClienteController extends HttpServlet {
 			break;
 		case "email":
 			resultado = bancoCliente.pesquisarEmail(campoDePesquisa);
-			dispatcher = "cliente-detalhes.jsp";
+			dispatcher = "cliente-pesquisar.jsp";
 			break;
 		case "telefone":
 			resultado = bancoCliente.pesquisarTelefone(campoDePesquisa);
-			dispatcher = "cliente-detalhes.jsp";
+			dispatcher = "cliente-pesquisar.jsp";
 			break;
 		default:
 			dispatcher = "home.jsp";
 		}
 		if ((tipoDePesquisa.equalsIgnoreCase("Rg") || tipoDePesquisa.equalsIgnoreCase("Cpf"))
 				&& resultadoEspecifico != null) {
-			request.setAttribute("ClienteSelecionado", resultadoEspecifico);
+			request.setAttribute("clienteSelecionado", resultadoEspecifico);
 		} else {
 			request.setAttribute("resultadoPesquisa", resultado);
 			request.setAttribute("listouCliente", Boolean.TRUE);
@@ -143,4 +155,55 @@ public class ClienteController extends HttpServlet {
 		request.getRequestDispatcher(dispatcher).forward(request, response);
 	}
 
+	public void alterar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("entrou");
+		String dispatcher = "cliente-detalhes.jsp";
+		String cpf = request.getParameter("clienteCPF");
+		String email = request.getParameter("clienteEmail");
+		String telefone = request.getParameter("clienteTelefone");
+		System.out.println(cpf);
+		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
+		Cliente c = bancoCliente.pesquisarCpf(cpf);
+		System.out.println("entrou1");
+		c.setEmail(email);
+		c.setTelefone(telefone);
+
+		int posicao = bancoCliente.pesquisarCpfIndex(cpf);
+
+		if (posicao != -1) {
+			bancoCliente.alterar(posicao, c);
+			System.out.println("entrou2");
+		}
+		request.setAttribute("clienteSelecionado", c);
+		request.setAttribute("alterado", Boolean.TRUE);
+		request.getServletContext().setAttribute("bancoCliente", bancoCliente);
+		request.getRequestDispatcher(dispatcher).forward(request, response);
+	}
+
+	public void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cpf = request.getParameter("clienteCPF");
+
+		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
+
+		int posicao = bancoCliente.pesquisarCpfIndex(cpf);
+		if(posicao != -1) bancoCliente.remover(posicao);
+		System.out.println(posicao);
+		request.setAttribute("excluido", Boolean.TRUE);
+		request.getServletContext().setAttribute("bancoCliente", bancoCliente);
+		request.getRequestDispatcher("cliente.jsp").forward(request, response);
+
+	}
+
+	public void cancelarCadastro(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("cadastroCancelado", Boolean.TRUE);
+		request.getRequestDispatcher("cliente.jsp");
+
+	}
+
+	public void voltarAoMenu(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("cliente.jsp");
+
+	}
 }
