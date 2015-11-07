@@ -29,17 +29,27 @@ public class ConsertoBusiness {
 	}
 
 	public Conserto pesquisarCodigo(String codigo) {
-
 		if (this.banco == null || this.getSize() == 0) {
 			return null;
 		}
 
 		for (int i = 0; i < this.getSize(); i++) {
 			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
-				;
-			return this.banco.get(i);
+				return this.banco.get(i);
 		}
 		return null;
+	}
+
+	public int pesquisarCodigoIndex(String codigo) {
+		if (this.banco == null || this.getSize() == 0) {
+			return -1;
+		}
+
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
+				return i;
+		}
+		return -1;
 	}
 
 	public ArrayList<Conserto> pesquisarCliente(String proprietario) {
@@ -126,8 +136,8 @@ public class ConsertoBusiness {
 		}
 
 		return resultado;
-	}	
-	
+	}
+
 	public ArrayList<Conserto> pesquisarPreco(double min, double max) {
 		ArrayList<Conserto> resultado = new ArrayList<Conserto>();
 
@@ -135,10 +145,18 @@ public class ConsertoBusiness {
 			return null;
 
 		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getTotal() >= min && this.banco.get(i).getTotal() <= max){
+			if (this.banco.get(i).getTotal() >= min && this.banco.get(i).getTotal() <= max) {
 				resultado.add(this.banco.get(i));
 			}
 		}
 		return resultado;
+	}
+
+	public Conserto alterar(int posicao, Conserto novo) {
+		return this.banco.set(posicao, novo);
+	}
+
+	public Conserto remover(int posicao) {
+		return this.remover(posicao);
 	}
 }
