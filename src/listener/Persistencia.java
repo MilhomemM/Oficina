@@ -1,5 +1,7 @@
 package listener;
 
+import java.util.ArrayList;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -18,6 +20,7 @@ import model.Funilaria;
 import model.Mecanica;
 import model.Moto;
 import model.Pintura;
+import model.Servico;
 import model.Usuario;
 
 /**
@@ -88,12 +91,18 @@ public class Persistencia implements ServletContextListener {
 		bancoServico.adicionar(new Mecanica("SERV0005", "Carro", "Troca de Óleo", 300.00));
 		bancoServico.adicionar(new Mecanica("SERV0006", "Moto", "Troca do fuído do freio", 300.00));
 
+		ArrayList<Servico> aux;
+
+		aux = new ArrayList<Servico>();
+		aux.add(bancoServico.getBanco().get(0));
+		aux.add(bancoServico.getBanco().get(4));
 		bancoConserto.adicionar(new Conserto("CONS0001", bancoVeiculo.getBanco().get(0), data.returnDate(16, 04, 1996),
-				(Pintura) bancoServico.getBanco().get(0), (Mecanica) bancoServico.getBanco().get(4), null,
-				bancoServico.getBanco().get(0).getPreco() + bancoServico.getBanco().get(4).getPreco()));
+				aux, bancoServico.getBanco().get(0).getPreco() + bancoServico.getBanco().get(4).getPreco()));
+		aux = new ArrayList<Servico>();
+		aux.add(bancoServico.getBanco().get(1));
+		aux.add(bancoServico.getBanco().get(5));
 		bancoConserto.adicionar(new Conserto("CONS0002", bancoVeiculo.getBanco().get(1), data.returnDate(26, 05, 1987),
-				(Pintura) bancoServico.getBanco().get(1), (Mecanica) bancoServico.getBanco().get(5), null,
-				bancoServico.getBanco().get(1).getPreco() + bancoServico.getBanco().get(5).getPreco()));
+				aux, bancoServico.getBanco().get(1).getPreco() + bancoServico.getBanco().get(5).getPreco()));
 
 		contexto.getServletContext().setAttribute("bancoAdministrador", bancoAdministrador);
 		contexto.getServletContext().setAttribute("bancoCliente", bancoCliente);
