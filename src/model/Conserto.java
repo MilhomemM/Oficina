@@ -54,6 +54,11 @@ public class Conserto {
 	public Date getData() {
 		return data;
 	}
+	
+	public String getDataString() {
+		Data dt = new Data();
+		return dt.filtroData(data);
+	}
 
 	public void setData(Date data) {
 		this.data = data;

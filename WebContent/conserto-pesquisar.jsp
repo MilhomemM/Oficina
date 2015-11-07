@@ -41,7 +41,7 @@
 							<option value="Placa">Placa Veiculo</option>
 							<option value="Data">Data Conserto</option>
 							<option value="TipoServico">Tipo de Serviço</option>
-							<option value="Preco">Preco</option>
+							<!-- 							<option value="Preco">Preco</option> -->
 					</select></td>
 					<td><input type="search" id="CampoDePesquisa"
 						name="campoDePesquisa" placeholder="Selecione uma opção..."
@@ -52,7 +52,46 @@
 			</table>
 		</form>
 		<br />
-		<footer class="RodapeArticle"> </footer>
+		<c:choose>
+			<c:when test="${listouConserto }">
+				<c:choose>
+					<c:when test="${resultadoPesquisa.size() == 0}">Nenhum resultado!</c:when>
+					<c:otherwise>
+						<center>
+							<table class="TablePesquisa" width="90%" align="center" border>
+								<tr>
+									<th>Codigo</th>
+									<th width="20%">Tipo de Veiculo</th>
+									<th width="20%">Proprietario</th>
+									<th width="20%">Placa</th>
+									<th width="20%">Data</th>
+									<th width="20%">Valor</th>
+								</tr>
+								<c:forEach var="conserto" items="${resultadoPesquisa }">
+									<tr>
+										<td>${conserto.getCodigo() }</td>
+										<td><c:choose>
+												<c:when
+													test="${conserto.getClass().getName() eq 'model.Carro' }">Carro</c:when>
+												<c:when
+													test="${conserto.getClass().getName() eq 'model.Moto' }">Moto</c:when>
+												<c:otherwise>-</c:otherwise>
+											</c:choose></td>
+										<td>${conserto.getVeiculo().getProprietario().getNome()}</td>
+										<td>${conserto.getVeiculo().getPlaca() }</td>
+										<td>${conserto.getDataString() }</td>
+										<td>${conserto.getTotal()}</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</center>
+					</c:otherwise>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+				Ainda não listou nada!
+			</c:otherwise>
+		</c:choose>
 	</section>
 	<br />
 	<br />
