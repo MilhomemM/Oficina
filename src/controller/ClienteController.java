@@ -77,7 +77,7 @@ public class ClienteController extends HttpServlet {
 		String rg = request.getParameter("clienteRG");
 		String cpf = request.getParameter("clienteCPF");
 		String email = request.getParameter("clienteEmail");
-		String telefone = request.getParameter("clienteTelefone");
+		String telefone = request.getParameter("clienteDDD") + request.getParameter("clienteTelefone");
 		System.out.println(nascimento);
 		Data dt = new Data();
 

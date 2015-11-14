@@ -30,8 +30,9 @@ public class ClienteBusiness {
 		if (this.banco == null || this.getSize() == 0)
 			return null;
 		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getNome().equalsIgnoreCase(nome))
-				resultado.add(this.banco.get(i));
+			if (nome.length() <= this.banco.get(i).getNome().length())
+				if (this.banco.get(i).getNome().substring(0, nome.length()).equalsIgnoreCase(nome))
+					resultado.add(this.banco.get(i));
 		}
 		return resultado;
 	}
@@ -41,9 +42,10 @@ public class ClienteBusiness {
 		if (this.banco == null || this.getSize() == 0)
 			return null;
 		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getSexo().equalsIgnoreCase(sexo)) {
-				resultado.add(this.banco.get(i));
-			}
+			if (sexo.length() <= this.banco.get(i).getSexo().length())
+				if (this.banco.get(i).getSexo().substring(0, sexo.length()).equalsIgnoreCase(sexo)) {
+					resultado.add(this.banco.get(i));
+				}
 		}
 		return resultado;
 	}

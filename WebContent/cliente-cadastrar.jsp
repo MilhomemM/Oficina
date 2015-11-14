@@ -34,7 +34,7 @@
 					<tr>
 						<td><label for="ClienteNome">Nome </label></td>
 						<td><input id="ClienteNome" name="clienteNome" type="text"
-							placeholder="Nome Completo" required></td>
+							placeholder="Nome Completo" required pattern="[a-zA-Z\s]+$"></td>
 					</tr>
 					<tr>
 						<td><label>Sexo</label></td>
@@ -57,12 +57,13 @@
 					<tr>
 						<td><label for="ClienteRG">RG</label></td>
 						<td><input id="ClienteRG" name="clienteRG" type="text"
-							placeholder="Somente Numeros" required></td>
+							placeholder="Somente Numeros" required pattern="[0-9]+$"></td>
 					</tr>
 					<tr>
 						<td><label for="ClienteCPF">CPF</label></td>
 						<td><input id="ClienteCPF" name="clienteCPF" type="text"
-							placeholder="Somente Numeros" required></td>
+							placeholder="Somente Numeros" required minlength=11 maxlength=11
+							pattern="[0-9]+$"></td>
 					</tr>
 					<tr>
 						<td><label for="ClienteEmail">Email</label></td>
@@ -71,25 +72,27 @@
 					</tr>
 					<tr>
 						<td><label for="ClienteTelefone">Telefone</label></td>
-						<td><input id="ClienteTelefone" name="clienteTelefone"
-							type="text" placeholder="Somente Numeros" required></td>
+						<td><table>
+								<tr>
+									<td><input type="tel" id="ClienteDDD" name="clienteDDD"
+										placeholder="DDD" required minlength=2 maxlength=2 size="2"
+										pattern="[0-9]+$" onKeyUp="autoTab(this,'ClienteTelefone')"></td>
+									<td><input id="ClienteTelefone" name="clienteTelefone"
+										type="tel" placeholder="Somente Numeros" required minlength=8
+										maxlength=9 pattern="[0-9]+$"></td>
+								</tr>
+							</table></td>
 					</tr>
 				</table>
 				<br />
 				<table>
 					<tr>
 						<td><input type="submit" value="Cadastrar" name="action"></td>
-						<td><input type="reset" value="Redefinir"></td>
+						<td><input type="reset" value="Redefinir" name="action"></td>
+						<td><input type="button" value="Cancelar" name="action"
+							onClick="encaminharConfirm('cliente.jsp','Quer mesmo cancelar?');"></td>
 					</tr>
 				</table>
-			</center>
-		</form>
-		<form action="ClienteController.do">
-			<table>
-				<tr>
-					<td><input type="submit" value="Cancelar" name="action"></td>
-				</tr>
-			</table>
 			</center>
 		</form>
 		<br />
