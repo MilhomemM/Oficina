@@ -34,7 +34,7 @@
 					<tr>
 						<td><label for="ClienteNome">Nome </label></td>
 						<td><input id="ClienteNome" name="clienteNome" type="text"
-							placeholder="Nome Completo" required pattern="[a-zA-Z\s]+$"></td>
+							placeholder="Nome Completo" required pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"></td>
 					</tr>
 					<tr>
 						<td><label>Sexo</label></td>

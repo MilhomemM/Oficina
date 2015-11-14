@@ -74,7 +74,7 @@ public class Persistencia implements ServletContextListener {
 
 		bancoCliente.adicionar(new Cliente("Flavio Alves da Costa", "9876543210", "12345678900", "Masculino",
 				data.returnDate(16, 04, 1996), "flavio@gmail.com", "707070"));
-		bancoCliente.adicionar(new Cliente("Chico Baladeira Fernandes", "9876543210", "98765432100", "Masculino",
+		bancoCliente.adicionar(new Cliente("Chico Baladeira Fernandes", "9876543211", "98765432100", "Masculino",
 				data.returnDate(01, 05, 1974), "chicobaladeira@gmail.com,", "808080"));
 
 		bancoVeiculo.adicionar(new Carro(bancoCliente.getBanco().get(0), "NXZ2015", 2012, "Renault", "Logan", "Prata",

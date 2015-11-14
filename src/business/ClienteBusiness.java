@@ -22,7 +22,10 @@ public class ClienteBusiness {
 	}
 
 	public boolean adicionar(Cliente novo) {
-		return this.banco.add(novo);
+		if (this.existeCpf(novo.getCpf()) || this.existeRg(novo.getRg()))
+			return false;
+		else
+			return this.banco.add(novo);
 	}
 
 	public ArrayList<Cliente> pesquisarNome(String nome) {
@@ -35,6 +38,16 @@ public class ClienteBusiness {
 					resultado.add(this.banco.get(i));
 		}
 		return resultado;
+	}
+
+	public boolean existeNome(String nome) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getNome().equalsIgnoreCase(nome))
+				return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Cliente> pesquisarSexo(String sexo) {
@@ -50,6 +63,17 @@ public class ClienteBusiness {
 		return resultado;
 	}
 
+	public boolean existeSexo(String sexo) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getSexo().equalsIgnoreCase(sexo)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public ArrayList<Cliente> pesquisarNascimento(Date nascimento) {
 		ArrayList<Cliente> resultado = new ArrayList<Cliente>();
 		Data dt = new Data();
@@ -63,6 +87,18 @@ public class ClienteBusiness {
 		return resultado;
 	}
 
+	public boolean existeNascimento(Date nascimento) {
+		Data dt = new Data();
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < getSize(); i++) {
+			if (dt.filtroData(this.banco.get(i).getNascimento()).equals(dt.filtroData(nascimento))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public Cliente pesquisarRg(String rg) {
 		if (this.banco == null || this.getSize() == 0)
 			return null;
@@ -73,6 +109,17 @@ public class ClienteBusiness {
 			}
 		}
 		return null;
+	}
+
+	public boolean existeRg(String rg) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getRg().equalsIgnoreCase(rg)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public int pesquisarRgIndex(String rg) {
@@ -95,6 +142,17 @@ public class ClienteBusiness {
 			}
 		}
 		return null;
+	}
+
+	public boolean existeCpf(String cpf) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getCpf().equalsIgnoreCase(cpf)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public int pesquisarCpfIndex(String cpf) {
@@ -121,6 +179,17 @@ public class ClienteBusiness {
 		return resultado;
 	}
 
+	public boolean existeEmail(String email) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getEmail().equalsIgnoreCase(email)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public ArrayList<Cliente> pesquisarTelefone(String telefone) {
 		ArrayList<Cliente> resultado = new ArrayList<Cliente>();
 		if (this.banco == null || this.getSize() == 0)
@@ -133,11 +202,28 @@ public class ClienteBusiness {
 		return resultado;
 	}
 
+	public boolean existeTelefone(String telefone) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getTelefone().equalsIgnoreCase(telefone)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public Cliente alterar(int posicao, Cliente novo) {
-		return this.banco.set(posicao, novo);
+		if ((posicao < 0 && posicao >= this.getSize()) || novo == null)
+			return null;
+		else
+			return this.banco.set(posicao, novo);
 	}
 
 	public Cliente remover(int posicao) {
-		return this.banco.remove(posicao);
+		if (posicao < 0 && posicao >= this.getSize())
+			return null;
+		else
+			return this.banco.remove(posicao);
 	}
 }
