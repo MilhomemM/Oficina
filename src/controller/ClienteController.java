@@ -100,7 +100,9 @@ public class ClienteController extends HttpServlet {
 		String dispatcher;
 		String tipoDePesquisa = request.getParameter("tipoDePesquisa");
 		String campoDePesquisa = request.getParameter("campoDePesquisa");
+		System.out.println(campoDePesquisa);
 		Data dt = new Data();
+		System.out.println("dt");
 
 		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
 
@@ -117,7 +119,9 @@ public class ClienteController extends HttpServlet {
 			dispatcher = "cliente-pesquisar.jsp";
 			break;
 		case "nascimento":
-			resultado = bancoCliente.pesquisarNascimento(dt.returnDate(campoDePesquisa));
+			System.out.println("Case: ");
+			System.out.println(campoDePesquisa);
+			resultado = bancoCliente.pesquisarNascimento(dt.returnDateInvertido(campoDePesquisa));
 			dispatcher = "cliente-pesquisar.jsp";
 			break;
 		case "rg":

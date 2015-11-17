@@ -42,8 +42,8 @@ function swapPlaceholder() {
 		CampoDePesquisa.setAttribute("type","search");
 		CampoDePesquisa.setAttribute("placeholder", "Somente Números");
 		CampoDePesquisa.setAttribute("pattern", "[0-9]+$");
-		CampoDePesquisa.setAttribute("minlegth", 11);
-		CampoDePesquisa.setAttribute("maxlength", 11)
+		CampoDePesquisa.setAttribute("minlength",11);
+		CampoDePesquisa.setAttribute("maxlength",11);
 		break;
 	case "Email":
 		CampoDePesquisa.setAttribute("type","email");

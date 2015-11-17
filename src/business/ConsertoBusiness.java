@@ -11,9 +11,11 @@ import model.Pintura;
 
 public class ConsertoBusiness {
 	private ArrayList<Conserto> banco;
+	private long ultimoCodigo;
 
 	public ConsertoBusiness() {
 		this.banco = new ArrayList<Conserto>();
+		this.setUltimoCodigo(0);
 	}
 
 	public ArrayList<Conserto> getBanco() {
@@ -24,7 +26,16 @@ public class ConsertoBusiness {
 		return this.banco.size();
 	}
 
+	public long getUltimoCodigo() {
+		return ultimoCodigo;
+	}
+
+	public void setUltimoCodigo(long ultimoCodigo) {
+		this.ultimoCodigo = ultimoCodigo;
+	}
+
 	public boolean adicionar(Conserto novo) {
+		novo.setCodigo("#CON" + this.ultimoCodigo);
 		return this.banco.add(novo);
 	}
 
@@ -38,6 +49,19 @@ public class ConsertoBusiness {
 				return this.banco.get(i);
 		}
 		return null;
+	}
+	
+	public boolean existeCodigo(String codigo)
+	{
+		if (this.banco == null || this.getSize() == 0) {
+			return false;
+		}
+
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
+				return true;
+		}
+		return false;
 	}
 
 	public int pesquisarCodigoIndex(String codigo) {

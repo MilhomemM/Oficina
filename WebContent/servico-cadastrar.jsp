@@ -79,22 +79,22 @@
 					<tr id="EntradaServico" style="display: none">
 						<td><label for="Sevico">Serviço:</label></td>
 						<td><input id="Sevico" name="servico" type="text"
-							placeholder="Tipo de serviço"></td>
+							placeholder="Tipo de serviço" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"></td>
 					</tr>
 					<tr id="EntradaCor" style="display: none">
 						<td><label for="SevicoCor">Cor:</label></td>
 						<td><input id="SevicoCor" name="servicoCor" type="text"
-							placeholder="Cor para o veículo"></td>
+							placeholder="Cor para o veículo" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"></td>
 					</tr>
 					<tr id="EntradaPeca" style="display: none">
 						<td><label for="SevicoPeca">Peça:</label></td>
 						<td><input id="SevicoPeca" name="servicoPeca" type="text"
-							placeholder="Nome da peça"></td>
+							placeholder="Nome da peça" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"></td>
 					</tr>
 					<tr id="EntradaPreco" style="display: none">
 						<td><label for="SevicoPreco">Preço:</label></td>
 						<td><input id="SevicoPreco" name="servicoPreco" type="text"
-							placeholder="R$"></td>
+							 placeholder="0,00" minlength=4 maxlength=9 pattern="[0-9]{1,6},[0-9]{2}$"></td>
 					</tr>
 				</table>
 				<br />
@@ -113,8 +113,8 @@
 			submetido por vez.
 		</footer>
 	</section>
-	<br />
-	<br />
+	<br/>
+	<br/>
 	<footer>
 		<%@ include file="rodape.jsp"%>
 	</footer>

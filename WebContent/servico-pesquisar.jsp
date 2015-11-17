@@ -12,43 +12,7 @@
 <!----------------------------- CODIGOS JS ------------------------------>
 <!--- <script type="text/javascript" src="./JS/ARQUIVO.js"></script> ---->
 <script type="text/javascript" src="./JS/JavaScript.js"></script>
-<script>
-	function switchPlaceholder() {
-		var TipoDePesquisa = document.getElementById("TipoDePesquisa");
-		var CampoDePesquisa = document.getElementById("CampoDePesquisa");
-
-		switch (TipoDePesquisa.value) {
-		case "":
-			CampoDePesquisa.setAttribute("placeholder",
-					"Selecione uma opção...");
-			break;
-		case "Codigo":
-			CampoDePesquisa.setAttribute("placeholder", "SERV####");
-			break;
-		case "TipoVeiculo":
-			CampoDePesquisa.setAttribute("placeholder", "Carro ou Moto");
-			break;
-		case "TipoServico":
-			CampoDePesquisa.setAttribute("placeholder",
-					"Pintura, Mecanica ou Funilaria");
-			break;
-		case "Servico":
-			CampoDePesquisa.setAttribute("placeholder", "Descrição do serviço");
-			break;
-		case "Preco":
-			CampoDePesquisa.setAttribute("placeholder", "Preço Máximo");
-			break;
-		case "Cor":
-			CampoDePesquisa.setAttribute("placeholder",
-					"Informe a Cor da Pintura");
-			break;
-		case "Peca":
-			CampoDePesquisa.setAttribute("placeholder", "Informe a Peça");
-			break;
-		}
-	}
-</script>
-<!-----------------------------   FIM JS   ------------------------------>
+<script type="text/javascript" src="./JS/ServicoPesquisa.js"></script>
 </head>
 <body>
 	<header>
@@ -67,7 +31,7 @@
 			<table align="center">
 				<tr>
 					<td><select id="TipoDePesquisa" name="tipoDePesquisa"
-						onChange="switchPlaceholder();" required>
+						onChange="swapPlaceholder();" required>
 							<option value="" selected>Pesquisar por...</option>
 							<option value="Codigo">Código</option>
 							<option value="TipoVeiculo">Tipo de Veiculo</option>

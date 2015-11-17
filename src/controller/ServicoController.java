@@ -93,6 +93,7 @@ public class ServicoController extends HttpServlet {
 			String corPintura = request.getParameter("servicoCor");
 			String pecaPintura = request.getParameter("servicoPeca");
 			String precoPintura = request.getParameter("servicoPreco");
+			precoPintura = precoPintura.replace(',', '.');
 			if (codigo.length() < 4) {
 				String zeros = "";
 				for (int i = 0; i < 4 - codigo.length(); i++) {
@@ -109,6 +110,7 @@ public class ServicoController extends HttpServlet {
 			String TipoVeiculoMecanica = request.getParameter("servicoTipoVeiculo");
 			String servicoMecanica = request.getParameter("servico");
 			String precoMecanica = request.getParameter("servicoPreco");
+			precoMecanica = precoMecanica.replace(',', '.');
 			if (codigo.length() < 4) {
 				String zeros = "";
 				for (int i = 0; i < 4 - codigo.length(); i++) {
@@ -118,6 +120,7 @@ public class ServicoController extends HttpServlet {
 			}
 			codigo = "SERV" + codigo;
 			novo = new Mecanica(codigo, TipoVeiculoMecanica, servicoMecanica, Double.parseDouble(precoMecanica));
+			
 			bancoServico.adicionar(novo);
 			break;
 		case "Funilaria":
@@ -125,6 +128,7 @@ public class ServicoController extends HttpServlet {
 			String servicoFunilaria = request.getParameter("servico");
 			String pecaFunilaria = request.getParameter("servicoPeca");
 			String precoFunilaria = request.getParameter("servicoPreco");
+			precoFunilaria = precoFunilaria.replace(',', '.');
 			if (codigo.length() < 4) {
 				String zeros = "";
 				for (int i = 0; i < 4 - codigo.length(); i++) {

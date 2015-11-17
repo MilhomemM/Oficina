@@ -76,7 +76,7 @@
 					<tr>
 						<td><label for="ClienteTelefone">Telefone</label></td>
 						<td><input id="ClienteTelefone" name="clienteTelefone"
-							type="text" value="${clienteSelecionado.getTelefone() }"></td>
+							type="" value="${clienteSelecionado.getTelefone() }"></td>
 					</tr>
 				</table>
 				<br />
@@ -84,7 +84,8 @@
 					<tr>
 						<td><input type="submit" name="action" value="Excluir"></td>
 						<td><input type="submit" name="action" value="Alterar"></td>
-						<td><input type="submit" name="action" value="Voltar"></td>
+						<td><input type="button" name="action" value="Voltar"
+							onClick="encaminharConfirm('cliente.jsp','Quer mesmo voltar?');"></td>
 					</tr>
 				</table>
 			</form>

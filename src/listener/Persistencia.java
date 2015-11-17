@@ -74,8 +74,18 @@ public class Persistencia implements ServletContextListener {
 
 		bancoCliente.adicionar(new Cliente("Flavio Alves da Costa", "9876543210", "12345678900", "Masculino",
 				data.returnDate(16, 04, 1996), "flavio@gmail.com", "707070"));
-		bancoCliente.adicionar(new Cliente("Chico Baladeira Fernandes", "9876543211", "98765432100", "Masculino",
+		bancoCliente.adicionar(new Cliente("Ruan Vitor De Souza Soares", "9876543211", "98765432100", "Masculino",
 				data.returnDate(01, 05, 1974), "chicobaladeira@gmail.com,", "808080"));
+		bancoCliente.adicionar(new Cliente("Paulinha Brazz Fernandes", "98765432112", "982765432100", "Feminino",
+				data.returnDate(15, 06, 1984), "paulinha.brazz@gmail.com,", "80808120"));
+		bancoCliente.adicionar(new Cliente("Melissão Silva Costa", "987621543211", "987654322100", "Feminino",
+				data.returnDate(22, 07, 1994), "melissão@gmail.com,", "8080821210"));
+		bancoCliente.adicionar(new Cliente("Marcello Millhomen", "9287621543211", "2987654322100", "Masculino",
+				data.returnDate(31, 11, 1984), "boquinha@gmail.com,", "8080821210"));
+		bancoCliente.adicionar(new Cliente("Vlabson Viana", "9816523310", "94345378920", "Masculino",
+				data.returnDate(24, 11, 1938), "dimmy_neutron@gmail.com", "70707210"));
+		bancoCliente.adicionar(new Cliente("Thiago Leite", "298726212543211", "398736534322100", "Masculino",
+				data.returnDate(21, 03, 1994), "inputi_taipe@gmail.com,", "8081210821210"));
 
 		bancoVeiculo.adicionar(new Carro(bancoCliente.getBanco().get(0), "NXZ2015", 2012, "Renault", "Logan", "Prata",
 				"1234567890", "Fortaleza", "Ceará"));

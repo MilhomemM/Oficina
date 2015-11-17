@@ -178,3 +178,37 @@ function mostrarTabela()
 		}
 	}
 }
+function swapPlaceholder() {
+	var TipoDePesquisa = document.getElementById("TipoDePesquisa");
+	var CampoDePesquisa = document.getElementById("CampoDePesquisa");
+
+	switch (TipoDePesquisa.value) {
+	case "":
+		CampoDePesquisa.setAttribute("placeholder",
+				"Selecione uma opção...");
+		break;
+	case "Codigo":
+		CampoDePesquisa.setAttribute("placeholder", "SERV####");
+		break;
+	case "TipoVeiculo":
+		CampoDePesquisa.setAttribute("placeholder", "Carro ou Moto");
+		break;
+	case "TipoServico":
+		CampoDePesquisa.setAttribute("placeholder",
+				"Pintura, Mecanica ou Funilaria");
+		break;
+	case "Servico":
+		CampoDePesquisa.setAttribute("placeholder", "Descrição do serviço");
+		break;
+	case "Preco":
+		CampoDePesquisa.setAttribute("placeholder", "Preço Máximo");
+		break;
+	case "Cor":
+		CampoDePesquisa.setAttribute("placeholder",
+				"Informe a Cor da Pintura");
+		break;
+	case "Peca":
+		CampoDePesquisa.setAttribute("placeholder", "Informe a Peça");
+		break;
+	}
+}

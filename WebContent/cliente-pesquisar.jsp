@@ -56,7 +56,7 @@
 		<c:choose>
 			<c:when test="${listouCliente}">
 				<c:choose>
-					<c:when test="${resultadoPesquisa.size() == 0}">Nenhum resultado!</c:when>
+					<c:when test="${resultadoPesquisa.size() == 0 || resultadoPesquisa == null}">Nenhum resultado!</c:when>
 					<c:otherwise>
 						<center>
 							<table class="TablePesquisa" width="90%" align="center" border>
@@ -73,7 +73,7 @@
 										<td>${cliente.getSexo()}</td>
 										<td>${cliente.getNascimentoString()}</td>
 										<td>${cliente.getRg()}</td>
-										<td>${cliente.getCpf()}</td>
+										<td>${cliente.filtroCPF()}</td>
 									</tr>
 								</c:forEach>
 							</table>

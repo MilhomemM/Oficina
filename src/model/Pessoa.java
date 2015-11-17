@@ -57,4 +57,10 @@ public abstract class Pessoa {
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
+	
+	public String filtroCPF() {
+		String CPF = this.getCpf();
+		return (CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." + CPF.substring(6, 9) + "-"
+				+ CPF.substring(9, 11));
+	}
 }
