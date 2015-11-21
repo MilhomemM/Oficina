@@ -13,10 +13,8 @@
 <!----------------------------- CODIGOS JS ------------------------------>
 <!--- <script type="text/javascript" src="./JS/ARQUIVO.js"></script> ---->
 <script type="text/javascript" src="./JS/JavaScript.js"></script>
-<script type="text/javascript">
-	function removeDisabled() {
-		document.getElementById("ClienteCPF").removeAttribute("disabled");
-	}
+<script type="text/javascript" src="./JS/ClienteDetalhes.js">
+	
 </script>
 <!-----------------------------   FIM JS   ------------------------------>
 </head>
@@ -34,11 +32,11 @@
 	<section>
 		<c:if test="${alterado }">Alterado com sucesso!</c:if>
 		<c:if test="${cadastrado }">Cadastrado com suceso!</c:if>
-		<h1>Detalhes do Cliente</h1>
+		<h1 id="ClienteDetalhes" class="detalhes">Detalhes do Cliente</h1>
 		<center>
 			<form id="ClienteFormCadastro" action="ClienteController.do"
 				method="post" onSubmit="removeDisabled();">
-				<table class="FormTableCadastro">
+				<table id="TableFormCadastro" class="FormTableCadastro">
 					<tr>
 						<td><label for="ClienteNome">Nome </label></td>
 						<td><input id="ClienteNome" name="clienteNome"

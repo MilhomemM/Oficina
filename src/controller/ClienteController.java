@@ -57,13 +57,6 @@ public class ClienteController extends HttpServlet {
 			break;
 		case "excluir":
 			this.excluir(request, response);
-			break;
-		case "voltar":
-			this.voltarAoMenu(request, response);
-			break;
-		case "cancelar":
-			this.cancelarCadastro(request, response);
-			break;
 		}
 	}
 
@@ -71,7 +64,12 @@ public class ClienteController extends HttpServlet {
 			throws ServletException, IOException {
 		String dispatcher = "cliente-detalhes.jsp";
 
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		String nome = request.getParameter("clienteNome");
+		System.out.println(nome);
+		
 		String sexo = request.getParameter("clienteSexo");
 		String nascimento = request.getParameter("clienteNascimento");
 		String rg = request.getParameter("clienteRG");
@@ -195,19 +193,6 @@ public class ClienteController extends HttpServlet {
 		request.setAttribute("excluido", Boolean.TRUE);
 		request.getServletContext().setAttribute("bancoCliente", bancoCliente);
 		request.getRequestDispatcher("cliente.jsp").forward(request, response);
-
-	}
-
-	public void cancelarCadastro(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setAttribute("cadastroCancelado", Boolean.TRUE);
-		request.getRequestDispatcher("cliente.jsp");
-
-	}
-
-	public void voltarAoMenu(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher("cliente.jsp");
 
 	}
 }
