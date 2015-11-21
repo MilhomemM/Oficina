@@ -62,15 +62,6 @@ public class ServicoController extends HttpServlet {
 			System.out.println("ServicoController - Switch - Excluir");
 			this.excluir(request, response);
 			break;
-		case "cancelar":
-			System.out.println("ServicoController - Switch - cancelar");
-			this.cancelarCadastro(request, response);
-			break;
-		case "voltar":
-			System.out.println("ServicoController - Switch - voltar");
-			this.voltarAoMenu(request, response);
-			request.getRequestDispatcher("servico.jsp").forward(request, response);
-			break;
 		default:
 			System.out.println("ServicoController - Switch - defaullt");
 			request.getRequestDispatcher("servico.jsp").forward(request, response);
@@ -85,7 +76,6 @@ public class ServicoController extends HttpServlet {
 		String tipoServico = request.getParameter("servicoTipo");
 		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
 		Servico novo;
-		String codigo = String.valueOf(bancoServico.getSize() + 1);
 		switch (tipoServico) {
 		case "Pintura":
 			String TipoVeiculoPintura = request.getParameter("servicoTipoVeiculo");
@@ -94,15 +84,7 @@ public class ServicoController extends HttpServlet {
 			String pecaPintura = request.getParameter("servicoPeca");
 			String precoPintura = request.getParameter("servicoPreco");
 			precoPintura = precoPintura.replace(',', '.');
-			if (codigo.length() < 4) {
-				String zeros = "";
-				for (int i = 0; i < 4 - codigo.length(); i++) {
-					zeros = zeros + "0";
-				}
-				codigo = zeros + codigo;
-			}
-			codigo = "SERV" + codigo;
-			novo = new Pintura(codigo, TipoVeiculoPintura, servicoPintura, Double.parseDouble(precoPintura), corPintura,
+			novo = new Pintura(TipoVeiculoPintura, servicoPintura, Double.parseDouble(precoPintura), corPintura,
 					pecaPintura);
 			bancoServico.adicionar(novo);
 			break;
@@ -111,16 +93,9 @@ public class ServicoController extends HttpServlet {
 			String servicoMecanica = request.getParameter("servico");
 			String precoMecanica = request.getParameter("servicoPreco");
 			precoMecanica = precoMecanica.replace(',', '.');
-			if (codigo.length() < 4) {
-				String zeros = "";
-				for (int i = 0; i < 4 - codigo.length(); i++) {
-					zeros = zeros + "0";
-				}
-				codigo = zeros + codigo;
-			}
-			codigo = "SERV" + codigo;
-			novo = new Mecanica(codigo, TipoVeiculoMecanica, servicoMecanica, Double.parseDouble(precoMecanica));
-			
+
+			novo = new Mecanica(TipoVeiculoMecanica, servicoMecanica, Double.parseDouble(precoMecanica));
+
 			bancoServico.adicionar(novo);
 			break;
 		case "Funilaria":
@@ -129,15 +104,8 @@ public class ServicoController extends HttpServlet {
 			String pecaFunilaria = request.getParameter("servicoPeca");
 			String precoFunilaria = request.getParameter("servicoPreco");
 			precoFunilaria = precoFunilaria.replace(',', '.');
-			if (codigo.length() < 4) {
-				String zeros = "";
-				for (int i = 0; i < 4 - codigo.length(); i++) {
-					zeros = zeros + "0";
-				}
-				codigo = zeros + codigo;
-			}
-			codigo = "SERV" + codigo;
-			novo = new Funilaria(codigo, TipoVeiculoFunilaria, servicoFunilaria, Double.parseDouble(precoFunilaria),
+
+			novo = new Funilaria(TipoVeiculoFunilaria, servicoFunilaria, Double.parseDouble(precoFunilaria),
 					pecaFunilaria);
 			bancoServico.adicionar(novo);
 			break;
@@ -241,16 +209,5 @@ public class ServicoController extends HttpServlet {
 		request.setAttribute("excluido", Boolean.TRUE);
 		request.getServletContext().setAttribute("bancoServico", bancoServico);
 		request.getRequestDispatcher(dispatcher).forward(request, response);
-	}
-
-	private void cancelarCadastro(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setAttribute("cadastroCancelado", Boolean.TRUE);
-		request.getRequestDispatcher("servico.jsp").forward(request, response);
-	}
-
-	private void voltarAoMenu(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher("servico.jsp").forward(request, response);
 	}
 }

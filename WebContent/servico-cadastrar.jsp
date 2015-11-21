@@ -102,7 +102,7 @@
 					<tr>
 						<td><input type="submit" name="action" value="Cadastrar"></td>
 						<td><input type="reset" value="Redefinir"></td>
-						<td><input type="submit" name="action" value="Cancelar"></td>
+						<td><input type="button" name="action" value="Cancelar" onClick="encaminharConfirm('servico.jsp','Quer mesmo cancelar?')"></td>
 					</tr>
 				</table>
 			</form>

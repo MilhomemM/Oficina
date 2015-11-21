@@ -9,6 +9,12 @@ public class Pintura extends Servico {
 		this.cor = cor;
 		this.peca = peca;
 	}
+	
+	public Pintura(String tipoVeiculo, String descricao, double preco, String cor, String peca) {
+		super(tipoVeiculo, descricao, preco);
+		this.cor = cor;
+		this.peca = peca;
+	}
 
 	@Override
 	public String getCodigo() {

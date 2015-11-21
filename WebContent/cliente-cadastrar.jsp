@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page contentType="text/html; charset=ISO-8859-1" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
@@ -26,15 +25,16 @@
 	<br />
 	<br />
 	<section>
-		<h1>Cadastro de Cliente</h1>
+		<h1 id="ClienteTitulo" class="titulo">Cadastro de Cliente</h1>
 		<form id="FormCadastrarCliente" name="formCadastrarCliente"
-			action="ClienteController.do" method="post">
+			action="ClienteController.do" method="post" accept-charset="UTF-8">
 			<center>
-				<table class="FormTableCadastro">
+				<table id="TableFormCadastro" class="FormTableCadastro">
 					<tr>
 						<td><label for="ClienteNome">Nome </label></td>
 						<td><input id="ClienteNome" name="clienteNome" type="text"
-							placeholder="Nome Completo" required pattern="[A-Za-z√°√†√¢√£√©√®√™√≠√Ø√≥√¥√µ√∂√∫√ß√±√Å√Ä√Ç√É√â√à√ç√è√ì√î√ï√ñ√ö√á√ë ]+$"></td>
+							placeholder="Nome Completo" required
+							pattern="[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˙ÁÒ¡¿¬√…»Õœ”‘’÷⁄«— ]+$"></td>
 					</tr>
 					<tr>
 						<td><label>Sexo</label></td>
@@ -96,8 +96,8 @@
 			</center>
 		</form>
 		<br />
-		<footer class="RodapeArticle">*Todos os campos s√£o
-			obrigat√≥rios.</footer>
+		<footer class="RodapeArticle">*Todos os campos s„o
+			obrigatÛrios.</footer>
 	</section>
 	<br />
 	<br />
