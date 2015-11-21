@@ -26,13 +26,13 @@
 	<br />
 	<br />
 	<section style="text-align: center">
-		<h1>Cadastro de Serviço</h1>
+		<h1 id="CadastroServico" class="CadastroServ">Cadastro de Serviço</h1>
 		<center>
 			<form id="ServicoFormTipoDeServico" action="ServicoController.do">
-				<table class="FormTableCadastro">
+				<table id="FormCadastroTable" class="FormTableCadastro">
 					<tr>
 						<td></td>
-						<td><label>Tipo de Serviço</label></td>
+						<td id="TipoServico" class="FormTableCadastro"><label>Tipo de Serviço</label></td>
 						<td></td>
 					</tr>
 					<tr>
