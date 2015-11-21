@@ -99,7 +99,7 @@
 				<tr>
 					<td><input type="submit" name="action" value="Excluir"></td>
 					<td><input type="submit" name="action" value="Alterar"></td>
-					<td><input type="submit" name="action" value="Voltar"></td>
+					<td><input type="button" name="action" value="Voltar" onClick="encaminharConfirm('servico.jsp','Quer mesmo voltar?')"></td>
 				</tr>
 			</table>
 		</form>

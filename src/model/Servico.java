@@ -13,6 +13,14 @@ public abstract class Servico {
 		this.preco = preco;
 	}
 	
+	
+	public Servico(String tipoVeiculo, String descricao, double preco) {
+		this.tipoVeiculo = tipoVeiculo;
+		this.descricao = descricao;
+		this.preco = preco;
+	}
+
+
 	public String gerarCodigo(int numero)
 	{
 		String codigoPrefix = "SERV";

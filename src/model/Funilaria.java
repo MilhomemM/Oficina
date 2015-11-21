@@ -8,6 +8,10 @@ public class Funilaria extends Servico {
 		this.peca = peca;
 	}
 
+	public Funilaria(String tipoVeiculo, String descricao, double preco, String peca) {
+		super(tipoVeiculo, descricao, preco);
+		this.peca = peca;
+	}
 	@Override
 	public String getCodigo() {
 		// TODO Auto-generated method stub
