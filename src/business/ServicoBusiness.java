@@ -9,9 +9,11 @@ import model.Servico;
 
 public class ServicoBusiness {
 	private ArrayList<Servico> banco;
+	private int ultimoCodigoValido;
 
 	public ServicoBusiness() {
 		this.banco = new ArrayList<Servico>();
+		this.ultimoCodigoValido = 1;
 	}
 
 	public ArrayList<Servico> getBanco() {
@@ -25,8 +27,23 @@ public class ServicoBusiness {
 	public boolean adicionar(Servico novo) {
 		if (this.existeServico(novo))
 			return false;
-		else
+		else {
+			novo.setCodigo(this.gerarCodigo(novo));
 			return this.banco.add(novo);
+		}
+	}
+
+	public String gerarCodigo(Servico s) {
+		String codigo = "";
+		if (s instanceof Pintura) {
+			codigo = "S" + ultimoCodigoValido + "P";
+			ultimoCodigoValido++;
+		} else if (s instanceof Mecanica) {
+			codigo = "S" + ultimoCodigoValido + "M";
+		} else if (s instanceof Funilaria) {
+			codigo = "S" + ultimoCodigoValido + "F";
+		}
+		return codigo;
 	}
 
 	public boolean existeServico(Servico s) {

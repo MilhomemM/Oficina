@@ -6,6 +6,11 @@ public class Mecanica extends Servico {
 		super(codigo, tipoVeiculo, descricao, preco);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Mecanica(String tipoVeiculo, String descricao, double preco) {
+		super(tipoVeiculo, descricao, preco);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public String getCodigo() {
