@@ -25,7 +25,7 @@
 	<br />
 	<br />
 	<section style="text-align: center">
-		<h1>Pesquisa por Serviço</h1>
+		<h1 id="ServicoPesquisa" class="PesquisaServico">Pesquisa por Serviço</h1>
 		<form id="FormPesquisaServico" name="formPesquisaServico"
 			action="ServicoController.do" method="post">
 			<table align="center">
