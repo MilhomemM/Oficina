@@ -182,9 +182,11 @@ public class ServicoController extends HttpServlet {
 		String codigo = request.getParameter("servicoCodigo");
 		String preco = request.getParameter("servicoPreco");
 		String dispatcher = "servico-detalhes.jsp";
+		preco = preco.replace(',', '.');
 
 		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
 		Servico s = bancoServico.pesquisarCodigo(codigo);
+		
 		s.setPreco(Double.parseDouble(preco));
 		int posicao = bancoServico.pesquisarCodigoIndex(codigo);
 		if (posicao != -1) {

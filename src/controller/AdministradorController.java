@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import business.AdministradorBusiness;
 import model.Administrador;
-import model.Cliente;
 import model.Data;
 import model.Usuario;
 
