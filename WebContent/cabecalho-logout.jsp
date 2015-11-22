@@ -2,7 +2,7 @@
 	onSubmit="return confirmar('Quer mesmo sair?')">
 	<table class="CabecalhoUsuario" width="100%">
 		<tr>
-			<td>Bem vindo, ${ usuarioLogado } <input type="submit" name="action" value="Sair"></td>
+			<td>Bem vindo, ${ usuarioLogado.getUsuario().getLogin() } <input type="submit" name="action" value="Sair"></td>
 		</tr>
 	</table>
 </form>
