@@ -63,4 +63,9 @@ public abstract class Pessoa {
 		return (CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." + CPF.substring(6, 9) + "-"
 				+ CPF.substring(9, 11));
 	}
+	
+	public String getNascimentoString() {
+		Data dt = new Data();
+		return dt.filtroData(this.getNascimento());
+	}
 }

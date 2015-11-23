@@ -5,9 +5,15 @@
 <html lang="pt-br">
 <head>
 <title>Oficina - Login</title>
-<meta name="description" content="Login do Usuario" />
+<!----------------------------- CODIGOS CSS ----------------------------->
+<!-- <link rel="stylesheet" type="text/css" href="./CSS/ARQUIVO.css"/> -->
 <link rel="stylesheet" type="text/css" href="./CSS/Modelo.css" />
-<link href="CSS/Login.css" rel="stylesheet" />
+<link href="./CSS/Login.css" rel="stylesheet" />
+<!-----------------------------   FIM CSS   ----------------------------->
+<!----------------------------- CODIGOS JS ------------------------------>
+<!--- <script type="text/javascript" src="./JS/ARQUIVO.js"></script> ---->
+<script type="text/javascript" src="./JS/JavaScript.js"></script>
+<!-----------------------------   FIM JS   ------------------------------>
 </head>
 <body>
 	<header>
@@ -45,28 +51,19 @@
 							name="usuarioSenha" placeholder="Sua Senha" required /></td>
 					</tr>
 				</table>
-
 				<table>
 					<tr>
 						<td><input id="BotaoLogin" type="submit" name="action"
 							value="Entrar" /></td>
-					</tr>
-				</table>
-			</form>
-			<form id="" action="AdministradorController.do" method="post">
-				<table>
-					<tr>
-						<td><input id="BotaoRegistrar" type="submit" name="action"
-							value="Registrar" /></td>
+						<td><input type="button" name="action" value="Registrar"
+							onClick="encaminhar('registrar-usuario.jsp');"></td>
 					</tr>
 				</table>
 			</form>
 			<!--FECHA FORMULARIO-->
-
 		</center>
 	</section>
 	<!--FECHA CONTEUDO-->
-
 	<footer class="footer_registrar">
 		<center>
 			<table>

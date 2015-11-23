@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/*CONTEUDO*/
+/*CONTEUDO */
 
 section{
 	width: 800px;
@@ -20,14 +20,14 @@ section{
 	width: 200px;
 	border: 1px solid #000;
 	margin-right: 120px;
-	margin-bottom: 50px;
+	margin-bottom: 120px;
 }
 
-form{
+section form{
 	display: inline-block;
 	margin-bottom: 10px;
 }
 
-form input{
+section form input{
 	margin: 4px 2px;
 }

@@ -59,18 +59,19 @@ public class Persistencia implements ServletContextListener {
 
 		Data data = new Data();
 
-		bancoAdministrador.adicionar(new Administrador("Flavio Alves da Costa", "12345678900", "555.333.222-00",
-				"Masculino", data.returnDate(16, 04, 1996), new Usuario("Flavio", "Delicinha")));
+		bancoAdministrador
+				.adicionar(new Administrador("Flavio Alves da Costa", "12345678900", "55533322200", "Masculino",
+						data.returnDate(16, 04, 1996), "flavioalves996@gmail.com", new Usuario("Flavio", "Delicinha")));
 		bancoAdministrador.adicionar(new Administrador("Marcelo Milhomen Lourenço", "06544337431", "20004750595",
-				"Masculino", data.returnDate(24, 04, 1995), new Usuario("Marcelo", "ZeMaria")));
-		bancoAdministrador.adicionar(new Administrador("Vlabson Fernandes", "06544337431", "20014750578", "Masculino",
-				data.returnDate(27, 06, 1985), new Usuario("Vlabson", "Dimmy")));
+				"Masculino", data.returnDate(24, 04, 1995), "zemaria@gmail.com", new Usuario("Marcelo", "ZeMaria")));
+		bancoAdministrador.adicionar(new Administrador("Vlabson Viana", "06544337431", "20014750578", "Masculino",
+				data.returnDate(27, 06, 1985), "vlabson@gmail.com", new Usuario("Vlabson", "Dimmy")));
 		bancoAdministrador.adicionar(new Administrador("Ruan Vitor", "06544336941", "20104750548", "Masculino",
-				data.returnDate(23, 07, 1995), new Usuario("Ruan", "Melissao")));
+				data.returnDate(23, 07, 1995), "saci@gmail.com", new Usuario("Ruan", "Melissao")));
 		bancoAdministrador.adicionar(new Administrador("Filipe Facundo Bezerra", "06547236941", "20104750514",
-				"Masculino", data.returnDate(23, 06, 1994), new Usuario("Filipe", "CSS")));
-		bancoAdministrador.adicionar(new Administrador("PaulaBras", "06544337431", "20004750595", "Feminino",
-				data.returnDate(21, 05, 1990), new Usuario("paulo", "789456")));
+				"Masculino", data.returnDate(23, 06, 1994), "fofinho@gmail.com", new Usuario("Filipe", "CSS")));
+		bancoAdministrador.adicionar(new Administrador("Paula Bras", "06544337431", "20004750595", "Feminino",
+				data.returnDate(21, 05, 1990), "paula_tejano@gmail.com", new Usuario("paula", "tejano")));
 
 		bancoCliente.adicionar(new Cliente("Flavio Alves da Costa", "9876543210", "12345678900", "Masculino",
 				data.returnDate(16, 04, 1996), "flavio@gmail.com", "707070"));

@@ -23,7 +23,11 @@ public class AdministradorBusiness {
 	}
 
 	public boolean adicionar(Administrador novo) {
-		return this.banco.add(novo);
+		if (!this.existeCpf(novo.getCpf()) && (!this.existeRg(novo.getRg())
+				&& (!this.existeEmail(novo.getEmail()) && (!this.existeNomeUsuario(novo.getUsuario().getLogin())))))
+			return this.banco.add(novo);
+		else
+			return false;
 	}
 
 	public ArrayList<Administrador> pesquisarNome(String nome) {
@@ -108,48 +112,6 @@ public class AdministradorBusiness {
 		return -1;
 	}
 
-	public Administrador pesquisarUsuario(Usuario usuario) {
-		if (this.banco == null || this.getSize() == 0)
-			return null;
-		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getUsuario().getLogin().equals(usuario.getLogin())
-					&& this.banco.get(i).getUsuario().getSenha().equals(usuario.getSenha()))
-				return this.banco.get(i);
-		}
-		return null;
-	}
-
-	public boolean existeUsuario(Usuario usuario) {
-		if (this.banco == null || this.getSize() == 0)
-			return false;
-		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getUsuario().getLogin().equals(usuario.getLogin())
-					&& this.banco.get(i).getUsuario().getSenha().equals(usuario.getSenha()))
-				return true;
-		}
-		return false;
-	}
-
-	public Administrador pesquisarNomeUsuario(String nomeUsuario) {
-		if (this.banco == null || this.getSize() == 0)
-			return null;
-		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getUsuario().getLogin().equals(nomeUsuario))
-				return this.banco.get(i);
-		}
-		return null;
-	}
-
-	public boolean existeNomeUsuario(String nomeUsuario) {
-		if (this.banco == null || this.getSize() == 0)
-			return false;
-		for (int i = 0; i < this.getSize(); i++) {
-			if (this.banco.get(i).getUsuario().getLogin().equals(nomeUsuario))
-				return true;
-		}
-		return false;
-	}
-
 	public ArrayList<Administrador> pesquisarSexo(String sexo) {
 		ArrayList<Administrador> resultado = new ArrayList<Administrador>();
 		if (this.banco == null || this.getSize() == 0)
@@ -194,6 +156,78 @@ public class AdministradorBusiness {
 			if (dt.filtroData(this.banco.get(i).getNascimento()).equals(dt.filtroData(nascimento))) {
 				return true;
 			}
+		}
+		return false;
+	}
+
+	public Administrador pesquisarEmail(String email) {
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getEmail().equalsIgnoreCase(email))
+				return this.banco.get(i);
+		}
+		return null;
+	}
+
+	public boolean existeEmail(String email) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getEmail().equalsIgnoreCase(email))
+				return true;
+		}
+		return false;
+	}
+
+	public int pesquisarEmailIndex(String email) {
+		if (this.banco == null || this.getSize() == 0)
+			return -1;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getEmail().equalsIgnoreCase(email))
+				return i;
+		}
+		return -1;
+	}
+
+	public Administrador pesquisarUsuario(Usuario usuario) {
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getUsuario().getLogin().equals(usuario.getLogin())
+					&& this.banco.get(i).getUsuario().getSenha().equals(usuario.getSenha()))
+				return this.banco.get(i);
+		}
+		return null;
+	}
+
+	public boolean existeUsuario(Usuario usuario) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getUsuario().getLogin().equals(usuario.getLogin())
+					&& this.banco.get(i).getUsuario().getSenha().equals(usuario.getSenha()))
+				return true;
+		}
+		return false;
+	}
+
+	public Administrador pesquisarNomeUsuario(String nomeUsuario) {
+		if (this.banco == null || this.getSize() == 0)
+			return null;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getUsuario().getLogin().equals(nomeUsuario))
+				return this.banco.get(i);
+		}
+		return null;
+	}
+
+	public boolean existeNomeUsuario(String nomeUsuario) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getUsuario().getLogin().equals(nomeUsuario))
+				return true;
 		}
 		return false;
 	}
