@@ -62,9 +62,9 @@
 							</table></td>
 					</tr>
 				</table>
-				<table class="FormTableCadastro">
+				<table id="TableCadastro" class="FormTableCadastro">
 					<tr id="EntradaVeiculo" style="display: none">
-						<td><label>Veículo</label></td>
+						<td id="TipoVeiculo" class="FormTableCadastro"><label>Veículo</label></td>
 						<td><table>
 								<tr>
 									<td><input id="ServicoTipoVeiculoCarro"
@@ -102,7 +102,7 @@
 					<tr>
 						<td><input type="submit" name="action" value="Cadastrar"></td>
 						<td><input type="reset" value="Redefinir"></td>
-						<td><input type="button" name="action" value="Cancelar" onClick="encaminharConfirm('servico.jsp','Quer mesmo cancelar?')"></td>
+						<td><input type="button" name="action" value="Cancelar"></td>
 					</tr>
 				</table>
 			</form>

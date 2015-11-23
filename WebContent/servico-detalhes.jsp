@@ -38,11 +38,11 @@
 			<table align="center">
 				<c:if test="${servicoSelecionado != null}">
 					<tr>
-						<td><label>Codigo</label></td>
+						<td id="DetalhesCodigo" class="DetalhesServicoCodigo"><label>Codigo</label></td>
 						<td><input id="ServicoCodigo" name="servicoCodigo"
 							type="text" value="${servicoSelecionado.getCodigo()}" disabled>
 					<tr>
-						<td><label>Tipo de servico</label></td>
+						<td id="DetalhesServicoTipo" class="DetalhesTipoServico"><label>Tipo de servico</label></td>
 						<td><c:choose>
 								<c:when
 									test="${servicoSelecionado.getClass().getName() eq 'model.Pintura'}">
@@ -62,20 +62,20 @@
 							</c:choose></td>
 					</tr>
 					<tr>
-						<td><label>Veiculo</label></td>
+						<td id="DetalhesServicoVeiculo" class="DetalhesVeiculoServico"><label>Veiculo</label></td>
 						<td><input type="text" id="ServicoVeiculo"
 							name="servicoVeiculo"
 							value="${servicoSelecionado.getTipoVeiculo()}" disabled></td>
 					</tr>
 					<tr>
-						<td><label>Serviço</label></td>
+						<td id="DetalhesServico" class="ServicoDetalhes"><label>Serviço</label></td>
 						<td><input id="ServicoDescricao" name="servicoDescricao"
 							type="text" value="${servicoSelecionado.getDescricao()}" disabled></td>
 					</tr>
 					<c:if
 						test="${servicoSelecionado.getClass().getName() eq 'model.Pintura' }">
 						<tr>
-							<td><label>Cor</label></td>
+							<td id="DetalhesCor" class="CorDetalhes"><label>Cor</label></td>
 							<td><input id="ServicoCor" name="servicoCor" type="text"
 								value="${servicoSelecionado.getCor()}" disabled></td>
 						</tr>
@@ -83,14 +83,14 @@
 					<c:if
 						test="${servicoSelecionado.getClass().getName() != 'model.Mecanica'}">
 						<tr>
-							<td><label>Peça</label></td>
+							<td id="DetalhesPeca" class="PecaDetalhes"><label>Peça</label></td>
 							<td><input id="ServicoPeca" name="servicoPeca" type="text"
 								value="${servicoSelecionado.getPeca()}" disabled></td>
 						</tr>
 					</c:if>
 					<tr>
-						<td><label>Preço</label></td>
-						<td><input id="ServicoPreco" name="servicoPreco" type="text"
+						<td id="DetalhesPreco" class="PrecoDetalhes"><label>Preço</label></td>
+						<td><input id="ServicoPreco" name="servicoPreco" type="text" minlength=4 maxlength=9 pattern="[0-9]{1,6},[0-9]{2}$ "
 							value="${servicoSelecionado.getPreco()}"></td>
 					</tr>
 				</c:if>
