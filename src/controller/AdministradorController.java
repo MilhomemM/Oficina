@@ -41,15 +41,15 @@ public class AdministradorController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("chegou");
 		String action = request.getParameter("action");
-		System.out.println("Action = " + action);
+		
 		switch (action.toLowerCase()) {
 		case "registrar":
 			this.registrar(request, response);
 			break;
-		case "cancelar":
-			this.cancelarRegistro(request, response);
+		case "alterar":
+			break;
+		case "excluir":
 			break;
 		}
 	}
@@ -57,7 +57,7 @@ public class AdministradorController extends HttpServlet {
 	private void registrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String nomeCompleto = request.getParameter("usuarioNomeCompleto");
+		String nome = request.getParameter("usuarioNomeCompleto");
 		String email = request.getParameter("usuarioEmail");
 		String confirmarEmail = request.getParameter("usuarioConfirmarEmail");
 		String rg = request.getParameter("usuarioRG");
@@ -68,32 +68,40 @@ public class AdministradorController extends HttpServlet {
 		String sexo = request.getParameter("usuarioSexo");
 		String nascimento = request.getParameter("usuarioNascimento");
 
-		
 		Data dt = new Data();
-		
+
 		AdministradorBusiness bancoAdministrador = (AdministradorBusiness) request.getServletContext()
 				.getAttribute("bancoAdministrador");
-		Administrador novo;
-	
-		if (senha.equals(confirmarSenha) && email.equals(confirmarEmail)) {
-			
-			Usuario novoUsuario = new Usuario(nomeDeUsuario, senha);
-			System.out.println("usuario passou");
-			System.out.println(dt.filtroData(dt.returnDateInvertido(nascimento)));
-			novo = new Administrador(nomeCompleto, rg, cpf, sexo, dt.returnDateInvertido(nascimento), novoUsuario);
-			bancoAdministrador.adicionar(novo);
-			request.getServletContext().setAttribute("AdministradorBusiness", bancoAdministrador);
 
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+		String mensagem;
+
+		if (email.equals(confirmarEmail)) {
+			if (senha.equals(confirmarSenha)) {
+				Usuario uNovo = new Usuario(nomeDeUsuario, senha);
+				Administrador admNovo = new Administrador(nome, rg, cpf, sexo, dt.returnDateInvertido(nascimento),
+						email, uNovo);
+
+				if (bancoAdministrador.adicionar(admNovo)) {
+					mensagem = "Registrado com sucesso!";
+
+					request.getServletContext().setAttribute("bancoAdministrador", bancoAdministrador);
+					request.setAttribute("registrado", Boolean.TRUE);
+					request.setAttribute("admMensagem", mensagem);
+
+					request.getRequestDispatcher("login.jsp").forward(request, response);
+				} else {
+					mensagem = "Houve um erro ao tentar efetuar o registro, talvez o usuario ja exista...";
+				}
+			} else {
+				mensagem = "Senhas não coincidem!";
+			}
 		} else {
-			request.getRequestDispatcher("registrar-usuario.jsp").forward(request, response);
+			mensagem = "Emails não coincidem!";
 		}
 
-	}
-	
-	private void cancelarRegistro(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
-		request.setAttribute("registroCancelado", Boolean.TRUE);
-		request.getRequestDispatcher("login.jsp");
+		request.setAttribute("registroError", Boolean.TRUE);
+		request.setAttribute("admMensagem", mensagem);
+
+		request.getRequestDispatcher("usuario-registrar.jsp").forward(request, response);
 	}
 }

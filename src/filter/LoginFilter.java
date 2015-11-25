@@ -45,8 +45,8 @@ public class LoginFilter implements Filter {
 		String paginaAtual = new String(hreq.getRequestURL());
 
 		if (paginaAtual != null && (paginaAtual.endsWith("")
-				&& (!paginaAtual.endsWith("login.jsp") && (!paginaAtual.endsWith("LoginController")
-						&& (!paginaAtual.endsWith("LoginController.do") && (paginaAtual.endsWith(".jsp"))))))) {
+				&& (!paginaAtual.endsWith("login.jsp") && (!paginaAtual.endsWith("registrar-usuario.jsp") && (!paginaAtual.endsWith("LoginController")
+						&& (!paginaAtual.endsWith("LoginController.do") && (paginaAtual.endsWith(".jsp")))))))) {
 			if (session.getAttribute("usuarioLogado") == null) {
 				hresp.sendRedirect("login.jsp");
 				return;

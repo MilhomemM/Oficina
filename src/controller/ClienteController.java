@@ -63,20 +63,16 @@ public class ClienteController extends HttpServlet {
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String dispatcher = "cliente-detalhes.jsp";
+		;
 
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
 		String nome = request.getParameter("clienteNome");
-		System.out.println(nome);
-		
 		String sexo = request.getParameter("clienteSexo");
 		String nascimento = request.getParameter("clienteNascimento");
 		String rg = request.getParameter("clienteRG");
 		String cpf = request.getParameter("clienteCPF");
 		String email = request.getParameter("clienteEmail");
 		String telefone = request.getParameter("clienteDDD") + request.getParameter("clienteTelefone");
-		System.out.println(nascimento);
+
 		Data dt = new Data();
 
 		Cliente novo = new Cliente(nome, rg, cpf, sexo, dt.returnDateInvertido(nascimento), email, telefone);
@@ -94,13 +90,12 @@ public class ClienteController extends HttpServlet {
 
 	private void pesquisar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Entrou no metodo");
+
 		String dispatcher;
 		String tipoDePesquisa = request.getParameter("tipoDePesquisa");
 		String campoDePesquisa = request.getParameter("campoDePesquisa");
-		System.out.println(campoDePesquisa);
+
 		Data dt = new Data();
-		System.out.println("dt");
 
 		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
 
@@ -117,8 +112,6 @@ public class ClienteController extends HttpServlet {
 			dispatcher = "cliente-pesquisar.jsp";
 			break;
 		case "nascimento":
-			System.out.println("Case: ");
-			System.out.println(campoDePesquisa);
 			resultado = bancoCliente.pesquisarNascimento(dt.returnDateInvertido(campoDePesquisa));
 			dispatcher = "cliente-pesquisar.jsp";
 			break;
@@ -145,7 +138,9 @@ public class ClienteController extends HttpServlet {
 			dispatcher = "cliente-pesquisar.jsp";
 			break;
 		default:
-			dispatcher = "home.jsp";
+			dispatcher = "cliente.jsp";
+			response.sendRedirect(dispatcher);
+			break;
 		}
 		if ((tipoDePesquisa.equalsIgnoreCase("Rg") || tipoDePesquisa.equalsIgnoreCase("Cpf"))
 				&& resultadoEspecifico != null) {
@@ -188,7 +183,8 @@ public class ClienteController extends HttpServlet {
 		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
 
 		int posicao = bancoCliente.pesquisarCpfIndex(cpf);
-		if(posicao != -1) bancoCliente.remover(posicao);
+		if (posicao != -1)
+			bancoCliente.remover(posicao);
 		System.out.println(posicao);
 		request.setAttribute("excluido", Boolean.TRUE);
 		request.getServletContext().setAttribute("bancoCliente", bancoCliente);

@@ -4,11 +4,21 @@ import java.util.Date;
 
 public class Administrador extends Pessoa {
 	Usuario usuario;
+	String email;
 
-	public Administrador(String nome, String rg, String cpf, String sexo,
-			Date nascimento, Usuario usuario) {
+	public Administrador(String nome, String rg, String cpf, String sexo, Date nascimento, String email,
+			Usuario usuario) {
 		super(nome, rg, cpf, sexo, nascimento);
+		this.email = email;
 		this.usuario = usuario;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Usuario getUsuario() {
