@@ -7,6 +7,7 @@
 <title>Oficina - Perfil</title>
 <link rel="stylesheet" href="./CSS/Perfil.css" />
 <link rel="stylesheet" type="text/css" href="./CSS/Modelo.css" />
+<script type="text/javascript" src="./JS/JavaScript.js"></script>
 </head>
 
 <body>
@@ -107,12 +108,12 @@
 
 					<table>
 						<tr>
-							<td><input id="BotaoAlterar" type="submit" name="alterar"
+							<td><input id="BotaoAlterar" type="submit" name="action"
 								value="Alterar" /></td>
 							<td><input id="BotaoLimpar" type="reset" name="limpar"
-								value="Limpar" /></td>
-							<td><input id="BotaoVoltar" type="submit" name="voltar"
-								value="Voltar" /></td>
+								value="Redefinir" /></td>
+							<td><input id="BotaoVoltar" type="button" name="voltar"
+								value="Voltar" onClick="encaminhar('home.jsp');"/></td>
 						</tr>
 					</table>
 				</center>

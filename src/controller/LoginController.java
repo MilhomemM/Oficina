@@ -55,6 +55,7 @@ public class LoginController extends HttpServlet {
 				this.logout(request, response);
 				break;
 			default:
+				System.out.println("Ola");
 				this.verificarSession(request, response);
 				break;
 			}
