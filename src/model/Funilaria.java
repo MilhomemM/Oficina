@@ -4,12 +4,12 @@ public class Funilaria extends Servico {
 	private String peca;
 
 	public Funilaria(String codigo, String tipoVeiculo, String descricao, double preco, String peca) {
-		super(codigo, tipoVeiculo, descricao, preco);
+		super(codigo, tipoVeiculo, descricao, preco, peca, peca);
 		this.peca = peca;
 	}
 
 	public Funilaria(String tipoVeiculo, String descricao, double preco, String peca) {
-		super(tipoVeiculo, descricao, preco);
+		super(tipoVeiculo, descricao, preco, peca, peca);
 		this.peca = peca;
 	}
 	@Override

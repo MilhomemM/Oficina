@@ -5,19 +5,25 @@ public abstract class Servico {
 	private String tipoVeiculo;
 	private String descricao;
 	private double preco;
+	private String cor;
+	private String peca;
 
-	public Servico(String codigo, String tipoVeiculo, String descricao, double preco) {
+	public Servico(String codigo, String tipoVeiculo, String descricao, double preco, String cor, String peca) {
 		this.codigo = codigo;
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
+		this.cor = cor;
+		this.peca = peca;
 	}
 	
 	
-	public Servico(String tipoVeiculo, String descricao, double preco) {
+	public Servico(String tipoVeiculo, String descricao, double preco,String cor, String peca) {
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
+		this.cor = cor;
+		this.peca = peca;
 	}
 
 
@@ -67,4 +73,25 @@ public abstract class Servico {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
+
+	public String getCor() {
+		return cor;
+	}
+
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+
+	public String getPeca() {
+		return peca;
+	}
+
+
+	public void setPeca(String peca) {
+		this.peca = peca;
+	}
+	
 }
