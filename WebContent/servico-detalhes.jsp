@@ -76,21 +76,21 @@
 						test="${servicoSelecionado.getClass().getName() eq 'model.Pintura' }">
 						<tr>
 							<td id="DetalhesCor" class="CorDetalhes"><label>Cor</label></td>
-							<td><input id="ServicoCor" name="servicoCor" type="text"
-								value="${servicoSelecionado.getCor()}" disabled></td>
+							<td><input id="ServicoCor" name="servicoCor" type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+								value="${servicoSelecionado.getCor()}"></td>
 						</tr>
 					</c:if>
 					<c:if
 						test="${servicoSelecionado.getClass().getName() != 'model.Mecanica'}">
 						<tr>
 							<td id="DetalhesPeca" class="PecaDetalhes"><label>Peça</label></td>
-							<td><input id="ServicoPeca" name="servicoPeca" type="text"
-								value="${servicoSelecionado.getPeca()}" disabled></td>
+							<td><input id="ServicoPeca" name="servicoPeca" type="text" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"
+								value="${servicoSelecionado.getPeca()}"></td>
 						</tr>
 					</c:if>
 					<tr>
 						<td id="DetalhesPreco" class="PrecoDetalhes"><label>Preço</label></td>
-						<td><input id="ServicoPreco" name="servicoPreco" type="text" minlength=4 maxlength=9 pattern="[0-9]{1,6},[0-9]{2}$ "
+						<td><input id="ServicoPreco" name="servicoPreco" type="text" minlength=4 maxlength=9 pattern="[0-9]{1,6},[0-9]{2}$"
 							value="${servicoSelecionado.getPreco()}"></td>
 					</tr>
 				</c:if>

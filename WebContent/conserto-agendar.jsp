@@ -35,7 +35,7 @@
 						<td><label for="VeiculoPlaca">Veiculo</label></td>
 						<td><select id="VeiculoPlaca" name="veiculoPlaca" required>
 								<option value="">Selecione...</option>
-								<c:forEach var="veiculo" items="${bancoVeiculo.getBanco() }">
+								<c:forEach var="veiculo" items="${bancoVeiculo.getBanco()}">
 									<option value="${veiculo.getPlaca() }">${veiculo.getPlaca() }
 										- ${veiculo.getProprietario().getNome() }</option>
 								</c:forEach>
@@ -60,35 +60,16 @@
 											<td><select id="ServicoPintura" name="servicoPintura"
 												onChange="valorPintura();">
 													<option value="">Selecione...</option>
-													<option class="optionCarro" value="Tira Risco">Tira
-														Risco</option>
-													<option class="optionMoto" value="Pintura Completa">Pintura
-														Completa</option>
+													<c:forEach var="pintura"
+														items="${bancoServico.pesquisarTipoServico(\"pintura\")}">
+														<option value="${pintura.getCodigo()}">${pintura.getCodigo()}</option>
+													</c:forEach>
 											</select></td>
 										</tr>
 										<tr>
-											<td><label for="ServicoPinturaCor">Cor:</label></td>
-											<td><select id="ServicoPinturaCor"
-												name="servicoPinturaCor" onChange="valorPintura();">
-													<option value="">Selecione...</option>
-													<option class="optionCarro" value="Vermelho">Vermelho</option>
-													<option class="optionMoto" value="Preto">Preto</option>
-											</select></td>
-										</tr>
-										<tr>
-											<td><label for="ServicoPinturaPeca">Peça:</label></td>
-											<td><select id="ServicoPinturaPeca"
-												name="servicoPinturaPeca" onChange="valorPintura();">
-													<option value="">Selecione...</option>
-													<option class="optionCarro" value="Porta Lateral Direita">Porta
-														Lateral Direita</option>
-													<option class="optionMoto" value="Tanque">Tanque</option>
-											</select></td>
-										</tr>
-										<tr>
-											<td><label for="ServicoPinturaPreco">Preço:</label></td>
-											<td>R$ <input id="ServicoPinturaPreco"
-												name="servicoPinturaPreco" class="Disabled" type="text"
+											<td><label for="ServicoFunilariaPreco">Preço:</label></td>
+											<td>R$ <input id="ServicoFunilariaPreco"
+												name="servicoFunilariaPreco" class="Disabled" type="text"
 												value="00,00" disabled></td>
 										</tr>
 									</table>
@@ -110,19 +91,10 @@
 											<td><select id="ServicoFunilaria"
 												name="servicoFunilaria" onChange="valorFunilaria();">
 													<option value="">Selecione...</option>
-													<option class="optionCarro" value="Martelinho De Ouro">Martelinho
-														De Ouro</option>
-													<option class="optionMoto" value="Desamassamento">Desamassamento</option>
-											</select></td>
-										</tr>
-										<tr>
-											<td><label for="ServicoFunilariaPeca">Peça:</label></td>
-											<td><select id="ServicoFunilariaPeca"
-												name="servicoFunilariaPeca" onChange="valorFunilaria();">
-													<option value="">Selecione...</option>
-													<option class="optionCarro" value="Parachoque">Parachoque</option>
-													<option class="optionMoto" value="Paralama Frontal">Paralama
-														Frontal</option>
+													<c:forEach var="funilaria"
+														items="${bancoServico.pesquisarTipoServico(\"funilaria\") }">
+														<option value="${funilaria.getCodigo()}">${funilaria.getCodigo()}</option>
+													</c:forEach>
 											</select></td>
 										</tr>
 										<tr>
@@ -150,10 +122,10 @@
 											<td><select id="ServicoMecanica" name="servicoMecanica"
 												onChange="valorMecanica();">
 													<option value="">Selecione...</option>
-													<option class="optionCarro" value="Troca De Óleo">Troca
-														De Óleo</option>
-													<option class="optionMoto" value="Troca De Fluído De Freio">Troca
-														De Fluído De Freio</option>
+													<c:forEach var="mecanica"
+														items="${bancoServico.pesquisarTipoServico(\"mecanica\") }">
+														<option value="${mecanica.getCodigo()}">${mecanica.getCodigo()}</option>
+													</c:forEach>
 											</select></td>
 										</tr>
 										<tr>
@@ -182,9 +154,9 @@
 				<br />
 				<table>
 					<tr>
-						<td><input type="submit" name="action" value="Cancelar"></td>
-						<td><input type="reset" value="Redefinir"></td>
 						<td><input type="submit" value="Confirmar"></td>
+						<td><input type="reset" value="Redefinir"></td>
+						<td><input type="submit" name="action" value="Cancelar"></td>
 					</tr>
 				</table>
 			</form>

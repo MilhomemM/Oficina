@@ -58,6 +58,9 @@ public class ServicoController extends HttpServlet {
 			System.out.println("ServicoController - Switch - Alterar");
 			this.alterar(request, response);
 			break;
+		case "cancelar":
+			System.out.println("ServicoController - Switch - cancelar");
+			this.excluir(request, response);
 		case "excluir":
 			System.out.println("ServicoController - Switch - Excluir");
 			this.excluir(request, response);
@@ -181,6 +184,8 @@ public class ServicoController extends HttpServlet {
 			throws ServletException, IOException {
 		String codigo = request.getParameter("servicoCodigo");
 		String preco = request.getParameter("servicoPreco");
+		String cor = request.getParameter("servicoCor");
+		String peca = request.getParameter("servicoPeca");
 		String dispatcher = "servico-detalhes.jsp";
 		preco = preco.replace(',', '.');
 
@@ -188,6 +193,8 @@ public class ServicoController extends HttpServlet {
 		Servico s = bancoServico.pesquisarCodigo(codigo);
 		
 		s.setPreco(Double.parseDouble(preco));
+		s.setCor(cor);
+		s.setPeca(peca);
 		int posicao = bancoServico.pesquisarCodigoIndex(codigo);
 		if (posicao != -1) {
 			bancoServico.alterar(posicao, s);
