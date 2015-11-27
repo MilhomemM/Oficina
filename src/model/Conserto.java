@@ -19,11 +19,35 @@ public class Conserto {
 		this.servicos = servicos;
 		this.total = total;
 	}
+	
+	public Conserto(Veiculo veiculo, Date data, ArrayList<Servico> servicos,
+			double total) {
+		super();
+		this.veiculo = veiculo;
+		this.data = data;
+		this.servicos = servicos;
+		this.total = total;
+	}
 
 	public Conserto(String codigo, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
 			Funilaria funilaria, double total) {
 		super();
 		this.codigo = codigo;
+		this.veiculo = veiculo;
+		this.data = data;
+		if (pintura != null)
+			this.servicos.add(pintura);
+		if (mecanica != null)
+			this.servicos.add(mecanica);
+		if (funilaria != null)
+			this.servicos.add(funilaria);
+		this.total = total;
+	}
+
+	
+	public Conserto(Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
+			Funilaria funilaria, double total) {
+		super();
 		this.veiculo = veiculo;
 		this.data = data;
 		if (pintura != null)

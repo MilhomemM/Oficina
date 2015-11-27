@@ -85,7 +85,7 @@ public class Cliente extends Pessoa {
 	@Override
 	public String getNascimentoString() {
 		Data dt = new Data();
-		return dt.filtroData(super.getNascimento());
+		return dt.filtroData(this.getNascimento());
 	}
 
 	@Override
@@ -93,4 +93,32 @@ public class Cliente extends Pessoa {
 		// TODO Auto-generated method stub
 		super.setNascimento(nascimento);
 	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}
+
+	public boolean equals(Cliente c) {
+		if (this.getCpf().equals(c.getCpf()) || this.getRg().equals(c.getRg()))
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public String toString() {
+		String cliente;
+		cliente = "Nome: " + this.getNome() + "\n"+
+		"RG: " + this.getRg() + "\n"+
+		"CPF: " + this.getCpf() +"\n" +
+		"Sexo: " + this.getSexo() + "\n" +
+		"Nascimento: " + this.getNascimentoString() + "\n" +
+		"Email: " + this.getEmail() + "\n"+
+		"Telefone: " + this.getTelefone() + "\n";
+		
+		return cliente;
+	}
+
 }

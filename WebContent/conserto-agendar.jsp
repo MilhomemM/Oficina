@@ -26,142 +26,67 @@
 	<br />
 	<br />
 	<section style="text-align: center">
-		<h1>Agendamento de Conserto</h1>
-		<center>
-			<form id="ConsertoFormAgendamento" method="post"
-				action="ConsertoController.do" onSubmit="return validarSubmit();">
-				<table class="FormTableCadastro">
+		<h1 id="TituloConserto" class="conserto">Agendamento de Conserto</h1>
+		<form id="FormAgendaConserto" name="formAgendaConserto"
+			action="ConsertoController.do" method="post">
+			<center>
+				<table id="TableFormConserto" class="FormTableCadastro">
 					<tr>
-						<td><label for="VeiculoPlaca">Veiculo</label></td>
-						<td><select id="VeiculoPlaca" name="veiculoPlaca" required>
-								<option value="">Selecione...</option>
-								<c:forEach var="veiculo" items="${bancoVeiculo.getBanco()}">
-									<option value="${veiculo.getPlaca() }">${veiculo.getPlaca() }
-										- ${veiculo.getProprietario().getNome() }</option>
-								</c:forEach>
-						</select></td>
+						<td><table>
+								<tr>
+									<td><label for="ClienteData">Data</label></td>
+									<td><input id="ClienteData" class="clienteData"
+										type="date"></td>
+								</tr>
+								<tr>
+									<td><label for="ClientePlacaVeiculo">Veiculo</label></td>
+									<td class="entrada"><input id="ClientePlacaVeiculo"
+										type="text"></td>
+								</tr>
+							</table></td>
 					</tr>
-				</table>
-				<table width="80%">
 					<tr>
-						<td valign="top" width="33%"><fieldset
-								id="FieldsetServicoTipoPintura">
-								<legend>
-									<input id="ServicoTipoPintura" name="servicoTipoPintura"
-										type="checkbox" value="Pintura"
-										onClick="mostrarConteudoOculto();"> <label
-										for="ServicoTipoPintura">Pintura</label>
-								</legend>
-								<div id="FormServicoPintura" name="formServicoPintura"
-									style="display: none">
-									<table class="FormTableCadastro">
-										<tr>
-											<td><label for="ServicoPintura">Serviço:</label></td>
-											<td><select id="ServicoPintura" name="servicoPintura"
-												onChange="valorPintura();">
-													<option value="">Selecione...</option>
-													<c:forEach var="pintura"
-														items="${bancoServico.pesquisarTipoServico(\"pintura\")}">
-														<option value="${pintura.getCodigo()}">${pintura.getCodigo()}</option>
-													</c:forEach>
-											</select></td>
-										</tr>
-										<tr>
-											<td><label for="ServicoFunilariaPreco">Preço:</label></td>
-											<td>R$ <input id="ServicoFunilariaPreco"
-												name="servicoFunilariaPreco" class="Disabled" type="text"
-												value="00,00" disabled></td>
-										</tr>
-									</table>
-								</div>
-							</fieldset></td>
-						<td valign="top" width="33%"><fieldset
-								id="FieldsetServicoTipoFunilaria">
-								<legend>
-									<input id="ServicoTipoFunilaria" name="servicoTipoFunilaria"
-										type="checkbox" value="Funilaria"
-										onClick="mostrarConteudoOculto();"> <label
-										for="ServicoTipoFunilaria">Funilaria</label>
-								</legend>
-								<div id="FormServicoFunilaria" name="formServicoFunilaria"
-									style="display: none">
-									<table class="FormTableCadastro">
-										<tr>
-											<td><label for="ServicoFunilaria">Serviço:</label></td>
-											<td><select id="ServicoFunilaria"
-												name="servicoFunilaria" onChange="valorFunilaria();">
-													<option value="">Selecione...</option>
-													<c:forEach var="funilaria"
-														items="${bancoServico.pesquisarTipoServico(\"funilaria\") }">
-														<option value="${funilaria.getCodigo()}">${funilaria.getCodigo()}</option>
-													</c:forEach>
-											</select></td>
-										</tr>
-										<tr>
-											<td><label for="ServicoFunilariaPreco">Preço:</label></td>
-											<td>R$ <input id="ServicoFunilariaPreco"
-												name="servicoFunilariaPreco" class="Disabled" type="text"
-												value="00,00" disabled></td>
-										</tr>
-									</table>
-								</div>
-							</fieldset></td>
-						<td valign="top" width="34%"><fieldset
-								id="FieldsetServicoTipoMecanica">
-								<legend>
-									<input id="ServicoTipoMecanica" name="servicoTipoMecanica"
-										type="checkbox" value="Mecanica"
-										onClick="mostrarConteudoOculto();"> <label
-										for="ServicoTipoMecanica">Mecanica</label>
-								</legend>
-								<div id="FormServicoMecanica" name="formServicoMecanica"
-									style="display: none">
-									<table class="FormTableCadastro">
-										<tr>
-											<td><label for="ServicoMecanica">Serviço:</label></td>
-											<td><select id="ServicoMecanica" name="servicoMecanica"
-												onChange="valorMecanica();">
-													<option value="">Selecione...</option>
-													<c:forEach var="mecanica"
-														items="${bancoServico.pesquisarTipoServico(\"mecanica\") }">
-														<option value="${mecanica.getCodigo()}">${mecanica.getCodigo()}</option>
-													</c:forEach>
-											</select></td>
-										</tr>
-										<tr>
-											<td><label for="ServicoMecanicaPreco">Preço:</label></td>
-											<td>R$ <input id="ServicoMecanicaPreco"
-												name="servicoMecanicaPreco" class="Disabled" type="text"
-												value="00,00" disabled></td>
-										</tr>
-									</table>
-								</div>
+						<td><fieldset>
+								<legend> Serviços </legend>
+								<table>
+									<tr>
+										<td class="entrada"><input id="ConsertoCheckP"
+											name="consertoCheckP" type="checkbox"></td>
+										<td><label for="ConsertoCheckP">Pintura</labe></td>
+										<td><input id="ConsertoCodigoPintura"
+											name="consertoCodigoPintura" type="text"></td>
+									</tr>
+									<tr>
+										<td class="entrada"><input id="ConsertoCheckF"
+											name="consertoCheckF" type="checkbox"></td>
+										<td><label for="ConsertoCheckF">Funilaria</label></td>
+										<td class="entrada"><input id="ConsertoCodigoFunilaria"
+											name="consertoCodigoFunilaria" type="text"></td>
+									</tr>
+									<tr>
+										<td class="entrada"><input id="ConsertoCheckM"
+											name="consertoCheckM" type="checkbox"></td>
+										<td><label for="ConsertoCheckM">Mecanica</label></td>
+										<td class="entrada"><input id="ConsertoCodigoMecanica"
+											name="consertoCodigoMecanica" type="text"></td>
+									</tr>
+								</table>
 							</fieldset></td>
 					</tr>
 				</table>
-				<table class="FormTableCadastro">
-					<tr>
-						<td><label for="ConsertoData">Data</label></td>
-						<td><input id="ConsertoData" name="consertoData" type="date"
-							placeholder="dd/mm/aaaa" required></td>
-					</tr>
-					<tr>
-						<td><label for="Conserto">Total</label></td>
-						<td>R$ <input id="ConsertoTotal" name="consertoTotal"
-							type="text" value="00,00" disabled></td>
-					</tr>
-				</table>
-				<br />
 				<table>
 					<tr>
-						<td><input type="submit" value="Confirmar"></td>
-						<td><input type="reset" value="Redefinir"></td>
-						<td><input type="submit" name="action" value="Cancelar"></td>
+						<td class="entrada"><input id="ClienteBotaoAgendar"
+							nome="action" type="submit" value="Confirmar"></td>
+						<td class="entrada"><input id="ClienteBotaoRedefinir"
+							nome="action" type="reset" value="Redefinir"></td>
+						<td class="entrada"><input id="ClienteBotaoEnviar"
+							nome="action" type="submit" name="action" value="Cancelar"></td>
 					</tr>
 				</table>
-			</form>
-			<br />
-		</center>
+			</center>
+		</form>
+		<br />
 		<footer class="RodapeArticle">
 			*Todos os campos são obrigatórios.<br /> *Apenas um bloco pode ser
 			submetido por vez.

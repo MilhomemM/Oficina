@@ -120,5 +120,7 @@ public class Persistencia implements ServletContextListener {
 		contexto.getServletContext().setAttribute("bancoVeiculo", bancoVeiculo);
 		contexto.getServletContext().setAttribute("bancoServico", bancoServico);
 		contexto.getServletContext().setAttribute("bancoConserto", bancoConserto);
+		//Testes2.jsp
+		contexto.getServletContext().setAttribute("consertoSelecionado", bancoConserto.getBanco().get(0));
 	}
 }

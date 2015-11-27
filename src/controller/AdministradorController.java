@@ -42,12 +42,13 @@ public class AdministradorController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		
+
 		switch (action.toLowerCase()) {
 		case "registrar":
 			this.registrar(request, response);
 			break;
 		case "alterar":
+			this.alterar(request, response);
 			break;
 		case "excluir":
 			break;
@@ -103,5 +104,13 @@ public class AdministradorController extends HttpServlet {
 		request.setAttribute("admMensagem", mensagem);
 
 		request.getRequestDispatcher("usuario-registrar.jsp").forward(request, response);
+	}
+
+	public void alterar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+	public void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// LoginController.do?action=Sair
 	}
 }

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=ISO-8859-1" %>  
+<%@ page contentType="text/html; charset=ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
@@ -87,9 +87,12 @@
 				<br />
 				<table>
 					<tr>
-						<td><input type="submit" value="Cadastrar" name="action"></td>
-						<td><input type="reset" value="Redefinir" name="action"></td>
-						<td><input type="button" value="Cancelar" name="action"
+						<td><input id="ClienteBotaoCadastrar" name="action"
+							type="submit" value="Cadastrar"></td>
+						<td><input id="ClienteBotadaoResetar" name="action"
+							type="reset" value="Redefinir"></td>
+						<td><input id="ClienteBotaoCancelar" name="action"
+							type="button" value="Cancelar"
 							onClick="encaminharConfirm('cliente.jsp','Quer mesmo cancelar?');"></td>
 					</tr>
 				</table>
