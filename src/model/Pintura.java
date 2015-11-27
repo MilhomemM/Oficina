@@ -5,13 +5,13 @@ public class Pintura extends Servico {
 	private String peca;
 
 	public Pintura(String codigo, String tipoVeiculo, String descricao, double preco, String cor, String peca) {
-		super(codigo, tipoVeiculo, descricao, preco);
+		super(codigo, tipoVeiculo, descricao, preco, peca, peca);
 		this.cor = cor;
 		this.peca = peca;
 	}
 	
 	public Pintura(String tipoVeiculo, String descricao, double preco, String cor, String peca) {
-		super(tipoVeiculo, descricao, preco);
+		super(tipoVeiculo, descricao, preco, peca, peca);
 		this.cor = cor;
 		this.peca = peca;
 	}

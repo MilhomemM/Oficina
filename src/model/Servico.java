@@ -5,25 +5,35 @@ public abstract class Servico {
 	private String tipoVeiculo;
 	private String descricao;
 	private double preco;
+	private String cor;
+	private String peca;
 
-	public Servico(String codigo, String tipoVeiculo, String descricao, double preco) {
+	public Servico(String codigo, String tipoVeiculo, String descricao, double preco, String cor, String peca) {
 		this.codigo = codigo;
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
+		this.cor = cor;
+		this.peca = peca;
 	}
-
-	public Servico(String tipoVeiculo, String descricao, double preco) {
+	
+	
+	public Servico(String tipoVeiculo, String descricao, double preco,String cor, String peca) {
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
+		this.cor = cor;
+		this.peca = peca;
 	}
 
-	public String gerarCodigo(int numero) {
+
+	public String gerarCodigo(int numero)
+	{
 		String codigoPrefix = "SERV";
 		String codigoSuffix = "";
 		String codigoNovo;
-		for (int i = 0; i < 4 - String.valueOf(numero).length(); i++) {
+		for(int i = 0; i < 4 - String.valueOf(numero).length(); i++)
+		{
 			codigoSuffix = codigoSuffix + "0";
 		}
 		codigoSuffix = codigoSuffix + String.valueOf(numero);
@@ -59,40 +69,29 @@ public abstract class Servico {
 	public double getPreco() {
 		return preco;
 	}
-	
-	public String getPrecoFormatado(){
-		String preco = String.format("%.2f", this.preco);
-		preco.replace('.', ',');
-		return preco;
-	}
 
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
-	public boolean equals(Servico s) {
-		// TODO Auto-generated method stub
-		boolean iguais = false;
 
-		if (this.codigo.equals(s.getCodigo()))
-			iguais = true;
-
-		return iguais;
+	public String getCor() {
+		return cor;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		String value = "Codigo: " + this.codigo + "\n" +
-					   "Tipo de Veiculo: " + this.tipoVeiculo + "\n" +
-					   "Descricao: " + this.descricao + "\n" +
-					   "Preço: R$ " + this.getPrecoFormatado() + "\n";
-		return value;
+
+	public String getPeca() {
+		return peca;
 	}
+
+
+	public void setPeca(String peca) {
+		this.peca = peca;
+	}
+	
 }

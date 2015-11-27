@@ -3,12 +3,12 @@ package model;
 public class Mecanica extends Servico {
 
 	public Mecanica(String codigo, String tipoVeiculo, String descricao, double preco) {
-		super(codigo, tipoVeiculo, descricao, preco);
+		super(codigo, tipoVeiculo, descricao, preco, descricao, descricao);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Mecanica(String tipoVeiculo, String descricao, double preco) {
-		super(tipoVeiculo, descricao, preco);
+		super(tipoVeiculo, descricao, preco, descricao, descricao);
 		// TODO Auto-generated constructor stub
 	}
 
