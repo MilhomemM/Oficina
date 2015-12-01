@@ -65,7 +65,6 @@ public class ConsertoBusiness {
 		if (this.banco == null || this.getSize() == 0) {
 			return null;
 		}
-
 		for (int i = 0; i < this.getSize(); i++) {
 			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
 				return this.banco.get(i);
@@ -77,7 +76,6 @@ public class ConsertoBusiness {
 		if (this.banco == null || this.getSize() == 0) {
 			return false;
 		}
-
 		for (int i = 0; i < this.getSize(); i++) {
 			if (this.banco.get(i).getCodigo().equalsIgnoreCase(codigo))
 				return true;
@@ -112,6 +110,17 @@ public class ConsertoBusiness {
 		return resultado;
 	}
 
+	public boolean existeCliente(String proprietario) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getVeiculo().getProprietario().getNome().equalsIgnoreCase(proprietario)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public ArrayList<Conserto> pesquisarVeiculo(String placaVeiculo) {
 		ArrayList<Conserto> resultado = new ArrayList<Conserto>();
 
@@ -126,6 +135,17 @@ public class ConsertoBusiness {
 			}
 		}
 		return resultado;
+	}
+
+	public boolean existeVeiculo(String placaVeiculo) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getVeiculo().getPlaca().equalsIgnoreCase(placaVeiculo)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public ArrayList<Conserto> pesquisarData(Date data) {
@@ -144,6 +164,16 @@ public class ConsertoBusiness {
 
 		return resultado;
 
+	}
+
+	public boolean existeData(Date data) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		Data dt = new Data();
+		for (int i = 0; i < this.getSize(); i++)
+			if (dt.filtroData(this.banco.get(i).getData()).equals(dt.filtroData(data)))
+				return true;
+		return false;
 	}
 
 	public ArrayList<Conserto> pesquisarTipoServico(String tipoServico) {
@@ -183,6 +213,28 @@ public class ConsertoBusiness {
 		return resultado;
 	}
 
+	public boolean existeTipoServico(String tipoServico) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		if (tipoServico.equalsIgnoreCase("Pintura")) {
+			for (int i = 0; i < this.getSize(); i++)
+				for (int j = 0; j < this.banco.get(i).getServicos().size(); j++)
+					if (this.banco.get(i).getServicos().get(j) instanceof Pintura)
+						return true;
+		} else if (tipoServico.equalsIgnoreCase("Mecanica")) {
+			for (int i = 0; i < this.getSize(); i++)
+				for (int j = 0; j < this.banco.get(i).getServicos().size(); j++)
+					if (this.banco.get(i).getServicos().get(j) instanceof Mecanica)
+						return true;
+		} else if (tipoServico.equalsIgnoreCase("Funilaria")) {
+			for (int i = 0; i < this.getSize(); i++)
+				for (int j = 0; j < this.banco.get(i).getServicos().size(); j++)
+					if (this.banco.get(i).getServicos().get(j) instanceof Funilaria)
+						return true;
+		}
+		return false;
+	}
+
 	public ArrayList<Conserto> pesquisarPreco(double min, double max) {
 		ArrayList<Conserto> resultado = new ArrayList<Conserto>();
 
@@ -195,6 +247,17 @@ public class ConsertoBusiness {
 			}
 		}
 		return resultado;
+	}
+	
+	public boolean existePreco(double min, double max) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getTotal() >= min && this.banco.get(i).getTotal() <= max) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Conserto alterar(int posicao, Conserto novo) {

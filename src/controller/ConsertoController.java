@@ -44,7 +44,18 @@ public class ConsertoController extends HttpServlet {
 
 	}
 	
-	private void pesquisa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		String data = request.getParameter("");
+		String veiculo = request.getParameter("");
+		String servicoCheckP = request.getParameter("");
+		String servicoCodigoP = request.getParameter("");
+		String servicoCheckF = request.getParameter("");
+		String servicoCodigoF = request.getParameter("");
+		String servicoCheckM = request.getParameter("");
+		String servicoCodigoM = request.getParameter("");
+	}
+	
+	private void pesquisar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String dispatcher;
 		String tipoDePesquisa = request.getParameter("tipoPesquisa");
 		String campoDePesquisa = request.getParameter("campoDePesquisa");
