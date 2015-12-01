@@ -28,7 +28,8 @@
 	<section style="text-align: center">
 		<h1 id="TituloConserto" class="conserto">Agendamento de Conserto</h1>
 		<form id="FormAgendaConserto" name="formAgendaConserto"
-			action="ConsertoController.do" method="post">
+			action="ConsertoController.do" method="post"
+			onSubmit="return verificarCheckbox();">
 			<center>
 				<table id="TableFormConserto" class="FormTableCadastro">
 					<tr>
@@ -36,12 +37,12 @@
 								<tr>
 									<td><label for="ClienteData">Data</label></td>
 									<td><input id="ClienteData" class="clienteData"
-										type="date"></td>
+										type="date" required></td>
 								</tr>
 								<tr>
 									<td><label for="ClientePlacaVeiculo">Veiculo</label></td>
 									<td class="entrada"><input id="ClientePlacaVeiculo"
-										type="text"></td>
+										type="text" placeholder="Informe a placa do veículo" required></td>
 								</tr>
 							</table></td>
 					</tr>
@@ -51,24 +52,30 @@
 								<table>
 									<tr>
 										<td class="entrada"><input id="ConsertoCheckP"
-											name="consertoCheckP" type="checkbox"></td>
+											name="consertoCheckP" type="checkbox"
+											onClick="swapDisplay();"></td>
 										<td><label for="ConsertoCheckP">Pintura</labe></td>
 										<td><input id="ConsertoCodigoPintura"
-											name="consertoCodigoPintura" type="text"></td>
+											name="consertoCodigoPintura" type="text" placeholder="S#P"
+											style="display: none"></td>
 									</tr>
 									<tr>
 										<td class="entrada"><input id="ConsertoCheckF"
-											name="consertoCheckF" type="checkbox"></td>
+											name="consertoCheckF" type="checkbox"
+											onClick="swapDisplay();"></td>
 										<td><label for="ConsertoCheckF">Funilaria</label></td>
 										<td class="entrada"><input id="ConsertoCodigoFunilaria"
-											name="consertoCodigoFunilaria" type="text"></td>
+											name="consertoCodigoFunilaria" type="text" placeholder="S#F"
+											style="display: none"></td>
 									</tr>
 									<tr>
 										<td class="entrada"><input id="ConsertoCheckM"
-											name="consertoCheckM" type="checkbox"></td>
+											name="consertoCheckM" type="checkbox"
+											onClick="swapDisplay();"></td>
 										<td><label for="ConsertoCheckM">Mecanica</label></td>
 										<td class="entrada"><input id="ConsertoCodigoMecanica"
-											name="consertoCodigoMecanica" type="text"></td>
+											name="consertoCodigoMecanica" type="text" placeholder="S#M"
+											style="display: none"></td>
 									</tr>
 								</table>
 							</fieldset></td>
