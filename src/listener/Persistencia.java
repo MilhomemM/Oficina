@@ -64,14 +64,20 @@ public class Persistencia implements ServletContextListener {
 						data.returnDate(16, 04, 1996), "flavioalves996@gmail.com", new Usuario("Flavio", "Delicinha")));
 		bancoAdministrador.adicionar(new Administrador("Marcelo Milhomen Lourenço", "06544337431", "20004750595",
 				"Masculino", data.returnDate(24, 04, 1995), "zemaria@gmail.com", new Usuario("Marcelo", "ZeMaria")));
-		bancoAdministrador.adicionar(new Administrador("Vlabson Viana", "06544337431", "20014750578", "Masculino",
+		bancoAdministrador.adicionar(new Administrador("Vlabson Viana", "06544337432", "20014750578", "Masculino",
 				data.returnDate(27, 06, 1985), "vlabson@gmail.com", new Usuario("Vlabson", "Dimmy")));
 		bancoAdministrador.adicionar(new Administrador("Ruan Vitor", "06544336941", "20104750548", "Masculino",
 				data.returnDate(23, 07, 1995), "saci@gmail.com", new Usuario("Ruan", "Melissao")));
 		bancoAdministrador.adicionar(new Administrador("Filipe Facundo Bezerra", "06547236941", "20104750514",
 				"Masculino", data.returnDate(23, 06, 1994), "fofinho@gmail.com", new Usuario("Filipe", "CSS")));
-		bancoAdministrador.adicionar(new Administrador("Paula Bras", "06544337431", "20004750595", "Feminino",
+		bancoAdministrador.adicionar(new Administrador("Paula Bras", "06544337433", "20004750595", "Feminino",
 				data.returnDate(21, 05, 1990), "paula_tejano@gmail.com", new Usuario("paula", "tejano")));
+		// Teste
+		System.out.println("Administradores ("+bancoAdministrador.getSize()+"):");
+		for (int i = 0; i < bancoAdministrador.getSize(); i++) {
+			System.out.println(bancoAdministrador.getBanco().get(i));
+		}
+		// Fim teste
 
 		bancoCliente.adicionar(new Cliente("Flavio Alves da Costa", "9876543210", "12345678900", "Masculino",
 				data.returnDate(16, 04, 1996), "flavio@gmail.com", "707070"));
@@ -87,40 +93,62 @@ public class Persistencia implements ServletContextListener {
 				data.returnDate(24, 11, 1938), "dimmy_neutron@gmail.com", "70707210"));
 		bancoCliente.adicionar(new Cliente("Thiago Leite", "298726212543211", "398736534322100", "Masculino",
 				data.returnDate(21, 03, 1994), "inputi_taipe@gmail.com,", "8081210821210"));
+		// Teste
+		System.out.println("Clientes ("+bancoCliente.getSize()+"):");
+		for (int i = 0; i < bancoCliente.getSize(); i++) {
+			System.out.println(bancoCliente.getBanco().get(i));
+		}
+		// Fim teste
 
 		bancoVeiculo.adicionar(new Carro(bancoCliente.getBanco().get(0), "NXZ2015", 2012, "Renault", "Logan", "Prata",
 				"1234567890", "Fortaleza", "Ceará"));
 		bancoVeiculo.adicionar(new Moto(bancoCliente.getBanco().get(1), "ABC123", 2015, "Honda", "Titan 250", "Preta",
 				"25123125423452", "Fortaleza", "Ceará"));
+		// Teste
+		System.out.println("Veiculos ("+bancoVeiculo.getSize()+"):");
+		for (int i = 0; i < bancoVeiculo.getSize(); i++) {
+			System.out.println(bancoVeiculo.getBanco().get(i));
+		}
+		// Fim teste
 
-		bancoServico
-				.adicionar(new Pintura("SERV0001", "Carro", "Tira risco", 300.00, "Vermelho", "Porta lateral direita"));
-		bancoServico.adicionar(new Pintura("SERV0002", "Moto", "Pintura completa", 400.00, "Preta", "Tanque"));
-		bancoServico
-				.adicionar(new Funilaria("SERV0003", "Carro", "Martelinho de ouro", 600.00, "Porta lateral direita"));
-		bancoServico.adicionar(new Funilaria("SERV0004", "Moto", "Desamassamento", 250.00, "Porta lateral direita"));
-		bancoServico.adicionar(new Mecanica("SERV0005", "Carro", "Troca de Óleo", 300.00));
-		bancoServico.adicionar(new Mecanica("SERV0006", "Moto", "Troca do fuído do freio", 300.00));
+		bancoServico.adicionar(new Pintura("Carro", "Tira risco", 300.00, "Vermelho", "Porta lateral direita"));
+		bancoServico.adicionar(new Pintura("Moto", "Pintura completa", 400.00, "Preta", "Tanque"));
+		bancoServico.adicionar(new Funilaria("Carro", "Martelinho de ouro", 600.00, "Porta lateral direita"));
+		bancoServico.adicionar(new Funilaria("Moto", "Desamassamento", 250.00, "Porta lateral direita"));
+		bancoServico.adicionar(new Mecanica("Carro", "Troca de Óleo", 300.00));
+		bancoServico.adicionar(new Mecanica("Moto", "Troca do fuído do freio", 300.00));
+		// Teste
+		System.out.println("Serviços ("+bancoServico.getSize()+"):");
+		for (int i = 0; i < bancoServico.getSize(); i++) {
+			System.out.println(bancoServico.getBanco().get(i));
+		}
+		// Fim teste
+		System.out.println("1");
 
 		ArrayList<Servico> aux;
 
 		aux = new ArrayList<Servico>();
 		aux.add(bancoServico.getBanco().get(0));
 		aux.add(bancoServico.getBanco().get(4));
-		bancoConserto.adicionar(new Conserto("CONS0001", bancoVeiculo.getBanco().get(0), data.returnDate(16, 04, 1996),
-				aux, bancoServico.getBanco().get(0).getPreco() + bancoServico.getBanco().get(4).getPreco()));
-		aux = new ArrayList<Servico>();
-		aux.add(bancoServico.getBanco().get(1));
-		aux.add(bancoServico.getBanco().get(5));
-		bancoConserto.adicionar(new Conserto("CONS0002", bancoVeiculo.getBanco().get(1), data.returnDate(26, 05, 1987),
-				aux, bancoServico.getBanco().get(1).getPreco() + bancoServico.getBanco().get(5).getPreco()));
-
+		bancoConserto.adicionar(new Conserto(bancoVeiculo.getBanco().get(0), data.returnDate(16, 04, 1996), aux,
+				bancoServico.getBanco().get(0).getPreco() + bancoServico.getBanco().get(4).getPreco()));
+		
 		contexto.getServletContext().setAttribute("bancoAdministrador", bancoAdministrador);
 		contexto.getServletContext().setAttribute("bancoCliente", bancoCliente);
 		contexto.getServletContext().setAttribute("bancoVeiculo", bancoVeiculo);
 		contexto.getServletContext().setAttribute("bancoServico", bancoServico);
 		contexto.getServletContext().setAttribute("bancoConserto", bancoConserto);
-		//Testes2.jsp
+
+		// PARA TESTES
+		System.out.println(bancoAdministrador.getBanco().get(0));
+		contexto.getServletContext().setAttribute("administradorSelecionado", bancoAdministrador.getBanco().get(0));
+		System.out.println(bancoCliente.getBanco().get(0));
+		contexto.getServletContext().setAttribute("clienteSelecionado", bancoCliente.getBanco().get(0));
+		System.out.println(bancoVeiculo.getBanco().get(0));
+		contexto.getServletContext().setAttribute("veiculoSelecionado", bancoVeiculo.getBanco().get(0));
+		System.out.println(bancoServico.getBanco().get(0));
+		contexto.getServletContext().setAttribute("servicoSelecionado", bancoServico.getBanco().get(0));
+		System.out.println(bancoConserto.getBanco().get(0));
 		contexto.getServletContext().setAttribute("consertoSelecionado", bancoConserto.getBanco().get(0));
 	}
 }
