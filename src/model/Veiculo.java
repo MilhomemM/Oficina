@@ -96,4 +96,20 @@ public abstract class Veiculo {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
+	public boolean equals(Veiculo v) {
+		if (this.getPlaca().equals(v.getPlaca()) || (this.getChassi().equals(v.getChassi())))
+			return true;
+		else
+			return false;
+	}
+	
+	public String toString(){
+		String veiculo;
+		veiculo = "Placa: " + this.getPlaca() + "\n" + "Marca: " + this.getMarca() + "\n" + 
+		"Modelo: " + this.getModelo() + "\n" + "Cor: " + this.getModelo() + "\n" + "Chassi: " + this.getChassi() + "\n" +
+		"Cidade: " + this.getCidade() + "\n" + "Estado: " + this.getEstado() + "\n";
+		
+		return veiculo;
+	}
 }

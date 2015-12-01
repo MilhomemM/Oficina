@@ -115,4 +115,17 @@ public class Carro extends Veiculo {
 		// TODO Auto-generated method stub
 		super.setEstado(estado);
 	}
+
+	public boolean equals(Carro c) {
+		if (super.equals(c))
+			return true;
+		else
+			return false;
+	}
+
+	public String toString() {
+		String carro;
+		carro = super.toString();
+		return carro;
+	}
 }

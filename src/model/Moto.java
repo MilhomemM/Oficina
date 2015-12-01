@@ -114,4 +114,18 @@ public class Moto extends Veiculo {
 		// TODO Auto-generated method stub
 		super.setEstado(estado);
 	}
+
+	public boolean equals(Moto m) {
+		if (super.equals(m))
+			return true;
+		else
+			return false;
+	}
+
+	public String toString() {
+		String moto;
+		moto = super.toString();
+
+		return moto;
+	}
 }

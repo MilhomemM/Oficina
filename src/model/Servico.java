@@ -16,9 +16,8 @@ public abstract class Servico {
 		this.cor = cor;
 		this.peca = peca;
 	}
-	
-	
-	public Servico(String tipoVeiculo, String descricao, double preco,String cor, String peca) {
+
+	public Servico(String tipoVeiculo, String descricao, double preco, String cor, String peca) {
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
@@ -26,14 +25,11 @@ public abstract class Servico {
 		this.peca = peca;
 	}
 
-
-	public String gerarCodigo(int numero)
-	{
+	public String gerarCodigo(int numero) {
 		String codigoPrefix = "SERV";
 		String codigoSuffix = "";
 		String codigoNovo;
-		for(int i = 0; i < 4 - String.valueOf(numero).length(); i++)
-		{
+		for (int i = 0; i < 4 - String.valueOf(numero).length(); i++) {
 			codigoSuffix = codigoSuffix + "0";
 		}
 		codigoSuffix = codigoSuffix + String.valueOf(numero);
@@ -74,24 +70,35 @@ public abstract class Servico {
 		this.preco = preco;
 	}
 
-
 	public String getCor() {
 		return cor;
 	}
-
 
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
 
-
 	public String getPeca() {
 		return peca;
 	}
 
-
 	public void setPeca(String peca) {
 		this.peca = peca;
 	}
-	
+
+	public boolean equals(Servico s) {
+		if (this.getCodigo().equals(s.getCodigo()))
+			return true;
+		return false;
+	}
+
+	public String toString()
+	{
+		String servico;
+		servico = "Codigo: " + this.getCodigo() + "\n" + "TipoDeVeiculo: " + this.getTipoVeiculo() + "\n" +
+		"Descricao: " + this.getDescricao() + "\n" + "Cor: " + this.getCor() + "\n" + "Peca: " + this.getPeca() + "\n";
+		
+		return servico;
+		
+	}
 }

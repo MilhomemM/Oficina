@@ -88,4 +88,17 @@ public class Administrador extends Pessoa {
 		// TODO Auto-generated method stub
 		super.setNascimento(nascimento);
 	}
+
+	public boolean equals(Administrador a) {
+		if (super.equals(a) || (this.getUsuario().equals(a.getUsuario())))
+			return true;
+		else
+			return false;
+	}
+
+	public String toString() {
+		String administrador;
+		administrador = super.toString() + "Email: " + this.getEmail() + "\n" + this.getUsuario().toString();
+		return administrador;
+	}
 }

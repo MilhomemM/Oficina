@@ -10,8 +10,7 @@ public class Conserto {
 	ArrayList<Servico> servicos;
 	private double total;
 
-	public Conserto(String codigo, Veiculo veiculo, Date data, ArrayList<Servico> servicos,
-			double total) {
+	public Conserto(String codigo, Veiculo veiculo, Date data, ArrayList<Servico> servicos, double total) {
 		super();
 		this.codigo = codigo;
 		this.veiculo = veiculo;
@@ -19,9 +18,8 @@ public class Conserto {
 		this.servicos = servicos;
 		this.total = total;
 	}
-	
-	public Conserto(Veiculo veiculo, Date data, ArrayList<Servico> servicos,
-			double total) {
+
+	public Conserto(Veiculo veiculo, Date data, ArrayList<Servico> servicos, double total) {
 		super();
 		this.veiculo = veiculo;
 		this.data = data;
@@ -29,8 +27,8 @@ public class Conserto {
 		this.total = total;
 	}
 
-	public Conserto(String codigo, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
-			Funilaria funilaria, double total) {
+	public Conserto(String codigo, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica, Funilaria funilaria,
+			double total) {
 		super();
 		this.codigo = codigo;
 		this.veiculo = veiculo;
@@ -44,9 +42,7 @@ public class Conserto {
 		this.total = total;
 	}
 
-	
-	public Conserto(Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
-			Funilaria funilaria, double total) {
+	public Conserto(Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica, Funilaria funilaria, double total) {
 		super();
 		this.veiculo = veiculo;
 		this.data = data;
@@ -78,7 +74,7 @@ public class Conserto {
 	public Date getData() {
 		return data;
 	}
-	
+
 	public String getDataString() {
 		Data dt = new Data();
 		return dt.filtroData(data);
@@ -102,5 +98,13 @@ public class Conserto {
 
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public boolean equals(Conserto c) {
+		if (this.getCodigo().equals(c.getCodigo())
+				|| (this.getVeiculo().equals(c.getVeiculo()) && (this.getDataString().equals(c.getDataString()))))
+			return true;
+		else
+			return false;
 	}
 }

@@ -101,7 +101,7 @@ public class Cliente extends Pessoa {
 	}
 
 	public boolean equals(Cliente c) {
-		if (this.getCpf().equals(c.getCpf()) || this.getRg().equals(c.getRg()))
+		if (super.equals(c))
 			return true;
 		else
 			return false;
@@ -110,15 +110,7 @@ public class Cliente extends Pessoa {
 	@Override
 	public String toString() {
 		String cliente;
-		cliente = "Nome: " + this.getNome() + "\n"+
-		"RG: " + this.getRg() + "\n"+
-		"CPF: " + this.getCpf() +"\n" +
-		"Sexo: " + this.getSexo() + "\n" +
-		"Nascimento: " + this.getNascimentoString() + "\n" +
-		"Email: " + this.getEmail() + "\n"+
-		"Telefone: " + this.getTelefone() + "\n";
-		
+		cliente = super.toString() + "Email: " + this.getEmail() + "\n" + "Telefone: " + this.getTelefone() + "\n";
 		return cliente;
 	}
-
 }

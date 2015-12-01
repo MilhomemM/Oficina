@@ -9,8 +9,7 @@ public abstract class Pessoa {
 	private String sexo;
 	private Date nascimento;
 
-	public Pessoa(String nome, String rg, String cpf, String sexo,
-			Date nascimento) {
+	public Pessoa(String nome, String rg, String cpf, String sexo, Date nascimento) {
 		this.nome = nome;
 		this.rg = rg;
 		this.cpf = cpf;
@@ -57,15 +56,31 @@ public abstract class Pessoa {
 	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
-	
+
 	public String filtroCPF() {
 		String CPF = this.getCpf();
 		return (CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." + CPF.substring(6, 9) + "-"
 				+ CPF.substring(9, 11));
 	}
-	
+
 	public String getNascimentoString() {
 		Data dt = new Data();
 		return dt.filtroData(this.getNascimento());
+	}
+
+	public boolean equals(Pessoa p) {
+		if (this.getCpf().equals(p.getCpf()) || (this.getRg().equals(p.getRg())))
+			return true;
+		else
+			return false;
+
+	}
+
+	public String toString() {
+
+		String pessoa;
+		pessoa = "Nome: " + this.getNome() + "\n" + "RG: " + this.getRg() + "\n" + "CPF: " + this.getCpf() + "\n"
+				+ "Sexo: " + this.getSexo() + "\n" + "Nascimento: " + this.getNascimentoString() + "\n";
+		return pessoa;
 	}
 }
