@@ -9,7 +9,7 @@ import model.Servico;
 
 public class ServicoBusiness {
 	private ArrayList<Servico> banco;
-	private int ultimoCodigoValido;
+	private long ultimoCodigoValido;
 
 	public ServicoBusiness() {
 		this.banco = new ArrayList<Servico>();
@@ -37,12 +37,12 @@ public class ServicoBusiness {
 		String codigo = "";
 		if (s instanceof Pintura) {
 			codigo = "S" + ultimoCodigoValido + "P";
-			ultimoCodigoValido++;
 		} else if (s instanceof Mecanica) {
 			codigo = "S" + ultimoCodigoValido + "M";
 		} else if (s instanceof Funilaria) {
 			codigo = "S" + ultimoCodigoValido + "F";
 		}
+		ultimoCodigoValido++;
 		return codigo;
 	}
 

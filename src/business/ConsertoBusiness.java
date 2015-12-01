@@ -11,11 +11,11 @@ import model.Pintura;
 
 public class ConsertoBusiness {
 	private ArrayList<Conserto> banco;
-	private long ultimoCodigo;
+	private long ultimoCodigoValido;
 
 	public ConsertoBusiness() {
 		this.banco = new ArrayList<Conserto>();
-		this.setUltimoCodigo(0);
+		this.ultimoCodigoValido = 1;
 	}
 
 	public ArrayList<Conserto> getBanco() {
@@ -26,17 +26,39 @@ public class ConsertoBusiness {
 		return this.banco.size();
 	}
 
-	public long getUltimoCodigo() {
-		return ultimoCodigo;
-	}
-
-	public void setUltimoCodigo(long ultimoCodigo) {
-		this.ultimoCodigo = ultimoCodigo;
-	}
-
 	public boolean adicionar(Conserto novo) {
-		novo.setCodigo("#CON" + this.ultimoCodigo);
-		return this.banco.add(novo);
+		if (this.existeConserto(novo))
+			return false;
+		else {
+			novo.setCodigo(this.gerarCodigo(novo));
+			return this.banco.add(novo);
+		}
+	}
+
+	public String gerarCodigo(Conserto c) {
+		String codigo = "";
+		codigo = "C" + ultimoCodigoValido;
+		for (int i = 0; i < c.getServicos().size(); i++) {
+			if (c.getServicos().get(i) instanceof Pintura) {
+				codigo = codigo + "P";
+			} else if (c.getServicos().get(i) instanceof Funilaria) {
+				codigo = codigo + "F";
+			} else if (c.getServicos().get(i) instanceof Mecanica) {
+				codigo = codigo + "M";
+			}
+		}
+		this.ultimoCodigoValido++;
+		return codigo;
+	}
+
+	public boolean existeConserto(Conserto c) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (c.equals(this.getBanco().get(i)))
+				return true;
+		}
+		return false;
 	}
 
 	public Conserto pesquisarCodigo(String codigo) {
@@ -50,9 +72,8 @@ public class ConsertoBusiness {
 		}
 		return null;
 	}
-	
-	public boolean existeCodigo(String codigo)
-	{
+
+	public boolean existeCodigo(String codigo) {
 		if (this.banco == null || this.getSize() == 0) {
 			return false;
 		}
