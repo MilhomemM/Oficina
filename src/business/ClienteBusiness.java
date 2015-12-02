@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 
 import model.Cliente;
 import model.Data;
+import model.Veiculo;
 
 public class ClienteBusiness {
 	private ArrayList<Cliente> banco;
@@ -46,6 +47,15 @@ public class ClienteBusiness {
 			return false;
 		for (int i = 0; i < this.getSize(); i++) {
 			if (this.banco.get(i).getNome().equalsIgnoreCase(nome))
+				return true;
+		}
+		return false;
+	}
+	public boolean existeCliente(Cliente c) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (c.equals(this.getBanco().get(i)))
 				return true;
 		}
 		return false;

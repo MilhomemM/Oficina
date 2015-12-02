@@ -9,7 +9,7 @@ import model.Servico;
 
 public class ServicoBusiness {
 	private ArrayList<Servico> banco;
-	private int ultimoCodigoValido;
+	private long ultimoCodigoValido;
 
 	public ServicoBusiness() {
 		this.banco = new ArrayList<Servico>();
@@ -37,38 +37,22 @@ public class ServicoBusiness {
 		String codigo = "";
 		if (s instanceof Pintura) {
 			codigo = "S" + ultimoCodigoValido + "P";
-			ultimoCodigoValido++;
 		} else if (s instanceof Mecanica) {
 			codigo = "S" + ultimoCodigoValido + "M";
 		} else if (s instanceof Funilaria) {
 			codigo = "S" + ultimoCodigoValido + "F";
 		}
+		ultimoCodigoValido++;
 		return codigo;
 	}
+	
 
 	public boolean existeServico(Servico s) {
 		if (this.banco == null || this.getSize() == 0)
 			return false;
 		for (int i = 0; i < this.getSize(); i++) {
-			if (s instanceof Pintura) {
-				if (this.banco.get(i) instanceof Pintura)
-					if (((Pintura) this.banco.get(i)).getTipoVeiculo().equalsIgnoreCase(s.getTipoVeiculo()))
-						if (((Pintura) this.banco.get(i)).getDescricao().equalsIgnoreCase(s.getDescricao()))
-							if (((Pintura) this.banco.get(i)).getCor().equalsIgnoreCase(((Pintura) s).getCor()))
-								if (((Pintura) this.banco.get(i)).getPeca().equalsIgnoreCase(((Pintura) s).getPeca()))
-									return true;
-			} else if (s instanceof Funilaria) {
-				if (this.banco.get(i) instanceof Funilaria)
-					if (((Funilaria) this.banco.get(i)).getTipoVeiculo().equalsIgnoreCase(s.getTipoVeiculo()))
-						if (((Funilaria) this.banco.get(i)).getDescricao().equalsIgnoreCase(s.getDescricao()))
-							if (((Funilaria) this.banco.get(i)).getPeca().equalsIgnoreCase(((Funilaria) s).getPeca()))
-								return true;
-			} else if (s instanceof Mecanica) {
-				if (this.banco.get(i) instanceof Mecanica)
-					if (((Mecanica) this.banco.get(i)).getTipoVeiculo().equalsIgnoreCase(s.getTipoVeiculo()))
-						if (((Mecanica) this.banco.get(i)).getDescricao().equalsIgnoreCase(s.getDescricao()))
-							return true;
-			}
+			if (s.equals(this.getBanco().get(i)))
+				return true;
 		}
 		return false;
 	}
