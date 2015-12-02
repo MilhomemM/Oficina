@@ -3,12 +3,12 @@ package model;
 public class Mecanica extends Servico {
 
 	public Mecanica(String codigo, String tipoVeiculo, String descricao, double preco) {
-		super(codigo, tipoVeiculo, descricao, preco, descricao, descricao);
+		super(codigo, tipoVeiculo, descricao, preco);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Mecanica(String tipoVeiculo, String descricao, double preco) {
-		super(tipoVeiculo, descricao, preco, descricao, descricao);
+		super(tipoVeiculo, descricao, preco);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -59,4 +59,16 @@ public class Mecanica extends Servico {
 		// TODO Auto-generated method stub
 		super.setPreco(preco);
 	}
+	public boolean equals (Mecanica m)
+	{
+		if(super.equals(m))return true;
+		else return false;
+	}
+	public String toString()
+	{
+		String mecanica;
+		mecanica = "Tipo: Mecanica \n" + super.toString();
+		return mecanica;
+	}
+	
 }

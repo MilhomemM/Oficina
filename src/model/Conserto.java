@@ -107,4 +107,15 @@ public class Conserto {
 		else
 			return false;
 	}
+	public String toString()
+	{
+		String conserto;
+		Data dt = new Data();
+		conserto = "Codigo: " + this.getCodigo() + "\n" + "Data: " + dt.filtroData(this.getData()) + "\n";
+		for(int i=0; i<this.getServicos().size(); i++)
+		{
+			System.out.println(this.servicos.get(i));
+		}
+		return conserto;
+	}
 }

@@ -5,24 +5,18 @@ public abstract class Servico {
 	private String tipoVeiculo;
 	private String descricao;
 	private double preco;
-	private String cor;
-	private String peca;
 
-	public Servico(String codigo, String tipoVeiculo, String descricao, double preco, String cor, String peca) {
+	public Servico(String codigo, String tipoVeiculo, String descricao, double preco) {
 		this.codigo = codigo;
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.cor = cor;
-		this.peca = peca;
 	}
 
-	public Servico(String tipoVeiculo, String descricao, double preco, String cor, String peca) {
+	public Servico(String tipoVeiculo, String descricao, double preco) {
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.cor = cor;
-		this.peca = peca;
 	}
 
 	public String gerarCodigo(int numero) {
@@ -70,35 +64,17 @@ public abstract class Servico {
 		this.preco = preco;
 	}
 
-	public String getCor() {
-		return cor;
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
-	}
-
-	public String getPeca() {
-		return peca;
-	}
-
-	public void setPeca(String peca) {
-		this.peca = peca;
-	}
-
 	public boolean equals(Servico s) {
 		if (this.getCodigo().equals(s.getCodigo()))
 			return true;
 		return false;
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		String servico;
-		servico = "Codigo: " + this.getCodigo() + "\n" + "TipoDeVeiculo: " + this.getTipoVeiculo() + "\n" +
-		"Descricao: " + this.getDescricao() + "\n" + "Cor: " + this.getCor() + "\n" + "Peca: " + this.getPeca() + "\n";
-		
+		servico = "Codigo: " + this.getCodigo() + "\n" + "TipoDeVeiculo: " + this.getTipoVeiculo() + "\n"
+				+ "Descricao: " + this.getDescricao() + "\n" + "Preço: " + this.getPreco() + "\n"; 
 		return servico;
-		
+				
 	}
 }
