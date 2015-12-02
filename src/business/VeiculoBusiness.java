@@ -25,8 +25,8 @@ public class VeiculoBusiness {
 		return this.banco.add(novo);
 	}
 
-	//!pesquisarCpfProprietario(String cpfProprietario)
 	public Veiculo pesquisarProprietario(String proprietario) {
+
 		if (this.banco == null || this.getSize() == 0) {
 			return null;
 		}
@@ -125,12 +125,25 @@ public class VeiculoBusiness {
 		return resultado;
 	}
 
-	public boolean existeTipoVeiculo(Veiculo v) {
+	public boolean existeTipoVeiculo(Veiculo tipo) {
 		if (this.banco == null || this.getSize() == 0)
 			return false;
 		for (int i = 0; i < this.getSize(); i++) {
-			if (v.equals(this.getBanco().get(i)))
-				return true;
+			if (tipo instanceof Carro) {
+				if (this.banco.get(i) instanceof Carro)
+					if (((Carro) this.banco.get(i)).getPlaca().equalsIgnoreCase(tipo.getPlaca()))
+						if (((Carro) this.banco.get(i)).getAno() == tipo.getAno())
+							if (((Carro) this.banco.get(i)).getCor().equalsIgnoreCase(tipo.getCor()))
+								if (((Carro) this.banco.get(i)).getMarca().equalsIgnoreCase(tipo.getMarca()))
+									return true;
+			} else if (tipo instanceof Moto) {
+				if (this.banco.get(i) instanceof Moto)
+					if (((Moto) this.banco.get(i)).getPlaca().equalsIgnoreCase(tipo.getPlaca()))
+						if (((Moto) this.banco.get(i)).getAno() == tipo.getAno())
+							if (((Moto) this.banco.get(i)).getCor().equalsIgnoreCase(tipo.getCor()))
+								if (((Moto) this.banco.get(i)).getMarca().equalsIgnoreCase(tipo.getMarca()))								
+									return true;
+			}
 		}
 		return false;
 	}
@@ -259,4 +272,6 @@ public class VeiculoBusiness {
 		else
 			return this.banco.remove(posicao);
 	}
+
+
 }

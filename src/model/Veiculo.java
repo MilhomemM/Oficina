@@ -1,6 +1,7 @@
 package model;
 
 public abstract class Veiculo {
+	
 	private Cliente proprietario;
 	private String placa;
 	private int ano;
@@ -11,6 +12,7 @@ public abstract class Veiculo {
 	private String cidade;
 	private String estado;
 
+	
 	public Veiculo(Cliente proprietario, String placa, int ano, String marca, String modelo, String cor, String chassi,
 			String cidade, String estado) {
 		super();
@@ -24,7 +26,7 @@ public abstract class Veiculo {
 		this.cidade = cidade;
 		this.estado = estado;
 	}
-
+	
 	public Cliente getProprietario() {
 		return proprietario;
 	}
@@ -95,21 +97,5 @@ public abstract class Veiculo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	public boolean equals(Veiculo v) {
-		if (this.getPlaca().equals(v.getPlaca()) || (this.getChassi().equals(v.getChassi())))
-			return true;
-		else
-			return false;
-	}
-	
-	public String toString(){
-		String veiculo;
-		veiculo = "Placa: " + this.getPlaca() + "\n" + "Marca: " + this.getMarca() + "\n" + 
-		"Modelo: " + this.getModelo() + "\n" + "Cor: " + this.getModelo() + "\n" + "Chassi: " + this.getChassi() + "\n" +
-		"Cidade: " + this.getCidade() + "\n" + "Estado: " + this.getEstado() + "\n";
-		
-		return veiculo;
 	}
 }
