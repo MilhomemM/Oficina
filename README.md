@@ -1,19 +1,18 @@
 # Provas/Trabalhos POO II
 As provas/trabalhos de POO II serão aplicadas das seguintes maneiras:
-AV1
+###AV1
 Prova: 5 pontos
 Trabalho: 5 pontos
-AV2
+###AV2
 Prova: 5 pontos
 Trabalho: 5 pontos
-AV3
+###AV3
 Prova: 5 pontos
 Trabalho: 5 pontos
 Na AV1 será cobrado teoria e pratica de HTML, CSS e JS, além de outros conteúdos que forem
 expostos em sala.
 Na AV2 será cobrado Servlet, JSP e scriplet/EL, além de outros conteúdos que forem expostos
-em
-sala.
+em sala.
 Na AV3 será cobrado MVC(classes java de negócio e DAO), scriplet/EL, JSTL, além de outros
 conteúdos que forem expostos em sala.
 O tema de cada equipe evoluirá ao decorrer do semestre. A separação das atividades de cada
@@ -24,12 +23,12 @@ de como as telas devem ser feitas e o fluxo entre elas, poderá ser feita pelo p
 
 # Oficina
 Na oficina, as seguintes funcionalidades devem estar presentes:
-Login
-Cadastrar/Alterar/Excluir Cliente
-Cadastrar/Alterar/Excluir Carro
-Cadastrar/Alterar/Excluir Moto
-Agendar/Excluir/Pesquisar Conserto
-Cadastrar/Alterar/Excluir Serviço
+##Login
+##Cadastrar/Alterar/Excluir Cliente
+##Cadastrar/Alterar/Excluir Carro
+##Cadastrar/Alterar/Excluir Moto
+##Agendar/Excluir/Pesquisar Conserto
+##Cadastrar/Alterar/Excluir Serviço
 O Conserto é para um cliente em um de seus carros/motos e deve ter até 3 serviços: mecânica,
 funilaria, pintura. No processo de agendar o Conserto deve ser possivel escolher a data. Ao
 finalizar o cadastro deverá ser possível se calcular o valor total do Conserto. Pode-se pesquisar o
