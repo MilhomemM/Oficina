@@ -6,6 +6,7 @@ import java.util.Date;
 import model.Administrador;
 import model.Data;
 import model.Usuario;
+import model.Veiculo;
 
 public class AdministradorBusiness {
 	private ArrayList<Administrador> banco;
@@ -42,6 +43,15 @@ public class AdministradorBusiness {
 		return resultado;
 	}
 
+	public boolean existeAdministrador(Administrador a) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (a.equals(this.getBanco().get(i)))
+				return true;
+		}
+		return false;
+	}
 	public boolean existeNome(String nome) {
 		if (this.banco == null || this.getSize() == 0)
 			return false;

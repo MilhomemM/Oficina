@@ -125,6 +125,7 @@ public class VeiculoBusiness {
 		return resultado;
 	}
 
+<<<<<<< HEAD
 	public boolean existeTipoVeiculo(Veiculo tipo) {
 		if (this.banco == null || this.getSize() == 0)
 			return false;
@@ -144,6 +145,14 @@ public class VeiculoBusiness {
 								if (((Moto) this.banco.get(i)).getMarca().equalsIgnoreCase(tipo.getMarca()))								
 									return true;
 			}
+=======
+	public boolean existeTipoVeiculo(Veiculo v) {
+		if (this.banco == null || this.getSize() == 0)
+			return false;
+		for (int i = 0; i < this.getSize(); i++) {
+			if (v.equals(this.getBanco().get(i)))
+				return true;
+>>>>>>> aad2aec5658b0ae4fb249b3b88f39cc980bd80c8
 		}
 		return false;
 	}
