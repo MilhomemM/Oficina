@@ -94,4 +94,24 @@ public class Data {
 
 		return dataFormatada;
 	}
+	
+	public String toString(Date data) {
+		Calendar dt = Calendar.getInstance();
+		dt.setTime(data);
+
+		String dia = String.valueOf(dt.get(Calendar.DAY_OF_MONTH));
+		String mes = String.valueOf(dt.get(Calendar.MONTH));
+		String ano = String.valueOf(dt.get(Calendar.YEAR));
+
+		while (dia.length() < 2)
+			dia = "0" + dia;
+		while (mes.length() < 2)
+			mes = "0" + mes;
+		while (ano.length() < 4)
+			ano = "0" + ano;
+
+		String dataFormatada = dia + "/" + mes + "/" + ano;
+
+		return dataFormatada;
+	}
 }

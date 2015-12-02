@@ -36,13 +36,14 @@
 						<td><table>
 								<tr>
 									<td><label for="ClienteData">Data</label></td>
-									<td><input id="ClienteData" class="clienteData"
-										type="date" required></td>
+									<td class="entrada"><input id="ClienteData"
+										name="clienteData" type="date" required></td>
 								</tr>
 								<tr>
 									<td><label for="ClientePlacaVeiculo">Veiculo</label></td>
 									<td class="entrada"><input id="ClientePlacaVeiculo"
-										type="text" placeholder="Informe a placa do veículo" required></td>
+										name="clientePlacaVeiculo" type="text"
+										placeholder="Informe a placa do veículo" required></td>
 								</tr>
 							</table></td>
 					</tr>
@@ -98,7 +99,6 @@
 			*Todos os campos são obrigatórios.<br /> *Apenas um bloco pode ser
 			submetido por vez.
 		</footer>
-
 	</section>
 	<br />
 	<br />
