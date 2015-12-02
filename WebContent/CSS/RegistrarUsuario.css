@@ -18,17 +18,10 @@ section{
     padding: 10px;
 }
 
-form input{
-    margin: 4px 2px;
+form{
+	text-align: left;
 }
 
-/*RODAPÉ*/
-
-.footer_registrar{
-    width: 100%;
-    background: #000;
-    color: #FFF;
-    padding: 10px 0;
-    font-size: 1em;
-    font-weight: 800;
+form input{
+    margin: 4px 2px;
 }
