@@ -117,45 +117,57 @@ public class VeiculoController extends HttpServlet {
 
 	
 	private void pesquisar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Entrou Controle Pesquisar");
 		String dispatcher;
-		String tipoDePesquisa = request.getParameter("tipoPesquisa");
+		String tipoDePesquisa = request.getParameter("tipoDePesquisa");
 		String campoDePesquisa = request.getParameter("campoDePesquisa");
-	
+		
 		VeiculoBusiness bancoVeiculo = (VeiculoBusiness) request.getServletContext().getAttribute("bancoVeiculo");
-	
+		
 		ArrayList<Veiculo> resultado = new ArrayList<Veiculo>();
 		Veiculo resultadoEspecifico;
 		Data dt = new Data();
 		
+		
 		switch(tipoDePesquisa.toLowerCase()){
-
+		
 		case "proprietario":
-			resultadoEspecifico = bancoVeiculo.pesquisarProprietario(campoDePesquisa);
+			resultado = bancoVeiculo.pesquisarProprietario(campoDePesquisa);
 			dispatcher = "veiculo-pesquisar.jsp";
 			break;
-		case "placaVeiculo":
+		case "placa":
 			resultadoEspecifico = bancoVeiculo.pesquisarPlacaVeiculo(campoDePesquisa);
 			dispatcher = "veiculo-pesquisar.jsp";
 			break;
-		case "tipoVeiculo":
+		case "tipoveiculo":
 			resultado = bancoVeiculo.pesquisarTipo(campoDePesquisa);
 			dispatcher = "veiculo-pesquisar.jsp";
 			break;
-		case "marcaVeiculo":
+		case "marcaveiculo":
 			resultado = bancoVeiculo.pesquisarMarcaVeiculo(campoDePesquisa);
 			dispatcher = "veiculo-pesquisar.jsp";
 			break;
-		case "modeloVeiculo":
+		case "modeloveiculo":
 			resultado = bancoVeiculo.pesquisarModeloVeiculo(campoDePesquisa);
 			dispatcher =  "veiculo-pesquisar.jsp";
 			break;
-		case "anoVeiculo":
+		case "anoveiculo":
 			resultado = bancoVeiculo.pesquisaAnoVeiculo( Integer.parseInt(campoDePesquisa));
 			dispatcher = "veiculo-pesquisar.jsp";
 			break;
-		case "corVeiculo":
+		case "corveiculo":
 			resultado = bancoVeiculo.pesquisarCorVeiculo(campoDePesquisa);
+			dispatcher = "veiculo-pesquisar.jsp";
+			break;
+		case "chassi":
+			resultadoEspecifico = bancoVeiculo.pesquisarChassiVeiculo(campoDePesquisa);
+			dispatcher = "veiculo-pesquisar.jsp";
+			break;
+		case "cidade":
+			resultado = bancoVeiculo.pesquisarCidadeVeiculo(campoDePesquisa);
+			dispatcher = "veiculo-pesquisar.jsp";
+			break;
+		case "estado":
+			resultado = bancoVeiculo.pesquisarEstadoVeiculo(campoDePesquisa);
 			dispatcher = "veiculo-pesquisar.jsp";
 			break;
 		default: 
@@ -178,14 +190,13 @@ public class VeiculoController extends HttpServlet {
 		
 		VeiculoBusiness bancoVeiculo = (VeiculoBusiness) request.getServletContext().getAttribute("bancoVeiculo");
 		ClienteBusiness bancoCliente = (ClienteBusiness) request.getServletContext().getAttribute("bancoCliente");
-
-		Veiculo veiculoAlterado = bancoVeiculo.pesquisarPlacaVeiculo(placaVeiculo);
-		Cliente novoProprientario = bancoCliente.pesquisarCpf(cpfProprietario);
-
 		
-		veiculoAlterado.setProprietario(novoProprientario);
-		veiculoAlterado.setCor(corVeiculo);
+		Veiculo veiculoAlterado = bancoVeiculo.pesquisarPlacaVeiculo(placaVeiculo);
+		Cliente novoProprietario = bancoCliente.pesquisarCpf(cpfProprietario);
 
+		veiculoAlterado.setProprietario(novoProprietario);
+		veiculoAlterado.setCor(corVeiculo);
+		
 		bancoVeiculo.alterar(bancoVeiculo.pesquisarPlacaVeiculoIndex(placaVeiculo), veiculoAlterado);
 		
 		request.setAttribute("veiculoSelecionado", veiculoAlterado);

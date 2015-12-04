@@ -33,10 +33,10 @@
 		<c:if test="${alterado}">Alterado com sucesso!</c:if>
 		<c:if test="${cadastrado}">Cadastrado com sucesso!</c:if>
 		<h1>Detalhes de Veículo</h1>
-		
-			<form id="VeiculoFormCadastro" class="centraliza_form" action="VeiculoController.do"
+		<center>
+			<form id="VeiculoFormCadastro" action="VeiculoController.do"
 				method="post" onSubmit="removeDisabled();">
-				<table class="FormTableCadastro centraliza_table">
+				<table class="FormTableCadastro">
 					<tr>
 						<td><label for="VeiculoProprietario">Proprietário</label></td>
 						<td><select id="VeiculoProprietario"
@@ -120,7 +120,7 @@
 					</tr>
 				</table>
 				<br />
-				<table class="centraliza_table">
+				<table>
 					<tr>
 						<td><input type="submit" name="action" value="Excluir"></td>
 						<td><input type="submit" name="action" value="Alterar"></td>
@@ -129,7 +129,7 @@
 					</tr>
 				</table>
 			</form>
-		
+		</center>
 		<br />
 	</section>
 	<footer>

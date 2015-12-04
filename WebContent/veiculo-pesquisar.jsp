@@ -13,43 +13,8 @@
 
 <!----------------------------- CODIGOS JS ------------------------------>
 <script type="text/javascript" src="./JS/JavaScript.js"></script>
+<script type="text/javascript" src="./JS/VeiculoPesquisa.js"></script>
 <!-----------------------------   FIM JS   ------------------------------>
-
-<script>
-	function switchPlaceholder() {
-		var TipoDePesquisa = document.getElementById("TipoDePesquisa");
-		var CampoDePesquisa = document.getElementById("CampoDePesquisa");
-
-		switch (TipoDePesquisa.value) {
-		case "":
-			CampoDePesquisa.setAttribute("placeholder",
-					"Selecione uma opção...");
-			break;
-		case "Nome":
-			CampoDePesquisa.setAttribute("placeholder", "Digite um Nome");
-			break;
-		case "MarcaVeiculo":
-			CampoDePesquisa.setAttribute("placeholder", "");
-			break;
-		case "Nascimento":
-			CampoDePesquisa.setAttribute("placeholder", "dd/mm/aaaa");
-			break;
-		case "Rg":
-			CampoDePesquisa.setAttribute("placeholder", "Somente Números");
-			break;
-		case "Cpf":
-			CampoDePesquisa.setAttribute("placeholder", "123.456.789-00");
-			break;
-		case "Email":
-			CampoDePesquisa.setAttribute("placeholder", "exemplo@exemplo.com");
-			break;
-		case "Telefone":
-			CampoDePesquisa.setAttribute("placeholder", "Somente Números");
-			break;
-		}
-	}
-</script>
-
 
 </head>
 
@@ -67,14 +32,14 @@
 	<section style="text-align: center">
 		<h1>Pesquisa por Veículo</h1>
 
-		<form id="FormPesquisaServico" class="centraliza_form" name="formPesquisaServico"
+		<form id="FormPesquisaServico" name="formPesquisaServico"
 			action="VeiculoController.do" method="post">
-			<table align="center" class="centraliza_table">
+			<table align="center">
 				<tr>
 					<td><select id="TipoDePesquisa" name="tipoDePesquisa"
 						onChange="switchPlaceholder();" required>
 							<option value="" selected>Pesquisar por...</option>
-							<option value="Nome">Nome Proprietario</option>
+							<option value="Proprietario">Nome Proprietario</option>
 							<option value="MarcaVeiculo">Marca Veiculo</option>
 							<option value="ModeloVeiculo">Modelo Veiculo</option>
 							<option value="AnoVeiculo">Ano Veiculo</option>
@@ -101,7 +66,7 @@
 						<center>
 							<table class="TablePesquisa" width="90%" border>
 								<tr>
-									<th class="Nome">Nome Proprietario</th>
+									<th class="Proprietario">Nome Proprietario</th>
 									<th class="MarcaVeiculo">Marca Veiculo</th>
 									<th class="ModeloVeiculo">Modelo Veiculo</th>
 									<th class="AnoVeiculo">Ano Veiculo</th>
@@ -113,7 +78,7 @@
 								</tr>
 								<c:forEach var="veiculo" items="${resultadoPesquisa}">
 									<tr>
-										<td>${veiculo.getProprietario()}</td>
+										<td>${veiculo.getProprietario().getNome()}</td>
 										<td>${veiculo.getMarca()}</td>
 										<td>${veiculo.getModelo()}</td>
 										<td>${veiculo.getAno()}</td>
