@@ -57,6 +57,8 @@ public class ClienteController extends HttpServlet {
 			break;
 		case "excluir":
 			this.excluir(request, response);
+			default:
+				break;
 		}
 	}
 

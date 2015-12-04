@@ -182,19 +182,20 @@ public class ServicoController extends HttpServlet {
 
 	private void alterar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String codigo = request.getParameter("servicoCodigo");
 		String preco = request.getParameter("servicoPreco");
-		String cor = request.getParameter("servicoCor");
-		String peca = request.getParameter("servicoPeca");
+//		String cor = request.getParameter("servicoCor");
+//		String peca = request.getParameter("servicoPeca");
 		String dispatcher = "servico-detalhes.jsp";
 		preco = preco.replace(',', '.');
 
 		ServicoBusiness bancoServico = (ServicoBusiness) request.getServletContext().getAttribute("bancoServico");
 		Servico s = bancoServico.pesquisarCodigo(codigo);
-		
+
 		s.setPreco(Double.parseDouble(preco));
-		s.setCor(cor);
-		s.setPeca(peca);
+//		s.setCor(cor);
+//		s.setPeca(peca);
 		int posicao = bancoServico.pesquisarCodigoIndex(codigo);
 		if (posicao != -1) {
 			bancoServico.alterar(posicao, s);

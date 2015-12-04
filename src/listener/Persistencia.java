@@ -112,11 +112,18 @@ public class Persistencia implements ServletContextListener {
 		// Fim teste
 
 		bancoServico.adicionar(new Pintura("Carro", "Tira risco", 300.00, "Vermelho", "Porta lateral direita"));
+		System.out.println(bancoServico.getBanco().get(0));
+		System.out.println("1");
 		bancoServico.adicionar(new Pintura("Moto", "Pintura completa", 400.00, "Preta", "Tanque"));
+		System.out.println("2");
 		bancoServico.adicionar(new Funilaria("Carro", "Martelinho de ouro", 600.00, "Porta lateral direita"));
+		System.out.println("3");
 		bancoServico.adicionar(new Funilaria("Moto", "Desamassamento", 250.00, "Porta lateral direita"));
+		System.out.println("5");
 		bancoServico.adicionar(new Mecanica("Carro", "Troca de Óleo", 300.00));
+		System.out.println("6");
 		bancoServico.adicionar(new Mecanica("Moto", "Troca do fuído do freio", 300.00));
+		System.out.println("7");
 		// Teste
 		System.out.println("Serviços ("+bancoServico.getSize()+"):");
 		for (int i = 0; i < bancoServico.getSize(); i++) {

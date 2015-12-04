@@ -13,7 +13,7 @@
 <!--- <script type="text/javascript" src="./JS/ARQUIVO.js"></script> ---->
 <script type="text/javascript" src="./JS/JavaScript.js"></script>
 <script type="text/javascript">
-	function switchDisabled() {
+	function swapDisabled() {
 		document.getElementById("ServicoCodigo").removeAttribute("disabled");
 	}
 </script>
@@ -33,7 +33,7 @@
 		<c:if test="${alterado}">Alterado com sucesso!</c:if>
 		<c:if test="${cadastrado}">Cadastrado com sucesso!</c:if>
 		<form id="FormServicoDetalhes" name="formServicoDetalhes"
-			action="ServicoController" method="post" onSubmit="switchDisabled();">
+			action="ServicoController" method="post" onSubmit="swapDisabled();">
 			<h1>Detalhes de Serviço</h1>
 			<table align="center">
 				<c:if test="${servicoSelecionado != null}">
@@ -91,7 +91,7 @@
 					<tr>
 						<td id="DetalhesPreco" class="PrecoDetalhes"><label>Preço</label></td>
 						<td><input id="ServicoPreco" name="servicoPreco" type="text" minlength=4 maxlength=9 pattern="[0-9]{1,6},[0-9]{2}$"
-							value="${servicoSelecionado.getPreco()}"></td>
+							value="${servicoSelecionado.getPrecoString()}"></td>
 					</tr>
 				</c:if>
 			</table>

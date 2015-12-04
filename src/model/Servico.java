@@ -59,6 +59,12 @@ public abstract class Servico {
 	public double getPreco() {
 		return preco;
 	}
+	
+	public String getPrecoString(){
+		String preco = String.format("%.2f", this.getPreco());
+		preco.replace('.', ',');
+		return preco;
+	}
 
 	public void setPreco(double preco) {
 		this.preco = preco;

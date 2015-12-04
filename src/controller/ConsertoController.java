@@ -50,10 +50,23 @@ public class ConsertoController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.cadastrar(request, response);
+		String action = request.getParameter("action");
+		switch (action.toLowerCase()) {
+		case "Agendar":
+			this.agendar(request, response);
+			break;
+		case "Pesquisar":
+			this.pesquisar(request, response);
+			break;
+		case "Excluir":
+			this.excluir(request,response);
+			break;
+		default:
+			break;
+		}
 	}
 
-	private void cadastrar(HttpServletRequest request, HttpServletResponse response)
+	private void agendar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String data = request.getParameter("clienteData");
 		String veiculo = request.getParameter("clientePlacaVeiculo");
@@ -219,20 +232,20 @@ public class ConsertoController extends HttpServlet {
 			double total = 0.0;
 			for (int i = 0; i < servicos.size(); i++)
 				total += servicos.get(i).getPreco();
-			
+
 			novo = new Conserto(v, dt.returnDateInvertido(data), servicos, total);
-			
+
 			bancoConserto.adicionar(novo);
 
 			request.getServletContext().setAttribute("bancoConserto", bancoConserto);
 			request.setAttribute("consertoSelecionado", novo);
 			request.setAttribute("agendado", Boolean.TRUE);
-			
+
 			request.getRequestDispatcher("conserto-detalhes.jsp").forward(request, response);
 		} else {
 			request.setAttribute("agendamentoErro", Boolean.TRUE);
 			request.setAttribute("mensagemErro", mensagem);
-			
+
 			request.getRequestDispatcher("conserto-agendar.jsp").forward(request, response);
 		}
 	}
@@ -253,15 +266,15 @@ public class ConsertoController extends HttpServlet {
 
 		case "codigo":
 			resultadoEspecifico = bancoConserto.pesquisarCodigo(campoDePesquisa);
-			dispatcher = "conserto-exibir.jsp";
+			dispatcher = "conserto-detalhes.jsp";
 			break;
-		case "nome":
+		case "nomecliente":
 			resultado = bancoConserto.pesquisarCliente(campoDePesquisa);
 			dispatcher = "conserto-pesquisar.jsp";
 			break;
-		case "placa":
+		case "placaveiculo":
 			resultado = bancoConserto.pesquisarVeiculo(campoDePesquisa);
-			dispatcher = "conserto-pesquisar.jsp";
+			dispatcher = "conserto-detalhes.jsp";
 			break;
 		case "data":
 			resultado = bancoConserto.pesquisarData(dt.returnDate(campoDePesquisa));
@@ -271,11 +284,7 @@ public class ConsertoController extends HttpServlet {
 			resultado = bancoConserto.pesquisarTipoServico(campoDePesquisa);
 			dispatcher = "conserto-pesquisar.jsp";
 			break;
-		// case "preco":
-		// resultado = bancoConserto.pesquisarPreco(0,
-		// Double.parseDouble(campoDePesquisa));
-		// dispatcher = "conserto-pesquisar.jsp";
-		// break;
+		
 		default:
 			dispatcher = "Home.jsp";
 		}
