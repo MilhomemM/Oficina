@@ -28,9 +28,9 @@
 	<br />
 	<br />
 	<section>
+		<c:if test="${agendado }">Agendado com sucesso!</c:if>
 		<h1 id="TituloClienteDetalhes" class="titulo">Detalhes do
 			Conserto</h1>
-
 			<form id="ClienteFormCadastro" class="centraliza_form" action="ClienteController.do"
 				method="post" onSubmit="removeDisabled();">
 				<table id="TableFormCadastro" class="FormTableCadastro centraliza_table">
@@ -274,6 +274,13 @@
 								</tr>
 							</table>
 						</td>
+					</tr>
+				</table>
+				<table class="centraliza_table">
+					<tr>
+						<td><input type="submit" name="action" value="Excluir"></td>
+						<td><input type="button" name="action" value="Voltar"
+							onClick="encaminharConfirm('conserto.jsp','Quer mesmo voltar?');"></td>
 					</tr>
 				</table>
 			</form>

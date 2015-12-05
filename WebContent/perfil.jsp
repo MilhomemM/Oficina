@@ -59,7 +59,7 @@
 
 						<tr>
 							<td><label for="UsuarioEmail">Email: </label></td>
-							<td><input id="UsuarioEmail" "src/listener/Persistencia.java"type="email"
+							<td><input id="UsuarioEmail" type="email"
 								name="usuarioEmail" placeholder="exemplo@exemplo.com"
 								value="${usuarioLogado.getEmail() }" required /></td>
 						</tr>
