@@ -27,10 +27,10 @@
 	<br />
 	<section style="text-align: center">
 		<h1>Agendamento de Conserto</h1>
-		<center>
-			<form id="ConsertoFormAgendamento" method="post"
+		
+			<form id="ConsertoFormAgendamento"  class="centraliza_form" method="post"
 				action="ConsertoController.do" onSubmit="return validarSubmit();">
-				<table class="FormTableCadastro">
+				<table class="FormTableCadastro centraliza_table">
 					<tr>
 						<td><label for="VeiculoPlaca">Veiculo</label></td>
 						<td><select id="VeiculoPlaca" name="veiculoPlaca" required>
@@ -180,7 +180,7 @@
 					</tr>
 				</table>
 				<br />
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td><input type="submit" name="action" value="Cancelar"></td>
 						<td><input type="reset" value="Redefinir"></td>
@@ -189,7 +189,7 @@
 				</table>
 			</form>
 			<br />
-		</center>
+		
 		<footer class="RodapeArticle">
 			*Todos os campos são obrigatórios.<br /> *Apenas um bloco pode ser
 			submetido por vez.

@@ -29,18 +29,18 @@
 	<br />
 	<br />
 
-	<section style="text-align: center">
+	<section>
 		<c:if test="${alterado}">Alterado com sucesso!</c:if>
 		<c:if test="${cadastrado}">Cadastrado com sucesso!</c:if>
 		<h1>Detalhes de Veículo</h1>
-		<center>
-			<form id="VeiculoFormCadastro" action="VeiculoController.do"
+	
+			<form id="VeiculoFormCadastro" class="centraliza_form" action="VeiculoController.do"
 				method="post" onSubmit="removeDisabled();">
-				<table class="FormTableCadastro">
+				<table class="FormTableCadastro centraliza_table">
 					<tr>
 						<td><label for="VeiculoProprietario">Proprietário</label></td>
 						<td><select id="VeiculoProprietario"
-							name="veiculoProprietario" type="text" style="width: 384px"
+							name="veiculoProprietario" style="width: 384px"
 							required>
 								<c:forEach var="proprietario" items="${bancoCliente.getBanco()}">
 									<c:choose>
@@ -61,12 +61,12 @@
 								<c:when
 									test="${veiculoSelecionado.getClass().getName() eq 'model.Carro'}">
 									<input id="VeiculoTipo" name="veiculoTipo" type="text"
-										value="Carro" " size="50" disabled>
+										value="Carro"  size="50" disabled>
 								</c:when>
 								<c:when
 									test="${veiculoSelecionado.getClass().getName() eq 'model.Moto'}">
 									<input id="VeiculoTipo" name="veiculoTipo" type="text"
-										value="Moto" " size="50" disabled>
+										value="Moto" size="50" disabled>
 								</c:when>
 							</c:choose>
 						<td>
@@ -120,7 +120,7 @@
 					</tr>
 				</table>
 				<br />
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td><input type="submit" name="action" value="Excluir"></td>
 						<td><input type="submit" name="action" value="Alterar"></td>
@@ -129,7 +129,6 @@
 					</tr>
 				</table>
 			</form>
-		</center>
 		<br />
 	</section>
 	<footer>

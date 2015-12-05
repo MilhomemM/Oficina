@@ -17,13 +17,12 @@
 	<!--FECHA CABEÇALHO-->
 
 	<section>
-		<center>
 			<img id="LogoOficina" name="logoOficina" title="logo" alt="[logo]"
 				src="IMG/Logo Temporario.png" width="150px" />
 
-			<form id="FormRegistro" name="formRegistro"
+			<form id="FormRegistro" class="centraliza_form" name="formRegistro"
 				action="AdministradorController.do" method="post">
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td><label for="UsuarioNomeCompleto">Nome Completo: </label></td>
 						<td><input id="UsuarioNomeCompleto" type="text"
@@ -91,17 +90,17 @@
 						<td><table>
 								<tr>
 									<td><input id="UsuarioSexoM" type="radio"
-										name="usuarioSexo" value="Masculino" requerid /></td>
+										name="usuarioSexo" value="Masculino" required /></td>
 									<td><label for="UsuarioSexoM">Masculino</label></td>
 									<td><input id="UsuarioSexoF" type="radio"
-										name="usuarioSexo" value="Feminino" requerid /></td>
+										name="usuarioSexo" value="Feminino" required /></td>
 									<td><label for="UsuarioSexoF">Feminino</label></td>
 								</tr>
 							</table></td>
 					</tr>
 				</table>
 
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td><input id="BotaoEnviar" type="submit" name="action"
 							value="Registrar" /></td>
@@ -114,18 +113,12 @@
 			</form>
 			<!--FECHA FORMULÁRIO-->
 
-		</center>
+	
 	</section>
 	<!--FECHA CONTEUDO-->
 
-	<footer class="footer_registrar">
-		<center>
-			<table>
-				<tr>
-					<td>FLF 2015.2</td>
-				</tr>
-			</table>
-		</center>
+	<footer>
+		<%@ include file="rodape.jsp"%>
 	</footer>
 	<!--FECHA RODAPÉ-->
 </body>

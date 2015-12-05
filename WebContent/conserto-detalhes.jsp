@@ -30,13 +30,13 @@
 	<section>
 		<h1 id="TituloClienteDetalhes" class="titulo">Detalhes do
 			Conserto</h1>
-		<center>
-			<form id="ClienteFormCadastro" action="ClienteController.do"
+
+			<form id="ClienteFormCadastro" class="centraliza_form" action="ClienteController.do"
 				method="post" onSubmit="removeDisabled();">
-				<table id="TableFormCadastro" class="FormTableCadastro">
+				<table id="TableFormCadastro" class="FormTableCadastro centraliza_table">
 					<tr>
 						<td>
-							<table align="center">
+							<table>
 								<tr>
 									<td>Codigo</td>
 									<td><input type="text"
@@ -47,7 +47,7 @@
 					</tr>
 					<tr>
 						<td>
-							<table align="center">
+							<table>
 								<tr>
 									<td valign="top" width="33%">
 										<fieldset>
@@ -87,7 +87,6 @@
 														class="Disabled" type="text"
 														value="${consertoSelecionado.getVeiculo().getProprietario().getCpf() }"
 														disabled></td>
-													</td>
 												</tr>
 												<tr>
 													<td><label for="ClienteEmail">Email</label></td>
@@ -105,13 +104,13 @@
 										</fieldset>
 									</td>
 									<td>
-										<table align="center">
+										<table>
 											<tr>
 												<td valign="top"><fieldset>
 														<legend> Informações do Veículo </legend>
 														<table style="height:250px">
 															<tr>
-																<td><label label="veiculoTipo">Veículo</label></td>
+																<td><label for="veiculoTipo">Veículo</label></td>
 																<td><c:choose>
 																		<c:when
 																			test="${consertoSelecionado.getVeiculo().getClass().getName() eq 'model.Carro' }">
@@ -177,7 +176,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><table align="center">
+						<td><table>
 								<tr>
 									<c:forEach var="servico"
 										items="${consertoSelecionado.getServicos() }">
@@ -264,7 +263,7 @@
 					</tr>
 					<tr>
 						<td>
-							<table align="center">
+							<table>
 								<tr>
 									<td>
 										<label>Total:</label>
@@ -278,16 +277,14 @@
 					</tr>
 				</table>
 			</form>
-		</center>
 		<br />
-		<center>
-			<p1 class="RodapeArticle">*Todos os campos são obrigatórios.</p1>
-		</center>
+	
+		<footer class="RodapeArticle">*Todos os campos são obrigatórios.</footer>
 	</section>
 	<br />
 	<br />
 	<footer>
-		<table class="Rodape" width="100%">
+		<table class="Rodape">
 			<tr>
 				<th>FLF 2015.2</th>
 			</tr>

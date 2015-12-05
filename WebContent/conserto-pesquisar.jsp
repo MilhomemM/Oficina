@@ -25,13 +25,13 @@
 	</header>
 	<br />
 	<br />
-	<section style="text-align: center">
+	<section>
 
 		<h1>Pesquisa por Conserto</h1>
 
-		<form id="FormPesquisaServico" name="formPesquisaServico"
+		<form id="FormPesquisaServico" class="centraliza_form" name="formPesquisaServico"
 			action="ConsertoController.do" method="post">
-			<table align="center">
+			<table class="centraliza_table">
 				<tr>
 					<td><select id="TipoDePesquisa" name="tipoDePesquisa"
 						onChange="swapPlaceholder();" required>

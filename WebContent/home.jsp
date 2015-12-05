@@ -25,7 +25,10 @@
 	<br />
 	<br />
 	<section>
-		<!-- Colocar Corpo do Código Aqui -->
+		<img id="BotaoCliente" class="botaoHome" title="Botão Cliente" alt="[Botão Cliente]" src="IMG/cliente.jpg" onClick="encaminhar('cliente.jsp');"/>
+		<img id="BotaoVeiculo" class="botaoHome" title="Botão veiculo" alt="[Botão veiculo]" src="IMG/veiculo.jpg" onClick="encaminhar('veiculo.jsp');"/>
+		<img id="BotaoServico" class="botaoHome" title="Botão Servico" alt="[Botão Servico]" src="IMG/servico.jpg" onClick="encaminhar('servico.jsp');"/>
+		<img id="BotaoConserto" class="botaoHome" title="Botão Conserto" alt="[Botão Conserto]" src="IMG/conserto.jpg" onClick="encaminhar('conserto.jsp');"/>
 	</section>
 	<br />
 	<br />

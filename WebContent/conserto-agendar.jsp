@@ -27,11 +27,10 @@
 	<br />
 	<section style="text-align: center">
 		<h1 id="TituloConserto" class="conserto">Agendamento de Conserto</h1>
-		<form id="FormAgendaConserto" name="formAgendaConserto"
+		<form id="FormAgendaConserto" class="centraliza_form" name="formAgendaConserto"
 			action="ConsertoController.do" method="post"
 			onSubmit="return verificarCheckbox();">
-			<center>
-				<table id="TableFormConserto" class="FormTableCadastro">
+				<table id="TableFormConserto" class="FormTableCadastro centraliza_table">
 					<tr>
 						<td><table>
 								<tr>
@@ -82,17 +81,16 @@
 							</fieldset></td>
 					</tr>
 				</table>
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td class="entrada"><input id="ClienteBotaoAgendar"
-							nome="action" type="submit" value="Confirmar"></td>
+							name="action" type="submit" value="Confirmar"></td>
 						<td class="entrada"><input id="ClienteBotaoRedefinir"
-							nome="action" type="reset" value="Redefinir"></td>
+							name="action" type="reset" value="Redefinir"></td>
 						<td class="entrada"><input id="ClienteBotaoEnviar"
-							nome="action" type="submit" name="action" value="Cancelar"></td>
+							name="action" type="submit" name="action" value="Cancelar"></td>
 					</tr>
 				</table>
-			</center>
 		</form>
 		<br />
 		<footer class="RodapeArticle">

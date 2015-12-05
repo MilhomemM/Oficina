@@ -24,11 +24,11 @@
 	</header>
 	<br />
 	<br />
-	<section style="text-align: center">
+	<section>
 		<h1 id="ServicoPesquisa" class="PesquisaServico">Pesquisa por Serviço</h1>
-		<form id="FormPesquisaServico" name="formPesquisaServico"
+		<form id="FormPesquisaServico" class="centraliza_form" name="formPesquisaServico"
 			action="ServicoController.do" method="post">
-			<table align="center">
+			<table class="centraliza_table">
 				<tr>
 					<td><select id="TipoDePesquisa" name="tipoDePesquisa"
 						onChange="swapPlaceholder();" required>
@@ -55,8 +55,7 @@
 				<c:choose>
 					<c:when test="${resultadoPesquisa.size() == 0}">Nenhum resultado!</c:when>
 					<c:otherwise>
-						<center>
-							<table class="TablePesquisa" width="90%" border>
+							<table class="TablePesquisa bordaTabela centraliza_table">
 								<tr>
 									<th class="ColunaCodigo">Código</th>
 									<th class="ColunaVeiculo">Veículo</th>
@@ -102,7 +101,6 @@
 									</tr>
 								</c:forEach>
 							</table>
-						</center>
 					</c:otherwise>
 				</c:choose>
 			</c:when>

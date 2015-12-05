@@ -1,5 +1,5 @@
 <footer>
-	<table class="Rodape" width="100%">
+	<table class="Rodape">
 		<tr>
 			<th>FLF 2015.2</th>
 		</tr>

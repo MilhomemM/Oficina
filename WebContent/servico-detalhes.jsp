@@ -32,10 +32,10 @@
 	<section>
 		<c:if test="${alterado}">Alterado com sucesso!</c:if>
 		<c:if test="${cadastrado}">Cadastrado com sucesso!</c:if>
-		<form id="FormServicoDetalhes" name="formServicoDetalhes"
+		<form id="FormServicoDetalhes" class="centraliza_form" name="formServicoDetalhes"
 			action="ServicoController" method="post" onSubmit="swapDisabled();">
 			<h1>Detalhes de Serviço</h1>
-			<table align="center">
+			<table class="centraliza_table">
 				<c:if test="${servicoSelecionado != null}">
 					<tr>
 						<td id="DetalhesCodigo" class="DetalhesServicoCodigo"><label>Codigo</label></td>
@@ -95,7 +95,7 @@
 					</tr>
 				</c:if>
 			</table>
-			<table align="center">
+			<table class="centraliza_table">
 				<tr>
 					<td><input type="submit" name="action" value="Excluir"></td>
 					<td><input type="submit" name="action" value="Alterar"></td>

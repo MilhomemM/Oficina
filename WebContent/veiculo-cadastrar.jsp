@@ -28,7 +28,7 @@
 	</header>
 	<br />
 	<br />
-	<section style="text-align: center">
+	<section>
 		<h1>Cadastrar Veículo</h1>
 		
 			<form id="VeiculoFormCadastro" class="centraliza_form" action="VeiculoController.do" method="post">
