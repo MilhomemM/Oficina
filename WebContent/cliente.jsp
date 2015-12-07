@@ -27,19 +27,20 @@
 	<br />
 	<section>
 		<h1>Cliente</h1>
+		<br/>
 		<c:if test="${cadastroCancelado }"> Cadastro cancelado!</c:if>
 		<c:if test="${excluido }"> Excluido com sucesso! </c:if>
-
-			<table class="centraliza_table">
-				<tr>
-					<td><img src="IMG/cadastrar.jpg" alt="Botão Cadastrar"
-						class="BotoesCP" onClick="encaminhar('cliente-cadastrar.jsp');"></td>
-				</tr>
-				<tr>
-					<td><img src="IMG/pesquisar.jpg" alt="Botão Pesquisar"
-						class="BotoesCP" onClick="encaminhar('cliente-pesquisar.jsp');"></td>
-				</tr>
-			</table>
+		<br/>
+		<table class="centraliza_table">
+			<tr>
+				<td><img src="IMG/cadastrar.jpg" alt="Botão Cadastrar"
+					class="BotoesCP" onClick="encaminhar('cliente-cadastrar.jsp');"></td>
+			</tr>
+			<tr>
+				<td><img src="IMG/pesquisar.jpg" alt="Botão Pesquisar"
+					class="BotoesCP" onClick="encaminhar('cliente-pesquisar.jsp');"></td>
+			</tr>
+		</table>
 	</section>
 	<br />
 	<br />

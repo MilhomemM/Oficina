@@ -121,20 +121,28 @@ public class ConsertoBusiness {
 		return false;
 	}
 
-	public ArrayList<Conserto> pesquisarVeiculo(String placaVeiculo) {
-		ArrayList<Conserto> resultado = new ArrayList<Conserto>();
-
+	public Conserto pesquisarVeiculo(String placaVeiculo) {
 		if (this.banco == null || this.getSize() == 0) {
 			return null;
 		}
-
 		for (int i = 0; i < this.getSize(); i++) {
-
 			if (this.banco.get(i).getVeiculo().getPlaca().equalsIgnoreCase(placaVeiculo)) {
-				resultado.add(this.banco.get(i));
+				return this.banco.get(i);
 			}
 		}
-		return resultado;
+		return null;
+	}
+
+	public int pesquisarVeiculoIndex(String placaVeiculo) {
+		if (this.banco == null || this.getSize() == 0) {
+			return -1;
+		}
+		for (int i = 0; i < this.getSize(); i++) {
+			if (this.banco.get(i).getVeiculo().getPlaca().equalsIgnoreCase(placaVeiculo)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public boolean existeVeiculo(String placaVeiculo) {
@@ -154,16 +162,13 @@ public class ConsertoBusiness {
 		if (this.banco == null || this.getSize() == 0) {
 			return null;
 		}
-
 		for (int i = 0; i < this.getSize(); i++) {
-
 			if (dt.filtroData(this.banco.get(i).getData()).equals(dt.filtroData(data))) {
 				resultado.add(this.banco.get(i));
 			}
 		}
 
 		return resultado;
-
 	}
 
 	public boolean existeData(Date data) {
@@ -248,7 +253,7 @@ public class ConsertoBusiness {
 		}
 		return resultado;
 	}
-	
+
 	public boolean existePreco(double min, double max) {
 		if (this.banco == null || this.getSize() == 0)
 			return false;

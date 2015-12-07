@@ -144,6 +144,7 @@ public class ClienteController extends HttpServlet {
 			response.sendRedirect(dispatcher);
 			break;
 		}
+		
 		if ((tipoDePesquisa.equalsIgnoreCase("Rg") || tipoDePesquisa.equalsIgnoreCase("Cpf"))
 				&& resultadoEspecifico != null) {
 			request.setAttribute("clienteSelecionado", resultadoEspecifico);

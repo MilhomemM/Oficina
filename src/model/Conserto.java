@@ -96,6 +96,12 @@ public class Conserto {
 		return total;
 	}
 
+	public String getTotalString(){
+		String total = String.format("%.2f", this.getTotal());
+		total.replace('.', ',');
+		return total;
+	}
+
 	public void setTotal(double total) {
 		this.total = total;
 	}
@@ -107,15 +113,23 @@ public class Conserto {
 		else
 			return false;
 	}
-	public String toString()
-	{
+
+	public String toString() {
 		String conserto;
 		Data dt = new Data();
 		conserto = "Codigo: " + this.getCodigo() + "\n" + "Data: " + dt.filtroData(this.getData()) + "\n";
-		for(int i=0; i<this.getServicos().size(); i++)
-		{
-			System.out.println(this.servicos.get(i));
+		for (int i = 0; i < this.getServicos().size(); i++) {
+			if (this.servicos.get(i) instanceof Pintura)
+				conserto += "Pintura {\n";
+			else if (this.servicos.get(i) instanceof Funilaria)
+				conserto += "Funilaria {\n";
+			else if (this.servicos.get(i) instanceof Mecanica)
+				conserto += "Mecanica {\n";
+			conserto += this.servicos.get(i).toString();
+			conserto += "}\n";
 		}
+		conserto += "Total: " + this.getTotalString();
+
 		return conserto;
 	}
 }

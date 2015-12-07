@@ -40,7 +40,7 @@
 								<tr>
 									<td>Codigo</td>
 									<td><input type="text"
-										value="${consertoSelecionado.getCodigo() }"></td>
+										value="${consertoSelecionado.getCodigo() }" id="ConsertoCodigo" name="consertoCodigo"></td>
 								</tr>
 							</table>
 						</td>
@@ -269,7 +269,7 @@
 										<label>Total:</label>
 									</td>
 									<td>
-										<input type="text" id="ConsertoTotal" name="consertoTotal" value="${consertoSelecionado.getTotal() }">
+										<input type="text" id="ConsertoTotal" name="consertoTotal" value="${consertoSelecionado.getTotalString() }">
 									</td>
 								</tr>
 							</table>

@@ -59,7 +59,7 @@ public class ConsertoController extends HttpServlet {
 			this.pesquisar(request, response);
 			break;
 		case "Excluir":
-			this.excluir(request,response);
+			this.excluir(request, response);
 			break;
 		default:
 			break;
@@ -259,22 +259,28 @@ public class ConsertoController extends HttpServlet {
 		ConsertoBusiness bancoConserto = (ConsertoBusiness) request.getServletContext().getAttribute("bancoConserto");
 
 		ArrayList<Conserto> resultado = new ArrayList<Conserto>();
-		Conserto resultadoEspecifico;
+		Conserto resultadoEspecifico = null;
 		Data dt = new Data();
 
 		switch (tipoDePesquisa.toLowerCase()) {
 
 		case "codigo":
 			resultadoEspecifico = bancoConserto.pesquisarCodigo(campoDePesquisa);
-			dispatcher = "conserto-detalhes.jsp";
+			if (resultadoEspecifico != null)
+				dispatcher = "conserto-detalhes.jsp";
+			else
+				dispatcher = "conserto-pesquisar.jsp";
 			break;
 		case "nomecliente":
 			resultado = bancoConserto.pesquisarCliente(campoDePesquisa);
 			dispatcher = "conserto-pesquisar.jsp";
 			break;
 		case "placaveiculo":
-			resultado = bancoConserto.pesquisarVeiculo(campoDePesquisa);
-			dispatcher = "conserto-detalhes.jsp";
+			resultadoEspecifico = bancoConserto.pesquisarVeiculo(campoDePesquisa);
+			if (resultadoEspecifico != null)
+				dispatcher = "conserto-detalhes.jsp";
+			else
+				dispatcher = "conserto-pesquisar.jsp";
 			break;
 		case "data":
 			resultado = bancoConserto.pesquisarData(dt.returnDate(campoDePesquisa));
@@ -284,13 +290,37 @@ public class ConsertoController extends HttpServlet {
 			resultado = bancoConserto.pesquisarTipoServico(campoDePesquisa);
 			dispatcher = "conserto-pesquisar.jsp";
 			break;
-		
 		default:
-			dispatcher = "Home.jsp";
+			dispatcher = "home.jsp";
 		}
-
-		request.setAttribute("listouConserto", Boolean.TRUE);
-		request.setAttribute("resultadoPesquisa", resultado);
+		
+		if((tipoDePesquisa.equalsIgnoreCase("codigo") || tipoDePesquisa.equalsIgnoreCase("placaveiculo")) && resultadoEspecifico != null)
+		{
+			request.setAttribute("consertoSelecionado", resultadoEspecifico);
+		}
+		else{
+			request.setAttribute("resultadoPesquisa", resultado);			
+			request.setAttribute("listouConserto", Boolean.TRUE);
+		}		
 		request.getRequestDispatcher(dispatcher).forward(request, response);
+	}
+
+	public void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String codigo = request.getParameter("consertoCodigo");
+		
+		ConsertoBusiness bancoConserto = (ConsertoBusiness) request.getServletContext().getAttribute("bancoConserto");
+		
+		int posicao = bancoConserto.pesquisarCodigoIndex(codigo);
+		if(posicao != -1)
+		{
+			bancoConserto.remover(posicao);
+			request.setAttribute("excluido", Boolean.TRUE);
+			request.getServletContext().setAttribute("bancoConserto", bancoConserto);
+		}
+		else
+		{
+			request.setAttribute("excluidoErro", Boolean.TRUE);
+		}
+		request.getRequestDispatcher("conserto.jsp").forward(request, response);
 	}
 }

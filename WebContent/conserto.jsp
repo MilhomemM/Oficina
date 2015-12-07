@@ -23,10 +23,12 @@
 		<%@ include file="cabecalho-menu.jsp"%>
 	</header>
 	<br />
+	<br />
 	<section>
 		<h1>Conserto</h1>
+		<br/>
 		<c:if test="${cadastroCancelado }">Cadastro cancelado!</c:if>
-
+		<br/>
 		<table class="centraliza_table">
 			<tr>
 				<td><img src="IMG/agendar.jpg" alt="Botão Agendar"

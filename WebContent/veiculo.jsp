@@ -27,19 +27,20 @@
 	<br />
 	<section style="text-align: center">
 
+		<h1>Veículo</h1>
+		<br />
 		<c:if test="${excluido}">Excluido com sucesso!</c:if>
-
-		<h1>Oficina - Veiculo</h1>
-			<table class="centraliza_table">
-				<tr>
-					<td><img src="IMG/cadastrar.jpg" alt="Botão Cadastrar"
-						class="BotoesCP" onClick="encaminhar('veiculo-cadastrar.jsp');"></td>
-				</tr>
-				<tr>
-					<td><img src="IMG/pesquisar.jpg" alt="Botão Pesquisar"
-						class="BotoesCP" onClick="encaminhar('veiculo-pesquisar.jsp');"></td>
-				</tr>
-			</table>
+		<br />
+		<table class="centraliza_table">
+			<tr>
+				<td><img src="IMG/cadastrar.jpg" alt="Botão Cadastrar"
+					class="BotoesCP" onClick="encaminhar('veiculo-cadastrar.jsp');"></td>
+			</tr>
+			<tr>
+				<td><img src="IMG/pesquisar.jpg" alt="Botão Pesquisar"
+					class="BotoesCP" onClick="encaminhar('veiculo-pesquisar.jsp');"></td>
+			</tr>
+		</table>
 	</section>
 	<footer>
 		<%@ include file="rodape.jsp"%>

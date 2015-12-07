@@ -17,6 +17,12 @@ header {
 	color: white;
 	text-align: right;
 }
+
+.CabecalhoUsuario a{
+	text-decoration: none;
+	color: #FFF;
+	font-size: 1.2em;
+}
 /**------------------------------------------------**/ 
 /**--------------------- Logo ---------------------**/
 .LogoTopo {
@@ -131,7 +137,31 @@ section {
 
 .bordaTabela{
 	width: 90%;
-	border: 1pc solid #000;
+	border: 1px solid #000;
+}
+
+.foto{
+	width:150px;
+	height: 150px;
+	margin-top: 50px;
+	border-radius: 60%;
+}
+
+.descricao{
+	width: 70%;
+	border: 1px solid #000;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 20px 15%;
+}
+
+.tabelaSobre{
+	width: 70%;
+	margin: 10px 15%;
+}
+
+.tabelaSobre td{
+	display:block;
 }
 
 /*--------------------------------------------------*/ 

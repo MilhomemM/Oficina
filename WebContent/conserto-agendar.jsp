@@ -83,11 +83,12 @@
 			<table class="centraliza_table">
 				<tr>
 					<td class="entrada"><input id="ClienteBotaoAgendar"
-						name="action" type="submit" value="Confirmar"></td>
+						name="action" type="submit" value="Agendar"></td>
 					<td class="entrada"><input id="ClienteBotaoRedefinir"
 						name="action" type="reset" value="Redefinir"></td>
 					<td class="entrada"><input id="ClienteBotaoEnviar"
-						name="action" type="submit" name="action" value="Cancelar"></td>
+						name="action" type="button" value="Cancelar"
+						onClick="encaminharConfirm('conserto.jsp','Quer mesmo cancelar?');"></td>
 				</tr>
 			</table>
 		</form>
