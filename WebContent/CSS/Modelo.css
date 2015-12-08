@@ -1,15 +1,27 @@
 @charset "utf-8";
 /* CSS Document */
 
+*, *:before, *:after{
+	margin: 0;
+	padding: 0;
+}
+
 /*-------------------- Cabeçalho -------------------*/
 header {
 	text-align:center;	
 }
 /**-------------------- Logout --------------------**/
 .CabecalhoUsuario {
+	width: 100%;
 	background: black;
 	color: white;
 	text-align: right;
+}
+
+.CabecalhoUsuario a{
+	text-decoration: none;
+	color: #FFF;
+	font-size: 1.2em;
 }
 /**------------------------------------------------**/ 
 /**--------------------- Logo ---------------------**/
@@ -19,6 +31,7 @@ header {
 /**------------------------------------------------**/ 
 /**--------------------- Menu ---------------------**/
 .MenuTopo {
+	width: 100%;
 	padding-left: 40px;
 	padding-right: 40px;
 	list-style: none;
@@ -91,6 +104,7 @@ body {
 	position:relative;
 }
 section {
+	width: 100%;
 	text-align: center;
 	padding-top: 30px;
 	padding-bottom: 30px;
@@ -103,12 +117,60 @@ section {
 .Disabled {
 	cursor:not-allowed;	
 }
+
+.centraliza_form{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.centraliza_table{
+	margin: 0 auto;
+	text-align: left;
+}
+
+.botaoHome{
+	width: 200px;
+	margin-top: 80px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.bordaTabela{
+	width: 90%;
+	border: 1px solid #000;
+}
+
+.foto{
+	width:150px;
+	height: 150px;
+	margin-top: 50px;
+	border-radius: 60%;
+}
+
+.descricao{
+	width: 70%;
+	border: 1px solid #000;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 20px 15%;
+}
+
+.tabelaSobre{
+	width: 70%;
+	margin: 10px 15%;
+}
+
+.tabelaSobre td{
+	display:block;
+}
+
 /*--------------------------------------------------*/ 
 /*---------------- Rodapé --------------------------*/
 .Rodape {
+	width: 100%;
 	background: black;
 	color: white;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 }
 /*--------------------------------------------------*/

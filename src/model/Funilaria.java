@@ -4,14 +4,15 @@ public class Funilaria extends Servico {
 	private String peca;
 
 	public Funilaria(String codigo, String tipoVeiculo, String descricao, double preco, String peca) {
-		super(codigo, tipoVeiculo, descricao, preco, peca, peca);
+		super(codigo, tipoVeiculo, descricao, preco);
 		this.peca = peca;
 	}
 
 	public Funilaria(String tipoVeiculo, String descricao, double preco, String peca) {
-		super(tipoVeiculo, descricao, preco, peca, peca);
+		super(tipoVeiculo, descricao, preco);
 		this.peca = peca;
 	}
+
 	@Override
 	public String getCodigo() {
 		// TODO Auto-generated method stub
@@ -66,5 +67,18 @@ public class Funilaria extends Servico {
 
 	public void setPeca(String peca) {
 		this.peca = peca;
+	}
+
+	public boolean equals(Funilaria f) {
+		if (super.equals(f))
+			return true;
+		else
+			return false;
+	}
+
+	public String toString() {
+		String funilaria;
+		funilaria = "Tipo: Funilaria \n" + super.toString() + "Peça: " + this.getPeca() + "\n";
+		return funilaria;
 	}
 }

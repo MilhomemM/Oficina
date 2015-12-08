@@ -23,22 +23,22 @@
 		<%@ include file="cabecalho-menu.jsp"%>
 	</header>
 	<br />
+	<br />
 	<section>
-
 		<h1>Conserto</h1>
+		<br/>
 		<c:if test="${cadastroCancelado }">Cadastro cancelado!</c:if>
-		<center>
-			<table>
-				<tr>
-					<td><img src="IMG/Botão Agendar.png" alt="Botão Agendar"
-						class="BotoesCP" onClick="encaminhar('conserto-agendar.jsp');"></td>
-				</tr>
-				<tr>
-					<td><img src="IMG/Botão Pesquisar.png" alt="Botão Pesquisar"
-						class="BotoesCP" onClick="encaminhar('conserto-pesquisar.jsp');"></td>
-				</tr>
-			</table>
-		</center>
+		<br/>
+		<table class="centraliza_table">
+			<tr>
+				<td><img src="IMG/agendar.jpg" alt="Botão Agendar"
+					class="BotoesCP" onClick="encaminhar('conserto-agendar.jsp');"></td>
+			</tr>
+			<tr>
+				<td><img src="IMG/pesquisar.jpg" alt="Botão Pesquisar"
+					class="BotoesCP" onClick="encaminhar('conserto-pesquisar.jsp');"></td>
+			</tr>
+		</table>
 	</section>
 	<br />
 	<footer>

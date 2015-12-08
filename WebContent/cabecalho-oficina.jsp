@@ -1,7 +1,1 @@
-<center>
-    <table>
-	   <tr>
-	       <td>OFICINA</td>   
-	   </tr>
-	</table>
-</center>    
+<h1>OFICINA</h1>

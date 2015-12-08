@@ -5,35 +5,25 @@ public abstract class Servico {
 	private String tipoVeiculo;
 	private String descricao;
 	private double preco;
-	private String cor;
-	private String peca;
 
-	public Servico(String codigo, String tipoVeiculo, String descricao, double preco, String cor, String peca) {
+	public Servico(String codigo, String tipoVeiculo, String descricao, double preco) {
 		this.codigo = codigo;
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.cor = cor;
-		this.peca = peca;
 	}
-	
-	
-	public Servico(String tipoVeiculo, String descricao, double preco,String cor, String peca) {
+
+	public Servico(String tipoVeiculo, String descricao, double preco) {
 		this.tipoVeiculo = tipoVeiculo;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.cor = cor;
-		this.peca = peca;
 	}
 
-
-	public String gerarCodigo(int numero)
-	{
+	public String gerarCodigo(int numero) {
 		String codigoPrefix = "SERV";
 		String codigoSuffix = "";
 		String codigoNovo;
-		for(int i = 0; i < 4 - String.valueOf(numero).length(); i++)
-		{
+		for (int i = 0; i < 4 - String.valueOf(numero).length(); i++) {
 			codigoSuffix = codigoSuffix + "0";
 		}
 		codigoSuffix = codigoSuffix + String.valueOf(numero);
@@ -69,29 +59,28 @@ public abstract class Servico {
 	public double getPreco() {
 		return preco;
 	}
+	
+	public String getPrecoString(){
+		String preco = String.format("%.2f", this.getPreco());
+		preco.replace('.', ',');
+		return preco;
+	}
 
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
-
-	public String getCor() {
-		return cor;
+	public boolean equals(Servico s) {
+		if (this.getCodigo().equals(s.getCodigo()))
+			return true;
+		return false;
 	}
 
-
-	public void setCor(String cor) {
-		this.cor = cor;
+	public String toString() {
+		String servico;
+		servico = "Codigo: " + this.getCodigo() + "\n" + "TipoDeVeiculo: " + this.getTipoVeiculo() + "\n"
+				+ "Descricao: " + this.getDescricao() + "\n" + "Preço: " + this.getPreco() + "\n"; 
+		return servico;
+				
 	}
-
-
-	public String getPeca() {
-		return peca;
-	}
-
-
-	public void setPeca(String peca) {
-		this.peca = peca;
-	}
-	
 }

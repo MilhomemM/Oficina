@@ -31,7 +31,7 @@
 		<h1>Pesquisar Cliente</h1>
 		<form id="FormPesquisaCliente" name="formPesquisaCliente"
 			action="ClienteController.do" method="post">
-			<table align="center">
+			<table class="centraliza_table">
 				<tr>
 					<td><select id="TipoDePesquisa" name="tipoDePesquisa"
 						onChange="swapPlaceholder();" required>

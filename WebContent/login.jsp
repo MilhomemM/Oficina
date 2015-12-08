@@ -22,56 +22,46 @@
 	<!--FECHA CABECALHO-->
 
 	<section>
-		<center>
-			<img id="LogoOficina" name="logoOficina" title="Logo Oficina"
-				alt="[Logo Oficina]" src="IMG/Logo Temporario.png" />
+		<img id="LogoOficina" name="logoOficina" title="Logo Oficina"
+			alt="[Logo Oficina]" src="IMG/Logo Temporario.png" />
 
-			<form id="FormLogin" name="formLogin" action="LoginController.do"
-				method="post">
-				<table>
-					<tr>
-						<td><center>
-								<label for="UsuarioNome">Nome de Usuario</label>
-							</center></td>
-					</tr>
-
-					<tr>
-						<td><input id="UsuarioNome" type="text" name="usuarioNome"
-							placeholder="Seu Usuário" required /></td>
-					</tr>
-
-					<tr>
-						<td><center>
-								<label for="UsuarioSenha">Senha</label>
-							</center></td>
-					</tr>
-
-					<tr>
-						<td><input id="UsuarioSenha" type="password"
-							name="usuarioSenha" placeholder="Sua Senha" required /></td>
-					</tr>
-				</table>
-				<table>
-					<tr>
-						<td><input id="BotaoLogin" type="submit" name="action"
-							value="Entrar" /></td>
-						<td><input type="button" name="action" value="Registrar"
-							onClick="encaminhar('registrar-usuario.jsp');"></td>
-					</tr>
-				</table>
-			</form>
-			<!--FECHA FORMULARIO-->
-		</center>
-	</section>
-	<!--FECHA CONTEUDO-->
-	<footer class="footer_registrar">
-		<center>
+		<form id="FormLogin" name="formLogin" action="LoginController.do"
+			method="post">
 			<table>
 				<tr>
-					<td>FLF 2015.2</td>
+					<td><label for="UsuarioNome">Nome de Usuario</label></td>
+				</tr>
+
+				<tr>
+					<td><input id="UsuarioNome" type="text" name="usuarioNome"
+						placeholder="Seu Usuário" required /></td>
+				</tr>
+
+				<tr>
+					<td><label for="UsuarioSenha">Senha</label></td>
+				</tr>
+
+				<tr>
+					<td><input id="UsuarioSenha" type="password"
+						name="usuarioSenha" placeholder="Sua Senha" required /></td>
 				</tr>
 			</table>
-		</center>
+			<table class="centraliza_table">
+				<tr>
+					<td><input id="BotaoLogin" type="submit" name="action"
+						value="Entrar" /></td>
+					<td><input type="button" name="action" value="Registrar"
+						onClick="encaminhar('registrar-usuario.jsp');"></td>
+				</tr>
+			</table>
+		</form>
+		<!--FECHA FORMULARIO-->
+
+	</section>
+	<!--FECHA CONTEUDO-->
+	
+	<footer>
+		<%@ include file="rodape.jsp"%>
 	</footer>
 	<!--FECHA RODAPE-->
 </body>

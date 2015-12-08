@@ -28,12 +28,12 @@
 	</header>
 	<br />
 	<br />
-	<section style="text-align: center">
+	<section>
 		<h1>Cadastrar Veículo</h1>
-		<center>
-			<form id="VeiculoFormCadastro" action="VeiculoController.do" method="post">
+		
+			<form id="VeiculoFormCadastro" class="centraliza_form" action="VeiculoController.do" method="post">
 				
-				<table class="FormTableCadastro">
+				<table class="FormTableCadastro centraliza_table">
 					<tr>
 						<td><label for="VeiculoProprietario">Proprietário</label></td>
 						<td><select id="VeiculoProprietario"
@@ -132,20 +132,19 @@
 					</tr>
 				</table>
 				<br />
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td><input type="submit" value="Cadastrar" name="action"></td>
-						<td><input type="reset" value="Redefinir" name="action"></td>
-						<td><input type="button" value="Cancelar" name="action"
-							onClick="encaminharConfirm('veiculo.jsp','Quer mesmo cancelar?');"></td>
+						<td><input type="reset" value="Redefinir"></td>
+						<td><input type="button" value="Cancelar" name="action"></td>
 					</tr>
 				</table>
 			</form>
-		</center>
+		
 		<br />
 		<footer class="RodapeArticle"> *Todos os campos são
 			obrigatórios. </footer>
-		</article>
+		</section>
 		<footer>
 			<%@ include file="rodape.jsp"%>
 		</footer>

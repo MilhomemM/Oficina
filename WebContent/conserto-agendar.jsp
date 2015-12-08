@@ -25,73 +25,76 @@
 	</header>
 	<br />
 	<br />
-	<section style="text-align: center">
+	<section>
+		<c:if test="${agendamentoErro }">${mensagemErro}</c:if>
 		<h1 id="TituloConserto" class="conserto">Agendamento de Conserto</h1>
-		<form id="FormAgendaConserto" name="formAgendaConserto"
-			action="ConsertoController.do" method="post">
-			<center>
-				<table id="TableFormConserto" class="FormTableCadastro">
-					<tr>
-						<td><table>
+		<form id="FormAgendaConserto" class="centraliza_form"
+			name="formAgendaConserto" action="ConsertoController.do"
+			method="post" onSubmit="return verificarCheckbox();">
+			<table id="TableFormConserto"
+				class="FormTableCadastro centraliza_table">
+				<tr>
+					<td><table>
+							<tr>
+								<td><label for="ClienteData">Data</label></td>
+								<td class="entrada"><input id="ClienteData"
+									name="clienteData" type="date" required></td>
+							</tr>
+							<tr>
+								<td><label for="ClientePlacaVeiculo">Veiculo</label></td>
+								<td class="entrada"><input id="ClientePlacaVeiculo"
+									name="clientePlacaVeiculo" type="text"
+									placeholder="Informe a placa do veículo" required></td>
+							</tr>
+						</table></td>
+				</tr>
+				<tr>
+					<td><fieldset>
+							<legend> Serviços </legend>
+							<table>
 								<tr>
-									<td><label for="ClienteData">Data</label></td>
-									<td><input id="ClienteData" class="clienteData"
-										type="date"></td>
+									<td class="entrada"><input id="ConsertoCheckP"
+										name="consertoCheckP" type="checkbox" onClick="swapDisplay();"></td>
+									<td><label for="ConsertoCheckP">Pintura</label></td>
+									<td><input id="ConsertoCodigoPintura"
+										name="consertoCodigoPintura" type="text" placeholder="S#P"
+										style="display: none"></td>
 								</tr>
 								<tr>
-									<td><label for="ClientePlacaVeiculo">Veiculo</label></td>
-									<td class="entrada"><input id="ClientePlacaVeiculo"
-										type="text"></td>
+									<td class="entrada"><input id="ConsertoCheckF"
+										name="consertoCheckF" type="checkbox" onClick="swapDisplay();"></td>
+									<td><label for="ConsertoCheckF">Funilaria</label></td>
+									<td class="entrada"><input id="ConsertoCodigoFunilaria"
+										name="consertoCodigoFunilaria" type="text" placeholder="S#F"
+										style="display: none"></td>
 								</tr>
-							</table></td>
-					</tr>
-					<tr>
-						<td><fieldset>
-								<legend> Serviços </legend>
-								<table>
-									<tr>
-										<td class="entrada"><input id="ConsertoCheckP"
-											name="consertoCheckP" type="checkbox"></td>
-										<td><label for="ConsertoCheckP">Pintura</labe></td>
-										<td><input id="ConsertoCodigoPintura"
-											name="consertoCodigoPintura" type="text"></td>
-									</tr>
-									<tr>
-										<td class="entrada"><input id="ConsertoCheckF"
-											name="consertoCheckF" type="checkbox"></td>
-										<td><label for="ConsertoCheckF">Funilaria</label></td>
-										<td class="entrada"><input id="ConsertoCodigoFunilaria"
-											name="consertoCodigoFunilaria" type="text"></td>
-									</tr>
-									<tr>
-										<td class="entrada"><input id="ConsertoCheckM"
-											name="consertoCheckM" type="checkbox"></td>
-										<td><label for="ConsertoCheckM">Mecanica</label></td>
-										<td class="entrada"><input id="ConsertoCodigoMecanica"
-											name="consertoCodigoMecanica" type="text"></td>
-									</tr>
-								</table>
-							</fieldset></td>
-					</tr>
-				</table>
-				<table>
-					<tr>
-						<td class="entrada"><input id="ClienteBotaoAgendar"
-							nome="action" type="submit" value="Confirmar"></td>
-						<td class="entrada"><input id="ClienteBotaoRedefinir"
-							nome="action" type="reset" value="Redefinir"></td>
-						<td class="entrada"><input id="ClienteBotaoEnviar"
-							nome="action" type="submit" name="action" value="Cancelar"></td>
-					</tr>
-				</table>
-			</center>
+								<tr>
+									<td class="entrada"><input id="ConsertoCheckM"
+										name="consertoCheckM" type="checkbox" onClick="swapDisplay();"></td>
+									<td><label for="ConsertoCheckM">Mecanica</label></td>
+									<td class="entrada"><input id="ConsertoCodigoMecanica"
+										name="consertoCodigoMecanica" type="text" placeholder="S#M"
+										style="display: none"></td>
+								</tr>
+							</table>
+						</fieldset></td>
+				</tr>
+			</table>
+			<table class="centraliza_table">
+				<tr>
+					<td class="entrada"><input id="ClienteBotaoAgendar"
+						name="action" type="submit" value="Agendar"></td>
+					<td class="entrada"><input id="ClienteBotaoRedefinir"
+						name="action" type="reset" value="Redefinir"></td>
+					<td class="entrada"><input id="ClienteBotaoEnviar"
+						name="action" type="button" value="Cancelar"
+						onClick="encaminharConfirm('conserto.jsp','Quer mesmo cancelar?');"></td>
+				</tr>
+			</table>
 		</form>
 		<br />
-		<footer class="RodapeArticle">
-			*Todos os campos são obrigatórios.<br /> *Apenas um bloco pode ser
-			submetido por vez.
-		</footer>
-
+		<footer class="RodapeArticle"> *Todos os campos são
+			obrigatórios. </footer>
 	</section>
 	<br />
 	<br />

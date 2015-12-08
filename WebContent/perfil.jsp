@@ -24,17 +24,11 @@
 	<br />
 	<br />
 	<section>
-		<center>
-			<img id="OficinaLogo" name="oficinaLogo" class="logo"
-				title="Logo da Oficina" alt="[Logo da Oficina]"
-				src="IMG/Logo Temporario.png"> <img id="OficinaAvatar"
-				name="oficinaAvatar" class="avatar" title="Avatar Oficina"
-				alt="[Avatar Oficina]" src="IMG/AvatarOficina.jpg">
+			<h1>Perfil</h1>
 
-			<form id="FormPerfil" name="formPerfil"
+			<form id="FormPerfil" class="centraliza_form" name="formPerfil"
 				action="AdministradorController.do" method="post">
-				<center>
-					<table>
+					<table class="centraliza_table">
 						<tr>
 							<td><label for="UsuarioNomeCompleto">Nome Completo:
 							</label></td>
@@ -65,7 +59,7 @@
 
 						<tr>
 							<td><label for="UsuarioEmail">Email: </label></td>
-							<td><input id="UsuarioEmail" "src/listener/Persistencia.java"type="email"
+							<td><input id="UsuarioEmail" type="email"
 								name="usuarioEmail" placeholder="exemplo@exemplo.com"
 								value="${usuarioLogado.getEmail() }" required /></td>
 						</tr>
@@ -106,7 +100,7 @@
 						</tr>
 					</table>
 
-					<table>
+					<table class="centraliza_table">
 						<tr>
 							<td><input id="BotaoAlterar" type="submit" name="action"
 								value="Alterar" /></td>
@@ -116,11 +110,9 @@
 								value="Voltar" onClick="encaminhar('home.jsp');"/></td>
 						</tr>
 					</table>
-				</center>
 			</form>
 			<!--FECHA FORMULARIO-->
 
-		</center>
 	</section>
 	<!--FECHA CONTEUDO-->
 

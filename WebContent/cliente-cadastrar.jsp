@@ -26,10 +26,10 @@
 	<br />
 	<section>
 		<h1 id="ClienteTitulo" class="titulo">Cadastro de Cliente</h1>
-		<form id="FormCadastrarCliente" name="formCadastrarCliente"
+		<form id="FormCadastrarCliente" class="centraliza_form" name="formCadastrarCliente"
 			action="ClienteController.do" method="post" accept-charset="UTF-8">
-			<center>
-				<table id="TableFormCadastro" class="FormTableCadastro">
+			
+				<table id="TableFormCadastro" class="FormTableCadastro centraliza_table">
 					<tr>
 						<td><label for="ClienteNome">Nome </label></td>
 						<td><input id="ClienteNome" name="clienteNome" type="text"
@@ -85,7 +85,7 @@
 					</tr>
 				</table>
 				<br />
-				<table>
+				<table class="centraliza_table">
 					<tr>
 						<td><input id="ClienteBotaoCadastrar" name="action"
 							type="submit" value="Cadastrar"></td>
@@ -95,8 +95,7 @@
 							type="button" value="Cancelar"
 							onClick="encaminharConfirm('cliente.jsp','Quer mesmo cancelar?');"></td>
 					</tr>
-				</table>
-			</center>
+				</table>	
 		</form>
 		<br />
 		<footer class="RodapeArticle">*Todos os campos são

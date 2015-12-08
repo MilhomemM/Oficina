@@ -25,23 +25,22 @@
 	</header>
 	<br />
 	<br />
-	<section style="text-align: center">
+	<section>
 
 		<h1>Pesquisa por Conserto</h1>
 
-		<form id="FormPesquisaServico" name="formPesquisaServico"
+		<form id="FormPesquisaServico" class="centraliza_form" name="formPesquisaServico"
 			action="ConsertoController.do" method="post">
-			<table align="center">
+			<table class="centraliza_table">
 				<tr>
 					<td><select id="TipoDePesquisa" name="tipoDePesquisa"
-						onChange="switchPlaceholder();" required>
+						onChange="swapPlaceholder();" required>
 							<option value="" selected>Pesquisar por...</option>
 							<option value="Codigo">Código</option>
-							<option value="Nome">Nome Cliente</option>
-							<option value="Placa">Placa Veiculo</option>
-							<option value="Data">Data Conserto</option>
+							<option value="NomeCliente">Nome do Cliente</option>
+							<option value="PlacaVeiculo">Placa do Veiculo</option>
+							<option value="Data">Data do Conserto</option>
 							<option value="TipoServico">Tipo de Serviço</option>
-							<!-- 							<option value="Preco">Preco</option> -->
 					</select></td>
 					<td><input type="search" id="CampoDePesquisa"
 						name="campoDePesquisa" placeholder="Selecione uma opção..."
@@ -61,26 +60,18 @@
 							<table class="TablePesquisa" width="90%" align="center" border>
 								<tr>
 									<th>Codigo</th>
-									<th width="20%">Tipo de Veiculo</th>
 									<th width="20%">Proprietario</th>
-									<th width="20%">Placa</th>
+									<th width="20%">Veiculo</th>
 									<th width="20%">Data</th>
 									<th width="20%">Valor</th>
 								</tr>
 								<c:forEach var="conserto" items="${resultadoPesquisa }">
 									<tr>
 										<td>${conserto.getCodigo() }</td>
-										<td><c:choose>
-												<c:when
-													test="${conserto.getClass().getName() eq 'model.Carro' }">Carro</c:when>
-												<c:when
-													test="${conserto.getClass().getName() eq 'model.Moto' }">Moto</c:when>
-												<c:otherwise>-</c:otherwise>
-											</c:choose></td>
-										<td>${conserto.getVeiculo().getProprietario().getNome()}</td>
+										<td>${conserto.getVeiculo().getProprietario() }</td>
 										<td>${conserto.getVeiculo().getPlaca() }</td>
 										<td>${conserto.getDataString() }</td>
-										<td>${conserto.getTotal()}</td>
+										<td>${conserto.getTotal() }</td>
 									</tr>
 								</c:forEach>
 							</table>

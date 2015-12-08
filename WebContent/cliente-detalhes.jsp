@@ -33,10 +33,10 @@
 		<c:if test="${alterado }">Alterado com sucesso!</c:if>
 		<c:if test="${cadastrado }">Cadastrado com suceso!</c:if>
 		<h1 id="ClienteDetalhes" class="detalhes">Detalhes do Cliente</h1>
-		<center>
-			<form id="ClienteFormCadastro" action="ClienteController.do"
+		
+			<form id="ClienteFormCadastro" class="centraliza_form" action="ClienteController.do"
 				method="post" onSubmit="removeDisabled();">
-				<table id="TableFormCadastro" class="FormTableCadastro">
+				<table id="TableFormCadastro" class="FormTableCadastro centraliza_table">
 					<tr>
 						<td><label for="ClienteNome">Nome </label></td>
 						<td><input id="ClienteNome" name="clienteNome"
@@ -64,7 +64,6 @@
 						<td><label for="ClienteCPF">CPF</label></td>
 						<td><input id="ClienteCPF" name="clienteCPF" class="Disabled"
 							type="text" value="${clienteSelecionado.getCpf() }" disabled></td>
-						</td>
 					</tr>
 					<tr>
 						<td><label for="ClienteEmail">Email</label></td>
@@ -74,11 +73,11 @@
 					<tr>
 						<td><label for="ClienteTelefone">Telefone</label></td>
 						<td><input id="ClienteTelefone" name="clienteTelefone"
-							type="" value="${clienteSelecionado.getTelefone() }"></td>
+							type="tel" value="${clienteSelecionado.getTelefone() }"></td>
 					</tr>
 				</table>
 				<br />
-				<table align="center">
+				<table class="centraliza_table">
 					<tr>
 						<td><input type="submit" name="action" value="Excluir"></td>
 						<td><input type="submit" name="action" value="Alterar"></td>
@@ -87,11 +86,10 @@
 					</tr>
 				</table>
 			</form>
-		</center>
 		<br />
-		<center>
-			<p1 class="RodapeArticle">*Todos os campos são obrigatórios.</p1>
-		</center>
+		
+		<footer class="RodapeArticle">*Todos os campos são obrigatórios.</footer>
+		
 	</section>
 	<br />
 	<br />

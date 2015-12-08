@@ -10,8 +10,7 @@ public class Conserto {
 	ArrayList<Servico> servicos;
 	private double total;
 
-	public Conserto(String codigo, Veiculo veiculo, Date data, ArrayList<Servico> servicos,
-			double total) {
+	public Conserto(String codigo, Veiculo veiculo, Date data, ArrayList<Servico> servicos, double total) {
 		super();
 		this.codigo = codigo;
 		this.veiculo = veiculo;
@@ -19,9 +18,8 @@ public class Conserto {
 		this.servicos = servicos;
 		this.total = total;
 	}
-	
-	public Conserto(Veiculo veiculo, Date data, ArrayList<Servico> servicos,
-			double total) {
+
+	public Conserto(Veiculo veiculo, Date data, ArrayList<Servico> servicos, double total) {
 		super();
 		this.veiculo = veiculo;
 		this.data = data;
@@ -29,8 +27,8 @@ public class Conserto {
 		this.total = total;
 	}
 
-	public Conserto(String codigo, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
-			Funilaria funilaria, double total) {
+	public Conserto(String codigo, Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica, Funilaria funilaria,
+			double total) {
 		super();
 		this.codigo = codigo;
 		this.veiculo = veiculo;
@@ -44,9 +42,7 @@ public class Conserto {
 		this.total = total;
 	}
 
-	
-	public Conserto(Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica,
-			Funilaria funilaria, double total) {
+	public Conserto(Veiculo veiculo, Date data, Pintura pintura, Mecanica mecanica, Funilaria funilaria, double total) {
 		super();
 		this.veiculo = veiculo;
 		this.data = data;
@@ -78,7 +74,7 @@ public class Conserto {
 	public Date getData() {
 		return data;
 	}
-	
+
 	public String getDataString() {
 		Data dt = new Data();
 		return dt.filtroData(data);
@@ -100,7 +96,40 @@ public class Conserto {
 		return total;
 	}
 
+	public String getTotalString(){
+		String total = String.format("%.2f", this.getTotal());
+		total.replace('.', ',');
+		return total;
+	}
+
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public boolean equals(Conserto c) {
+		if (this.getCodigo().equals(c.getCodigo())
+				|| (this.getVeiculo().equals(c.getVeiculo()) && (this.getDataString().equals(c.getDataString()))))
+			return true;
+		else
+			return false;
+	}
+
+	public String toString() {
+		String conserto;
+		Data dt = new Data();
+		conserto = "Codigo: " + this.getCodigo() + "\n" + "Data: " + dt.filtroData(this.getData()) + "\n";
+		for (int i = 0; i < this.getServicos().size(); i++) {
+			if (this.servicos.get(i) instanceof Pintura)
+				conserto += "Pintura {\n";
+			else if (this.servicos.get(i) instanceof Funilaria)
+				conserto += "Funilaria {\n";
+			else if (this.servicos.get(i) instanceof Mecanica)
+				conserto += "Mecanica {\n";
+			conserto += this.servicos.get(i).toString();
+			conserto += "}\n";
+		}
+		conserto += "Total: " + this.getTotalString();
+
+		return conserto;
 	}
 }

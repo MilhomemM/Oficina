@@ -25,32 +25,42 @@ public class ServicoBusiness {
 	}
 
 	public boolean adicionar(Servico novo) {
+		novo.setCodigo(this.gerarCodigo(novo));
 		if (this.existeServico(novo))
 			return false;
 		else {
 			novo.setCodigo(this.gerarCodigo(novo));
-			return this.banco.add(novo);
+			boolean flag = this.banco.add(novo);
+			if (flag)
+				this.ultimoCodigoValido++;
+			return flag;
 		}
 	}
 
 	public String gerarCodigo(Servico s) {
 		String codigo = "";
 		if (s instanceof Pintura) {
+			System.out.println("hop1");
 			codigo = "S" + ultimoCodigoValido + "P";
+			System.out.println(codigo);
 		} else if (s instanceof Mecanica) {
+			System.out.println("hop2");
 			codigo = "S" + ultimoCodigoValido + "M";
 		} else if (s instanceof Funilaria) {
+			System.out.println("hop3");
 			codigo = "S" + ultimoCodigoValido + "F";
 		}
-		ultimoCodigoValido++;
+		System.out.println("hop0");
+		System.out.println(codigo);
 		return codigo;
 	}
-	
 
 	public boolean existeServico(Servico s) {
 		if (this.banco == null || this.getSize() == 0)
 			return false;
 		for (int i = 0; i < this.getSize(); i++) {
+			System.out.println("entrou no for");
+			System.out.println(s);
 			if (s.equals(this.getBanco().get(i)))
 				return true;
 		}

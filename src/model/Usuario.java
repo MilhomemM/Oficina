@@ -25,4 +25,16 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public boolean equals(Usuario u) {
+		if (this.getLogin().equals(u.getLogin()))
+			return true;
+		else
+			return false;
+	}
+
+	public String toString() {
+		String usuario;
+		usuario = "Login: " + this.getLogin() + "\n" + "Senha: " + this.getSenha() + "\n";
+		return usuario;
+	}
 }
