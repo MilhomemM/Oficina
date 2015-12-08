@@ -70,7 +70,7 @@ public class Funilaria extends Servico {
 	}
 
 	public boolean equals(Funilaria f) {
-		if (super.equals(f))
+		if (super.equals(f) && this.getPeca().equalsIgnoreCase(f.getPeca()))
 			return true;
 		else
 			return false;

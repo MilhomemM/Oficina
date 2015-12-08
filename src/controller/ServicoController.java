@@ -185,8 +185,8 @@ public class ServicoController extends HttpServlet {
 
 		String codigo = request.getParameter("servicoCodigo");
 		String preco = request.getParameter("servicoPreco");
-//		String cor = request.getParameter("servicoCor");
-//		String peca = request.getParameter("servicoPeca");
+		String cor = request.getParameter("servicoCor");
+		String peca = request.getParameter("servicoPeca");
 		String dispatcher = "servico-detalhes.jsp";
 		preco = preco.replace(',', '.');
 
@@ -194,8 +194,20 @@ public class ServicoController extends HttpServlet {
 		Servico s = bancoServico.pesquisarCodigo(codigo);
 
 		s.setPreco(Double.parseDouble(preco));
-//		s.setCor(cor);
-//		s.setPeca(peca);
+		if(s instanceof Pintura)
+		{
+			((Pintura) s).setCor(cor);
+			((Pintura) s).setPeca(peca);
+			s.setPreco(Double.parseDouble(preco));
+		}
+		if(s instanceof Funilaria)
+		{
+			((Funilaria) s).setPeca(peca);
+		}
+		if(s instanceof Mecanica)
+		{
+			s.setPreco(Double.parseDouble(preco));
+		}
 		int posicao = bancoServico.pesquisarCodigoIndex(codigo);
 		if (posicao != -1) {
 			bancoServico.alterar(posicao, s);

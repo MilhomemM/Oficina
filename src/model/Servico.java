@@ -59,8 +59,8 @@ public abstract class Servico {
 	public double getPreco() {
 		return preco;
 	}
-	
-	public String getPrecoString(){
+
+	public String getPrecoString() {
 		String preco = String.format("%.2f", this.getPreco());
 		preco.replace('.', ',');
 		return preco;
@@ -71,16 +71,18 @@ public abstract class Servico {
 	}
 
 	public boolean equals(Servico s) {
-		if (this.getCodigo().equals(s.getCodigo()))
+		if (this.getCodigo().equals(s.getCodigo()) || (this.getTipoVeiculo().equalsIgnoreCase(s.getTipoVeiculo())
+				&& this.getDescricao().equalsIgnoreCase(s.getDescricao()) && this.getPreco() == s.getPreco()))
 			return true;
-		return false;
+		else
+			return false;
 	}
 
 	public String toString() {
 		String servico;
 		servico = "Codigo: " + this.getCodigo() + "\n" + "TipoDeVeiculo: " + this.getTipoVeiculo() + "\n"
-				+ "Descricao: " + this.getDescricao() + "\n" + "Preço: " + this.getPreco() + "\n"; 
+				+ "Descricao: " + this.getDescricao() + "\n" + "Preço: " + this.getPreco() + "\n";
 		return servico;
-				
+
 	}
 }

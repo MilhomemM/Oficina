@@ -3,7 +3,7 @@ package model;
 public class Pintura extends Servico {
 	private String cor;
 	private String peca;
-	
+
 	public Pintura(String tipoVeiculo, String descricao, double preco, String cor, String peca) {
 		super(tipoVeiculo, descricao, preco);
 		this.cor = cor;
@@ -72,5 +72,13 @@ public class Pintura extends Servico {
 
 	public void setPeca(String peca) {
 		this.peca = peca;
+	}
+
+	public boolean equals(Pintura p) {
+		if (super.equals(p) && this.getCor().equalsIgnoreCase(p.getCor())
+				&& this.getPeca().equalsIgnoreCase(p.getPeca()))
+			return true;
+		else
+			return false;
 	}
 }
